@@ -1282,7 +1282,7 @@
                                         </div>
                                         <div>
                                             <h2 class=" mb-0 ">75</h2>
-                                            <h5 class="mb-0 ">Total employee</h5>
+                                            <h5 class="mb-0 ">Total days</h5>
 
                                         </div>
 
@@ -1312,7 +1312,7 @@
                                         </div>
                                         <div>
                                             <h2 class=" mb-0 ">09</h2>
-                                            <h5 class="mb-0 ">Today present employee</h5>
+                                            <h5 class="mb-0 ">Today present days</h5>
 
                                         </div>
 
@@ -1327,7 +1327,7 @@
                                         </div>
                                         <div>
                                             <h2 class=" mb-0 ">02</h2>
-                                            <h5 class="mb-0 ">Today absent employee</h5>
+                                            <h5 class="mb-0 ">Today absent days</h5>
 
                                         </div>
 
@@ -1340,12 +1340,12 @@
                                 <div class="card">
                                     <div class="card-header d-flex justify-content-between">
                                         <div class="card-title mb-0">
-                                            <h5 class="mb-0">Employee leave</h5>
+                                            <h5 class="mb-0">Leave</h5>
                                         </div>
                                         <div class="dropdown">
                                             <button type="button" class="btn btn-label-primary dropdown-toggle"
                                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                                January
+                                                Monthly
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" href="javascript:void(0);">January</a></li>
@@ -1390,9 +1390,12 @@
                                 <div class="card">
                                     <div class="card-header d-flex justify-content-between">
                                         <div class="card-title mb-0">
-                                            <h5 class="mb-0">Employee attendance</h5>
+                                            <h5 class="mb-0">Attendance</h5>
                                         </div>
+                                        <div class="card-body">
 
+                                        </div>
+                                        <div id="chart"></div>
                                     </div>
 
                                 </div>
@@ -1447,6 +1450,7 @@
     <!-- Page JS -->
     <script src="../../assets/js/app-ecommerce-dashboard.js"></script>
     <script src="../../assets/js/dashboards-crm.js"></script>
+    <script src="../../assets/js/charts-apex.js"></script>
 </body>
 
 </html>
