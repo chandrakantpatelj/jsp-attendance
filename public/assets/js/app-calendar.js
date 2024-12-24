@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
             filterInput = [].slice.call(
                 document.querySelectorAll(".input-filter")
             ),
-            inlineCalendar = document.querySelector(".inline-calendar");
+            inlineCalendar = document.querySelector("#inline-calendar");
 
         let eventToUpdate,
             currentEvents = events, // Assign app-calendar-events.js file events (assume events from API) to currentEvents (browser store/object) to manage and update calender events
@@ -153,6 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 inline: true,
             });
         }
+        console.log("inlineCalInstance777", inlineCalInstance);
 
         // Event click function
         function eventClick(info) {

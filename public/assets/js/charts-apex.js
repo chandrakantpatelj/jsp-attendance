@@ -893,6 +893,7 @@
 
     // Radial Bar Chart
     // --------------------------------------------------------------------
+
     const chartEl = document.querySelector("#chart");
     if (chartEl !== null) {
         const options = {
@@ -904,14 +905,65 @@
             plotOptions: {
                 radialBar: {
                     hollow: {
-                        size: "80%",
+                        size: "70%",
+                    },
+                    dataLabels: {
+                        name: {
+                            show: false,
+                        },
+                        value: {
+                            show: true,
+                            fontSize: "22px",
+                            fontWeight: "bold",
+                            color: "#333",
+                            offsetY: 0,
+                        },
                     },
                 },
             },
+            colors: ["#FFD901"],
         };
 
         const chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
+    }
+    const radialchartEl = document.querySelector("#radialchart");
+    console.log("radialchartEl55", radialchartEl);
+
+    if (radialchartEl !== null) {
+        const options = {
+            series: [90],
+            chart: {
+                height: 200,
+                type: "radialBar",
+            },
+            plotOptions: {
+                radialBar: {
+                    hollow: {
+                        size: "70%",
+                    },
+                    dataLabels: {
+                        name: {
+                            show: false,
+                        },
+                        value: {
+                            show: true,
+                            fontSize: "22px",
+                            fontWeight: "bold",
+                            color: "#333",
+                            offsetY: 0,
+                        },
+                    },
+                },
+            },
+            colors: ["#00B215"],
+        };
+
+        const radialchart = new ApexCharts(
+            document.querySelector("#radialchart"),
+            options
+        );
+        radialchart.render();
     }
 
     // Radar Chart

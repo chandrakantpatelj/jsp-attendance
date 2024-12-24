@@ -70,6 +70,11 @@
     font-size: 14px;
     color: #333;
 }
+.punchin-time {
+    font-weight: 700;
+    font-size: 16px;
+    color: #333;
+}
 .btn-logout {
     font-weight: 400;
     font-size: 12px;
@@ -80,6 +85,12 @@
     cursor: pointer;
     background-color: transparent;
     box-shadow: none !important;
+}
+.punch_button {
+    font-weight: 700;
+    padding: 10px 22px;
+    font-size: 16px;
+    border-radius: 10px;
 }
 
 .page-header {
@@ -122,6 +133,41 @@
 .dashbord-card .avatar i {
     font-size: 32px;
     color: #fff;
+}
+
+.dashbord_card .card-header h5 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.chart-container {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    text-align: center;
+}
+.chart-container h5 {
+    font-size: 18px;
+    color: #333;
+    margin: 0;
+}
+#chart {
+    flex-shrink: 0;
+}
+.chartlable {
+    text-align: center;
+}
+
+.chartlable h5 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+    padding-left: 65px;
 }
 
 /* * project-custom.css end */

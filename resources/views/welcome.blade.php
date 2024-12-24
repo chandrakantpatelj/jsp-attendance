@@ -48,6 +48,8 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../../assets/js/config.js"></script>
+
+
 </head>
 
 <body>
@@ -1222,15 +1224,20 @@
 
                     <div class="navbar-nav-right  d-flex gap-4 align-items-center justify-content-end"
                         id="navbar-collapse">
-                        <ul class="navbar-nav flex-row align-items-center  ">
+                        <ul class="navbar-nav flex-row gap-3 align-items-center  ">
                             <li>
-                                <div class="flex-grow-1 input-group input-group-merge  custom-search">
-                                    <span class="input-group-text custom-search" id="basic-addon-search31"><i
-                                            class="ti ti-search"></i></span>
-                                    <input type="text" class="form-control chat-search-input custom-search"
-                                        placeholder="Search here..." aria-label="Search..."
-                                        aria-describedby="basic-addon-search31" />
+                                <div>
+                                    <span class="menu-header-text punchin-time">
+                                        00:00
+                                    </span>
+
+
                                 </div>
+                            </li>
+                            <li>
+                                <button class="btn btn-danger  punch_button" type="button">
+                                    Punch in
+                                </button>
                             </li>
                             <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-1 ">
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
@@ -1337,11 +1344,11 @@
                         </div>
                         <div class="row">
                             <div class="col-12 col-xl-5 mb-4">
-                                <div class="card">
+                                <div class="card dashbord_card">
                                     <div class="card-header d-flex justify-content-between">
-                                        <div class="card-title mb-0">
-                                            <h5 class="mb-0">Leave</h5>
-                                        </div>
+
+                                        <h5 class="mb-0">Leave</h5>
+
                                         <div class="dropdown">
                                             <button type="button" class="btn btn-label-primary dropdown-toggle"
                                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -1368,7 +1375,6 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-
                                         <div class="tab-content p-0 ms-0 ms-sm-2">
                                             <div class="tab-pane fade show active" id="navs-orders-id" role="tabpanel">
                                                 <div id="earningReportsTabsOrders"></div>
@@ -1387,28 +1393,34 @@
                                 </div>
                             </div>
                             <div class="col-12 col-xl-4 mb-4">
-                                <div class="card">
-                                    <div class="card-header d-flex justify-content-between">
-                                        <div class="card-title mb-0">
-                                            <h5 class="mb-0">Attendance</h5>
-                                        </div>
-                                        <div class="card-body">
-
-                                        </div>
-                                        <div id="chart"></div>
+                                <div class="card dashbord_card">
+                                    <div class="card-header ">
+                                        <h5 class="mb-0">Attendance</h5>
                                     </div>
-
+                                    <div class="px-3">
+                                        <div class="chart-container">
+                                            <div class="chartlable">
+                                                <h5 class="mb-0">Late</h5>
+                                                <h5 class="mb-0">30%</h5>
+                                            </div>
+                                            <div id="chart"></div>
+                                        </div>
+                                        <div class="chart-container">
+                                            <div class="chartlable">
+                                                <h5 class="mb-0">Present</h5>
+                                                <h5 class="mb-0">90%</h5>
+                                            </div>
+                                            <div id="radialchart"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-12 col-xl-3 mb-4">
-                                <div class="card">
+                                <div class="card dashbord_card">
                                     <div class="card-header d-flex justify-content-between">
-                                        <div class="card-title mb-0">
-                                            <h5 class="mb-0">December 2024</h5>
-                                        </div>
-
+                                        <h5 class="mb-0">December 2024</h5>
+                                        <div id="inline-calendar"></div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -1451,6 +1463,8 @@
     <script src="../../assets/js/app-ecommerce-dashboard.js"></script>
     <script src="../../assets/js/dashboards-crm.js"></script>
     <script src="../../assets/js/charts-apex.js"></script>
+    <script src="../../assets/js/app-calendar-events.js"></script>
+    <script src="../../assets/js/app-calendar.js"></script>
 </body>
 
 </html>
