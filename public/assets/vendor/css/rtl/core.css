@@ -31,7 +31,7 @@
   --bs-success: #28c76f;
   --bs-info: #00cfe8;
   --bs-warning: #ff9f43;
-  --bs-danger: #ea5455;
+  --bs-danger:#ff0000;
   --bs-light: #dfdfe3;
   --bs-dark: #4b4b4b;
   --bs-gray: rgba(75, 70, 92, 0.05);
@@ -92,7 +92,7 @@
   --bs-tertiary-color-rgb: 111, 107, 125;
   --bs-tertiary-bg: rgba(75, 70, 92, 0.05);
   --bs-tertiary-bg-rgb: 75, 70, 92;
-  --bs-heading-color: #5d596c;
+  --bs-heading-color: #3C3F42;
   --bs-link-color: #7367f0;
   --bs-link-color-rgb: 115, 103, 240;
   --bs-link-decoration: none;
@@ -7727,8 +7727,8 @@ label.btn {
 
 .btn-danger {
   color: #fff;
-  background-color: #ea5455;
-  border-color: #ea5455;
+  background-color: #ff0000;
+  border-color: #ff0000;
 }
 .btn-danger:hover {
   color: #fff !important;
