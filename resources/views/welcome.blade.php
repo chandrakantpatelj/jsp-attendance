@@ -1245,9 +1245,236 @@
                                     <div class="icon-box">
                                         <i class="ti ti-bell"></i>
                                     </div>
+                                    <span class="badge bg-danger rounded-pill badge-notifications"
+                                        style="margin-top: 6px;">5</span>
 
-                                    <!-- <span class="badge bg-danger rounded-pill badge-notifications">5</span> -->
                                 </a>
+                                <ul class="dropdown-menu dropdown-menu-end py-0 notifications-card">
+                                    <li class="dropdown-menu-header border-bottom">
+                                        <div class="dropdown-header d-flex align-items-center py-3">
+                                            <h5 class="text-body mb-0 me-auto">Notification</h5>
+                                            <a href="javascript:void(0)" class="dropdown-notifications-all text-body"
+                                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                                title="Mark all as read"><i class="ti ti-mail-opened fs-4"></i></a>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-notifications-list scrollable-container  ">
+                                        <ul class="list-group list-group-flush ">
+                                            <li
+                                                class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex">
+                                                    <div class="flex-grow-1 ">
+                                                        <h6 class="mb-1">Lorem Ipsum is simply dummy text of the
+                                                            printing & typesetting industry. Lorem Ipsum has been the
+                                                            industry's standard dummy.</h6>
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <span></span>
+                                                            <small class="text-muted">1h ago</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)"
+                                                            class="dropdown-notifications-read"></a>
+                                                        <a href="javascript:void(0)"
+                                                            class="dropdown-notifications-archive"><span
+                                                                class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li
+                                                class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex">
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">Lorem Ipsum is simply dummy text of the
+                                                            printing & typesetting industry. Lorem Ipsum has been the
+                                                            industry's standard dummy.</h6>
+                                                        <!-- <p class="mb-0">Accepted your connection</p> -->
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <span></span>
+                                                            <small class="text-muted">12hr ago</small>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)"
+                                                            class="dropdown-notifications-read"></a>
+                                                        <a href="javascript:void(0)"
+                                                            class="dropdown-notifications-archive"><span
+                                                                class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li
+                                                class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">Lorem Ipsum is simply dummy text of the
+                                                            printing & typesetting industry. Lorem Ipsum has been the
+                                                            industry's standard dummy .</h6>
+                                                        <!-- <p class="mb-0">You have new message from Natalie</p> -->
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <span></span>
+                                                            <small class="text-muted">1h ago</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)"
+                                                            class="dropdown-notifications-read"></a>
+                                                        <a href="javascript:void(0)"
+                                                            class="dropdown-notifications-archive"><span
+                                                                class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li
+                                                class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex">
+
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">Lorem Ipsum is simply dummy text of the
+                                                            printing & typesetting industry. Lorem Ipsum has been the
+                                                            industry's standard dummy .</h6>
+                                                        <!-- <p class="mb-0">ACME Inc. made new order $1,154</p> -->
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <span></span>
+                                                            <small class="text-muted">1h ago</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)"
+                                                            class="dropdown-notifications-read"></a>
+                                                        <a href="javascript:void(0)"
+                                                            class="dropdown-notifications-archive"><span
+                                                                class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li
+                                                class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">Lorem Ipsum is simply dummy text of the
+                                                            printing & typesetting industry. Lorem Ipsum has been the
+                                                            industry's standard dummy .</h6>
+                                                        <!-- <p class="mb-0">Your ABC project application has been approved.
+                                                        </p> -->
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <span></span>
+                                                            <small class="text-muted">2h ago</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)"
+                                                            class="dropdown-notifications-read"></a>
+                                                        <a href="javascript:void(0)"
+                                                            class="dropdown-notifications-archive"><span
+                                                                class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li
+                                                class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">Lorem Ipsum is simply dummy text of the
+                                                            printing & typesetting industry. Lorem Ipsum has been the
+                                                            industry's standard dummy .</h6>
+                                                        <!-- <p class="mb-0">July monthly financial report is generated</p> -->
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <span></span>
+                                                            <small class="text-muted">3 day ago</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)"
+                                                            class="dropdown-notifications-read"></a>
+                                                        <a href="javascript:void(0)"
+                                                            class="dropdown-notifications-archive"><span
+                                                                class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li
+                                                class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">Lorem Ipsum is simply dummy text of the
+                                                            printing & typesetting industry. Lorem Ipsum has been the
+                                                            industry's standard dummy .</h6>
+                                                        <!-- <p class="mb-0">Peter sent you connection request</p> -->
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <span></span>
+                                                            <small class="text-muted">4 days ago</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)"
+                                                            class="dropdown-notifications-read"></a>
+                                                        <a href="javascript:void(0)"
+                                                            class="dropdown-notifications-archive"><span
+                                                                class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li
+                                                class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex">
+
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">Lorem Ipsum is simply dummy text of the
+                                                            printing & typesetting industry. Lorem Ipsum has been the
+                                                            industry's standard dummy .</h6>
+                                                        <!-- <p class="mb-0">Your have new message from Jane</p> -->
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <span></span>
+                                                            <small class="text-muted">5 days ago</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)"
+                                                            class="dropdown-notifications-read"></a>
+                                                        <a href="javascript:void(0)"
+                                                            class="dropdown-notifications-archive"><span
+                                                                class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li
+                                                class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex">
+
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">Lorem Ipsum is simply dummy text of the
+                                                            printing & typesetting industry. Lorem Ipsum has been the
+                                                            industry's standard dummy .</h6>
+                                                        <!-- <p class="mb-0">CPU Utilization Percent is currently at 88.63%,
+                                                        </p> -->
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <span></span>
+                                                            <small class="text-muted">1 days ago</small>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <a href="javascript:void(0)"
+                                                            class="dropdown-notifications-read"></a>
+                                                        <a href="javascript:void(0)"
+                                                            class="dropdown-notifications-archive"><span
+                                                                class="ti ti-x"></span></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-menu-footer border-top">
+                                        <a href="javascript:void(0);"
+                                            class="dropdown-item d-flex justify-content-center text-primary p-2 h-px-40 mb-1 align-items-center">
+                                            View all notifications
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <div>
@@ -1419,7 +1646,7 @@
                                 <div class="card dashbord_card">
                                     <div class="card-header d-flex justify-content-between">
                                         <h5 class="mb-0">December 2024</h5>
-                                        <div id="inline-calendar"></div>
+                                        <div class="inline-calendar"></div>
                                     </div>
                                 </div>
                             </div>
@@ -1460,11 +1687,13 @@
     <script src="../../assets/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="../../assets/js/app-ecommerce-dashboard.js"></script>
-    <script src="../../assets/js/dashboards-crm.js"></script>
-    <script src="../../assets/js/charts-apex.js"></script>
-    <script src="../../assets/js/app-calendar-events.js"></script>
-    <script src="../../assets/js/app-calendar.js"></script>
+    <script src="/assets/js/app-ecommerce-dashboard.js"></script>
+    <script src="/assets/js/dashboards-crm.js"></script>
+    <script src="/assets/js/charts-apex.js"></script>
+    <script src="/assets/js/app-calendar.js"></script>
+    <script src="/assets/js/app-calendar-events.js"></script>
+
+
 </body>
 
 </html>

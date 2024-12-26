@@ -170,6 +170,16 @@
     padding-left: 65px;
 }
 
+.notifications-card {
+    border-radius: 20px;
+    min-width: 598px !important;
+}
+.notifications-card .dropdown-notifications-item > div {
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    padding: 12px 6px 12px 12px;
+}
+
 /* * project-custom.css end */
 
 .light-style .menu .app-brand.demo {
