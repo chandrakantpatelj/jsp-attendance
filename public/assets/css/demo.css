@@ -180,6 +180,273 @@
     padding: 12px 6px 12px 12px;
 }
 
+/* General Styles */
+
+.container {
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 240px;
+    background: #ffffff;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu ul li {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #555;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.menu ul li.active {
+    background: #f0f0f0;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Main Content */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.punch-in {
+    background: #ff4500;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.leave-list .leave-item {
+    background: #fff;
+
+    padding: 15px;
+
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.leave-item .status {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.leave-item.pending .status {
+    color: #ff0000;
+}
+
+.leave-item.approved .status {
+    color: #00b215;
+}
+
+.actions button {
+    background: #f0f0f0;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.pagination {
+    display: flex;
+    justify-content: Right;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.pagination button.active {
+    background: #ddd;
+    font-weight: bold;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 30px;
+    color: #333;
+    margin: 0;
+    font-weight: 600;
+}
+
+.header .buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.button {
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.button.add-leave {
+    background-color: #f05a28;
+}
+
+.button.csv-files {
+    background-color: #ddd;
+    color: #333;
+}
+
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #333;
+    border: none;
+    background: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.tab.active {
+    color: #f05a28;
+    border-bottom: 2px solid #f05a28;
+    font-weight: bold;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 15px;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.search-box select,
+.search-box input {
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: #333;
+    width: 100%;
+}
+.search-box input {
+    border: 1px;
+}
+
+.search-box select:focus,
+.search-box input:focus {
+    outline: none;
+}
+
+#calendar {
+    max-width: 1300px;
+    height: 800px;
+    margin: 0px auto;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+.calendar-header h5 {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 40px;
+    color: #3c3f42;
+    margin-bottom: 30px;
+}
+.calendar-header .icon {
+    font-size: 20px; /* Adjust icon size */
+    color: #333; /* Icon color */
+}
+
+.calendar-header .avatar {
+    width: 46px;
+    height: 46px;
+    background-color: #f15e30;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.calendar-header .avatar i {
+    font-size: 22px;
+    color: #fff;
+}
+
+.calendar-csvfile {
+    max-width: 220px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff;
+}
+.calendar-csvfile h5 {
+    font-weight: 400;
+    font-size: 16px;
+    color: #f15e30;
+}
+
 /* * project-custom.css end */
 
 .light-style .menu .app-brand.demo {
