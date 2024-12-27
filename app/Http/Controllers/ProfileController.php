@@ -57,4 +57,16 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    
+    public function AttendanceRegularization()
+    {
+        return view('attendance_regularization');
+    }
+
+     
+    public function MyLeave()
+    {
+        return view('myleave');
+    }
 }

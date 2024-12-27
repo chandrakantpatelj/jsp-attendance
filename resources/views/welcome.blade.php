@@ -1213,7 +1213,6 @@
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
-
                 <nav class="layout-navbar  navbar navbar-expand-xl  align-items-center bg-navbar-theme px-4"
                     id="layout-navbar ">
                     <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
@@ -1221,7 +1220,6 @@
                             <i class="ti ti-menu-2 ti-sm"></i>
                         </a>
                     </div>
-
                     <div class="navbar-nav-right  d-flex gap-4 align-items-center justify-content-end"
                         id="navbar-collapse">
                         <ul class="navbar-nav flex-row gap-3 align-items-center  ">
@@ -1230,8 +1228,6 @@
                                     <span class="menu-header-text punchin-time">
                                         00:00
                                     </span>
-
-
                                 </div>
                             </li>
                             <li>
@@ -1502,7 +1498,7 @@
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
                     <!-- Content -->
-                    <div class="page-header">
+                    <div class="calendar-header">
                         <h5 class="mb-0">Dashboard</h5>
                     </div>
 
@@ -1646,7 +1642,68 @@
                                 <div class="card dashbord_card">
                                     <div class="card-header d-flex justify-content-between">
                                         <h5 class="mb-0">December 2024</h5>
-                                        <div class="inline-calendar"></div>
+                                        <div class="col app-calendar-sidebar" id="app-calendar-sidebar">
+                                            <div class="border-bottom p-4 my-sm-0 mb-3">
+                                                <div class="d-grid">
+                                                    <button class="btn btn-primary btn-toggle-sidebar"
+                                                        data-bs-toggle="offcanvas" data-bs-target="#addEventSidebar"
+                                                        aria-controls="addEventSidebar">
+                                                        <i class="ti ti-plus me-1"></i>
+                                                        <span class="align-middle">Add Event</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="p-3">
+                                                <!-- inline calendar (flatpicker) -->
+                                                <div class="inline-calendar"></div>
+
+                                                <hr class="container-m-nx mb-4 mt-3" />
+
+                                                <!-- Filter -->
+                                                <div class="mb-3 ms-3">
+                                                    <small
+                                                        class="text-small text-muted text-uppercase align-middle">Filter</small>
+                                                </div>
+
+                                                <div class="form-check mb-2 ms-3">
+                                                    <input class="form-check-input select-all" type="checkbox"
+                                                        id="selectAll" data-value="all" checked />
+                                                    <label class="form-check-label" for="selectAll">View All</label>
+                                                </div>
+
+                                                <div class="app-calendar-events-filter ms-3">
+                                                    <div class="form-check form-check-danger mb-2">
+                                                        <input class="form-check-input input-filter" type="checkbox"
+                                                            id="select-personal" data-value="personal" checked />
+                                                        <label class="form-check-label"
+                                                            for="select-personal">Personal</label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input input-filter" type="checkbox"
+                                                            id="select-business" data-value="business" checked />
+                                                        <label class="form-check-label"
+                                                            for="select-business">Business</label>
+                                                    </div>
+                                                    <div class="form-check form-check-warning mb-2">
+                                                        <input class="form-check-input input-filter" type="checkbox"
+                                                            id="select-family" data-value="family" checked />
+                                                        <label class="form-check-label"
+                                                            for="select-family">Family</label>
+                                                    </div>
+                                                    <div class="form-check form-check-success mb-2">
+                                                        <input class="form-check-input input-filter" type="checkbox"
+                                                            id="select-holiday" data-value="holiday" checked />
+                                                        <label class="form-check-label"
+                                                            for="select-holiday">Holiday</label>
+                                                    </div>
+                                                    <div class="form-check form-check-info">
+                                                        <input class="form-check-input input-filter" type="checkbox"
+                                                            id="select-etc" data-value="etc" checked />
+                                                        <label class="form-check-label" for="select-etc">ETC</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

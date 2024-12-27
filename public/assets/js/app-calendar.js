@@ -283,7 +283,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // ------------------------------------------------
         let calendar = new Calendar(calendarEl, {
             initialView: "dayGridMonth",
-            events: fetchEvents,
+            timeZone: "UTC",
+            events: "https://fullcalendar.io/api/demo-feeds/events.json",
             plugins: [
                 dayGridPlugin,
                 interactionPlugin,
@@ -291,6 +292,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 timegridPlugin,
             ],
             editable: true,
+            selectable: true,
             dragScroll: true,
             dayMaxEvents: 2,
             eventResizableFromStart: true,
@@ -300,8 +302,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
             },
             headerToolbar: {
-                start: "sidebarToggle, prev,next, title",
-                end: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
+                start: "title,sidebarToggle, prev,next",
+                end: "",
             },
             direction: direction,
             initialDate: new Date(),
