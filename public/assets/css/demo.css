@@ -395,9 +395,10 @@
 }
 
 #calendar {
-    max-width: 1300px;
-    height: 800px;
-    margin: 0px auto;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    font-size: 0.9em;
 }
 
 .calendar-header {
@@ -416,8 +417,8 @@
     margin-bottom: 30px;
 }
 .calendar-header .icon {
-    font-size: 20px; /* Adjust icon size */
-    color: #333; /* Icon color */
+    font-size: 20px;
+    color: #333;
 }
 
 .calendar-header .avatar {
@@ -428,6 +429,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    flex-shrink: 0;
 }
 .calendar-header .avatar i {
     font-size: 22px;

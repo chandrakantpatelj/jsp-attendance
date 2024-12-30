@@ -296,22 +296,22 @@ document.addEventListener("DOMContentLoaded", function () {
             dragScroll: true,
             dayMaxEvents: 2,
             eventResizableFromStart: true,
+            aspectRatio: 2.5, // Reduce height; larger values make it shorter
             customButtons: {
                 sidebarToggle: {
                     text: "Sidebar",
                 },
             },
             headerToolbar: {
-                start: "title,sidebarToggle, prev,next",
+                start: "title,sidebarToggle prev,next",
                 end: "",
             },
             direction: direction,
             initialDate: new Date(),
-            navLinks: true, // can click day/week names to navigate views
+            navLinks: true,
             eventClassNames: function ({ event: calendarEvent }) {
                 const colorName =
                     calendarsColor[calendarEvent._def.extendedProps.calendar];
-                // Background Color
                 return ["fc-event-" + colorName];
             },
             dateClick: function (info) {
@@ -319,7 +319,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 resetValues();
                 bsAddEventSidebar.show();
 
-                // For new event set offcanvas title text: Add Event
                 if (offcanvasTitle) {
                     offcanvasTitle.innerHTML = "Add Event";
                 }
@@ -343,6 +342,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Render calendar
         calendar.render();
+
         // Modify sidebar toggler
         modifyToggler();
 
