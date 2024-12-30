@@ -81,19 +81,33 @@
                         <span class="app-brand-text demo menu-text fw-bold">jsp infotech</span>
                     </a>
 
-
+                    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+                        <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
+                        <i class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
+                    </a>
                 </div>
 
-                <aside class="sidebar">
-
-                    <nav class="menu">
-                        <ul>
-                            <li>Dashboards</li>
-                            <li>Attendance Regularization</li>
-                            <li class="active">My leave</li>
-                        </ul>
-                    </nav>
-                </aside>
+                <div class="menu-inner-shadow"></div>
+                <ul class="menu-inner py-1">
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            <i class="menu-icon tf-icons ti ti-mail"></i>
+                            <div data-i18n="Dashboards">Dashboards</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ route('attendance-regularization') }}" class="menu-link">
+                            <i class="menu-icon tf-icons ti ti-mail"></i>
+                            <div data-i18n="Attendance Regularization">Attendance-regularization</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ route('my-leave') }}" class="menu-link">
+                            <i class="menu-icon tf-icons ti ti-mail"></i>
+                            <div data-i18n="My Leave">My Leave</div>
+                        </a>
+                    </li>
+                </ul>
             </aside>
             <!-- / Menu -->
 
@@ -146,19 +160,7 @@
                 <!-- Content wrapper -->
                 <div class="layout-container">
                     <!-- Sidebar -->
-                    <aside class="sidebar">
-                        <div class="logo">
-                            <img src="logo.png" alt="JSP Logo">
-                            <span>infotech</span>
-                        </div>
-                        <nav class="menu">
-                            <ul>
-                                <li>Dashboards</li>
-                                <li>Attendance Regularization</li>
-                                <li class="active">My leave</li>
-                            </ul>
-                        </nav>
-                    </aside>
+
 
                     <!-- Main Content -->
                     <main class="content">
@@ -297,8 +299,6 @@
     <script src="/assets/js/charts-apex.js"></script>
     <script src="/assets/js/app-calendar.js"></script>
     <script src="/assets/js/app-calendar-events.js"></script>
-
-
 </body>
 
 </html>
