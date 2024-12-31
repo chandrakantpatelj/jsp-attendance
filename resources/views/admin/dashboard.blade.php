@@ -601,6 +601,31 @@
 // });
 </script>
 </script>
+    <script>
+    // jQuery(document).ready(function ($) {
+    //     $('#app-calendar-sidebar').fullCalendar({
+    //         header: {
+    //             left: 'prev,next today',
+    //             center: 'title',
+    //             right: 'month,agendaWeek,agendaDay'
+    //         },
+    //         events: [{
+    //             title: 'Event 1',
+    //             start: '2024-12-31'
+    //         },
+    //         {
+    //             title: 'Event 2',
+    //             start: '2024-12-25'
+    //         },
+    //         {
+    //             title: 'Event 3',
+    //             start: '2024-12-30'
+    //         }
+    //         ]
+    //     });
+    // });
+    </script>
+    </script>
 
 
 </body>
