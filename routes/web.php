@@ -2,10 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
 
 // Route::get('/dashboard', function () {
@@ -30,6 +31,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/attendance-regularization', [ProfileController::class, 'AttendanceRegularization'])->name('attendance-regularization');
     Route::get('/my-leave', [ProfileController::class, 'MyLeave'])->name('my-leave');
+
+    //Admin route
+    Route::get('/employee', [EmployeeController::class, 'index'])->name('employee.index');
+    Route::get('employee/{id}/edit', [EmployeeController::class, 'edit'])->name('employee.edit');
+    Route::post('employee/{id}/update', [EmployeeController::class, 'update'])->name('employee.update');
+    Route::post('employee/store', [EmployeeController::class, 'store'])->name('employee.store');
+    Route::delete('employee/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
+
 
 });
 
