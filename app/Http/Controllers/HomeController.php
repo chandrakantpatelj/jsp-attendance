@@ -25,10 +25,6 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        // echo '<pre>';
-        // print_r($user->role_id);
-        // echo '</pre>';
-        // dd($user);
         if ($user->role_id == 1) {
             return view('admin.dashboard');
         } elseif ($user->role_id == 2) {
