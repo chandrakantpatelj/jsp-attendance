@@ -48,12 +48,13 @@
                             </span>
                         </a>
                     </div>
-                    <form id="formAuthentication" class="mb-3" action="index.html" method="GET">
+                    <form class="mb-3" method="POST" action="{{ route('login') }}" id="formAuthentication">
+                        @csrf
                         <div class="mb-3">
                             <img src="../../assets/img/illustrations/mail.png" alt="logo" width="24" height="24" />
                             <label for="email" class="form-label front-design">Email</label>
                             <div class="input-group password-Filed">
-                                <input type="text" class="form-control" id="email" name="email-username"
+                                <input type="text" class="form-control" id="email" name="email"
                                     placeholder="Enter Your email..." aria-describedby="basic-addon1" autofocus />
                             </div>
                         </div>
