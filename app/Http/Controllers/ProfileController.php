@@ -61,7 +61,7 @@ class ProfileController extends Controller
     
     public function AttendanceRegularization()
     {
-        return view('attendance_regularization');
+        return view('employee.attendance_regularization');
     }
 
      
