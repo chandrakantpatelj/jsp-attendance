@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\AttendanceController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -32,13 +33,20 @@ Route::middleware('auth')->group(function () {
     Route::get('/attendance-regularization', [ProfileController::class, 'AttendanceRegularization'])->name('attendance-regularization');
     Route::get('/my-leave', [ProfileController::class, 'MyLeave'])->name('my-leave');
 
-    //Admin route
+    //Admin route employee
     Route::get('/employee', [EmployeeController::class, 'index'])->name('employee.index');
     Route::get('employee/{id}/edit', [EmployeeController::class, 'edit'])->name('employee.edit');
     Route::post('employee/{id}/update', [EmployeeController::class, 'update'])->name('employee.update');
     Route::post('employee/store', [EmployeeController::class, 'store'])->name('employee.store');
     Route::delete('employee/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
 
+    //Admin route Attendance
+    Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
+    Route::get('attendance/create', [AttendanceController::class, 'create'])->name('attendance.create');
+    Route::post('attendance/store', [AttendanceController::class, 'store'])->name('attendance.store');
+    Route::get('attendance/{id}/edit', [AttendanceController::class, 'edit'])->name('attendance.edit');
+    Route::post('attendance/{id}/update', [AttendanceController::class, 'update'])->name('attendance.update');
+    Route::delete('attendance/{id}', [AttendanceController::class, 'destroy'])->name('attendance.destroy');
 
 });
 

@@ -129,7 +129,7 @@
         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#employeeModal"
             onclick="loadEmployeeData({{ $employee->id }})">Edit</button>
 
-        <!-- Delete Button -->
+
         <form action="{{ route('employee.destroy', $employee->id) }}" method="POST" style="display:inline;">
             @csrf
             @method('DELETE')
@@ -152,13 +152,10 @@ function loadEmployeeData(employeeId) {
             $('#password').val('');
             $('#password-confirm').val('');
 
-            // Set the button text to "Update"
             $('#employeeForm button[type="submit"]').text('Update');
 
-            // Set the form action to update URL
             $('#employeeForm').attr('action', '/employee/' + employeeId + '/update');
 
-            // Show the modal
             $('#employeeModal').modal('show');
         },
         error: function(xhr, status, error) {
