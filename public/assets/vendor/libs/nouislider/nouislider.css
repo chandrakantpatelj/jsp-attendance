@@ -622,7 +622,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
     font-weight: 500;
 }
 .light-style .noUi-secondary .noUi-connect {
-    background: #a8aaae !important;
+    background: #f5f5f5 !important;
 }
 .light-style .noUi-secondary .noUi-handle {
     background: #86888b !important;
@@ -696,7 +696,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
     font-weight: 500;
 }
 .dark-style .noUi-secondary .noUi-connect {
-    background: #a8aaae !important;
+    background: #f5f5f5 !important;
 }
 .dark-style .noUi-secondary .noUi-handle {
     background: #86888b !important;

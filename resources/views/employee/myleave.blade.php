@@ -79,6 +79,7 @@
                                 data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                                 <i class="ti ti-plus"></i> Add new leave
                             </button>
+
                             <div class="offcanvas offcanvas-end custom-offcanvas" tabindex="-1" id="offcanvasRight"
                                 aria-labelledby="offcanvasRightLabel">
                                 <div class="offcanvas-header">
@@ -217,11 +218,103 @@
                                             </ul>
                                             <div class="d-flex flex-column justify-content-between">
                                                 <div class="d-flex">
-                                                    <button type="button" class="bg-transparent border-0"><i
-                                                            class="ti ti-trash"></i> </button>
-                                                    <button type="button" class="bg-transparent border-0"><i
-                                                            class="ti ti-edit"></i> </button>
 
+
+                                                    <!-- <button type="button" class="bg-transparent border-0"><i
+                                                            class="ti ti-trash"></i> </button> -->
+
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" class="bg-transparent border-0"
+                                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                        <i class="ti ti-trash"></i>
+                                                    </button>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade " id="exampleModal" tabindex="-1"
+                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+
+                                                                <div class="modal-body ">
+                                                                    <button type="button" class=" deleteicon-btn">
+                                                                        <i class="ti ti-trash"></i>
+                                                                    </button>
+                                                                    <h3 class="text-center">Are you sure!</h3>
+                                                                    <h5 class="text-center mb-0">Are you sure want to
+                                                                        delete this leave?</h5>
+                                                                    <div
+                                                                        class="modal-btns d-flex gap-4 justify-content-center ">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Cancel</button>
+                                                                        <button type="button"
+                                                                            class="btn btn-danger">Delete</button>
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button type="button" class="bg-transparent border-0"
+                                                        data-bs-toggle="offcanvas" data-bs-target="#offcanvaseditRight"
+                                                        aria-controls="offcanvasRight"><i class="ti ti-edit"></i>
+                                                    </button>
+
+                                                    <div class="offcanvas offcanvas-end custom-offcanvas" tabindex="-1"
+                                                        id="offcanvaseditRight" aria-labelledby="offcanvasRightLabel">
+                                                        <div class="offcanvas-header">
+                                                            <h2 id="offcanvasRightLabel"> Edit leave</h2>
+                                                            <button type="button" class="btn-close text-reset"
+                                                                data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="offcanvas-body">
+                                                            <div class="mb-4">
+                                                                <label class="custom_lable">Leave type</label>
+                                                                <select class="form-select"
+                                                                    aria-label="Default select example">
+                                                                    <option selected>Select leave type</option>
+                                                                    <option value="1">First half</option>
+                                                                    <option value="2">Second half</option>
+                                                                    <option value="3">Full day</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="mb-4">
+                                                                <label for="flatpickr-date"
+                                                                    class="form-label custom_lable ">Start date</label>
+                                                                <input type="date" class="form-control"
+                                                                    placeholder="Select start date"
+                                                                    id="flatpickr-date" />
+                                                            </div>
+                                                            <div class="mb-4">
+                                                                <label for="flatpickr-date"
+                                                                    class="form-label custom_lable ">End date</label>
+                                                                <input type="date" class="form-control"
+                                                                    placeholder="Select End date" id="flatpickr-date" />
+                                                            </div>
+                                                            <div class="mb-4">
+                                                                <label for="exampleFormControlInput1"
+                                                                    class="form-label custom_lable">Total
+                                                                    day’s</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="exampleFormControlInput1"
+                                                                    placeholder="Enter day’s">
+                                                            </div>
+                                                            <div class="mb-4">
+                                                                <label for="exampleFormControlInput1"
+                                                                    class="form-label custom_lable">Reason</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="exampleFormControlInput1"
+                                                                    placeholder="Enter Your Reason">
+                                                            </div>
+
+                                                            <div class="d-flex gap-3 justify-content-end">
+                                                                <button type="button"
+                                                                    class="btn btn-outline-secondary from_btn">Cancel</button>
+                                                                <button type="button"
+                                                                    class="btn btn-warning">Update</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <h5 class="text-danger">pending</h5>
                                             </div>
@@ -259,8 +352,66 @@
                                                 <div class="d-flex">
                                                     <button type="button" class="bg-transparent border-0"><i
                                                             class="ti ti-trash"></i> </button>
-                                                    <button type="button" class="bg-transparent border-0"><i
-                                                            class="ti ti-edit"></i> </button>
+                                                    <button type="button" class="bg-transparent border-0"
+                                                        data-bs-toggle="offcanvas" data-bs-target="#offcanvaseditRight"
+                                                        aria-controls="offcanvasRight"><i class="ti ti-edit"></i>
+                                                    </button>
+
+                                                    <div class="offcanvas offcanvas-end custom-offcanvas" tabindex="-1"
+                                                        id="offcanvaseditRight" aria-labelledby="offcanvasRightLabel">
+                                                        <div class="offcanvas-header">
+                                                            <h2 id="offcanvasRightLabel"> Edit leave</h2>
+                                                            <button type="button" class="btn-close text-reset"
+                                                                data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="offcanvas-body">
+                                                            <div class="mb-4">
+                                                                <label class="custom_lable">Leave type</label>
+                                                                <select class="form-select"
+                                                                    aria-label="Default select example">
+                                                                    <option selected>Select leave type</option>
+                                                                    <option value="1">First half</option>
+                                                                    <option value="2">Second half</option>
+                                                                    <option value="3">Full day</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="mb-4">
+                                                                <label for="flatpickr-date"
+                                                                    class="form-label custom_lable ">Start date</label>
+                                                                <input type="date" class="form-control"
+                                                                    placeholder="Select start date"
+                                                                    id="flatpickr-date" />
+                                                            </div>
+                                                            <div class="mb-4">
+                                                                <label for="flatpickr-date"
+                                                                    class="form-label custom_lable ">End date</label>
+                                                                <input type="date" class="form-control"
+                                                                    placeholder="Select End date" id="flatpickr-date" />
+                                                            </div>
+                                                            <div class="mb-4">
+                                                                <label for="exampleFormControlInput1"
+                                                                    class="form-label custom_lable">Total
+                                                                    day’s</label>
+                                                                <input type="email" class="form-control"
+                                                                    id="exampleFormControlInput1"
+                                                                    placeholder="Enter day’s">
+                                                            </div>
+                                                            <div class="mb-4">
+                                                                <label for="exampleFormControlInput1"
+                                                                    class="form-label custom_lable">Reason</label>
+                                                                <input type="email" class="form-control"
+                                                                    id="exampleFormControlInput1"
+                                                                    placeholder="Enter Your Reason">
+                                                            </div>
+
+                                                            <div class="d-flex gap-3 justify-content-end">
+                                                                <button type="button"
+                                                                    class="btn btn-outline-secondary from_btn">Cancel</button>
+                                                                <button type="button"
+                                                                    class="btn btn-warning">Update</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
                                                 </div>
                                                 <h5 class="text-success">Approve</h5>
@@ -299,8 +450,66 @@
                                                 <div class="d-flex">
                                                     <button type="button" class="bg-transparent border-0"><i
                                                             class="ti ti-trash"></i> </button>
-                                                    <button type="button" class="bg-transparent border-0"><i
-                                                            class="ti ti-edit"></i> </button>
+                                                    <button type="button" class="bg-transparent border-0"
+                                                        data-bs-toggle="offcanvas" data-bs-target="#offcanvaseditRight"
+                                                        aria-controls="offcanvasRight"><i class="ti ti-edit"></i>
+                                                    </button>
+
+                                                    <div class="offcanvas offcanvas-end custom-offcanvas" tabindex="-1"
+                                                        id="offcanvaseditRight" aria-labelledby="offcanvasRightLabel">
+                                                        <div class="offcanvas-header">
+                                                            <h2 id="offcanvasRightLabel"> Edit leave</h2>
+                                                            <button type="button" class="btn-close text-reset"
+                                                                data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="offcanvas-body">
+                                                            <div class="mb-4">
+                                                                <label class="custom_lable">Leave type</label>
+                                                                <select class="form-select"
+                                                                    aria-label="Default select example">
+                                                                    <option selected>Select leave type</option>
+                                                                    <option value="1">First half</option>
+                                                                    <option value="2">Second half</option>
+                                                                    <option value="3">Full day</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="mb-4">
+                                                                <label for="flatpickr-date"
+                                                                    class="form-label custom_lable ">Start date</label>
+                                                                <input type="date" class="form-control"
+                                                                    placeholder="Select start date"
+                                                                    id="flatpickr-date" />
+                                                            </div>
+                                                            <div class="mb-4">
+                                                                <label for="flatpickr-date"
+                                                                    class="form-label custom_lable ">End date</label>
+                                                                <input type="date" class="form-control"
+                                                                    placeholder="Select End date" id="flatpickr-date" />
+                                                            </div>
+                                                            <div class="mb-4">
+                                                                <label for="exampleFormControlInput1"
+                                                                    class="form-label custom_lable">Total
+                                                                    day’s</label>
+                                                                <input type="email" class="form-control"
+                                                                    id="exampleFormControlInput1"
+                                                                    placeholder="Enter day’s">
+                                                            </div>
+                                                            <div class="mb-4">
+                                                                <label for="exampleFormControlInput1"
+                                                                    class="form-label custom_lable">Reason</label>
+                                                                <input type="email" class="form-control"
+                                                                    id="exampleFormControlInput1"
+                                                                    placeholder="Enter Your Reason">
+                                                            </div>
+
+                                                            <div class="d-flex gap-3 justify-content-end">
+                                                                <button type="button"
+                                                                    class="btn btn-outline-secondary from_btn">Cancel</button>
+                                                                <button type="button"
+                                                                    class="btn btn-warning">Update</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
                                                 </div>
                                                 <h5 class="text-success">Approve</h5>
