@@ -35,12 +35,6 @@ class EmployeeController extends Controller
             'role_id' => $request->role_id,
         ]);
         return redirect()->route('employee.index')->with('success', 'Employee deleted successfully.');
-        // return response()->json([
-        //     'success' => true,
-        //     'employee' => $employee, // Include the created employee data
-        //     'message' => 'User created successfully.',
-        // ]);
-        //return redirect()->route('employee.index')->with('success', 'User created successfully.');
     }
 
     public function edit($id)
@@ -66,16 +60,12 @@ class EmployeeController extends Controller
             'role_id' => $request->role_id,
         ]);
         return redirect()->route('employee.index')->with('success', 'User updated successfully.');
-
-        //return redirect()->route('admin.employee')->with('success', 'User updated successfully.');
     }
 
     public function destroy($id)
     {
         $user = User::findOrFail($id);
         $user->delete();
-        // return response()->json(['success' => 'User deleted successfully.']);
-        //return redirect()->route('admin.dashboard')->with('success', 'User deleted successfully.');
         return redirect()->route('employee.index')->with('success', 'Employee deleted successfully.');
 
     }
