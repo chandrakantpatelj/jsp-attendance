@@ -4,11 +4,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\LeaveController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+// Route::get('/', function () {
+//     return view('dashboard');
+// });
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -31,7 +32,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/attendance-regularization', [ProfileController::class, 'AttendanceRegularization'])->name('attendance-regularization');
-    Route::get('/my-leave', [ProfileController::class, 'MyLeave'])->name('my-leave');
 
     //Admin route employee
     Route::get('/employee', [EmployeeController::class, 'index'])->name('employee.index');
@@ -47,6 +47,14 @@ Route::middleware('auth')->group(function () {
     Route::get('attendance/{id}/edit', [AttendanceController::class, 'edit'])->name('attendance.edit');
     Route::post('attendance/{id}/update', [AttendanceController::class, 'update'])->name('attendance.update');
     Route::delete('attendance/{id}', [AttendanceController::class, 'destroy'])->name('attendance.destroy');
+
+    //Employee route leave 
+    Route::get('/my-leave', [LeaveController::class, 'MyLeave'])->name('my-leave');
+    Route::get('my-leave/create', [LeaveController::class, 'create'])->name('my-leave.create');
+    Route::post('my-leave/store', [LeaveController::class, 'store'])->name('my-leave.store');
+    Route::get('my-leave/{id}/edit', [LeaveController::class, 'edit'])->name('my-leave.edit');
+    Route::post('my-leave/{id}/update', [LeaveController::class, 'update'])->name('my-leave.update');
+    Route::delete('attendancemy-leave/{id}', [LeaveController::class, 'destroy'])->name('my-leave.destroy');
 
 });
 

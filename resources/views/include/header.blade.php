@@ -8,14 +8,15 @@
         <ul class="navbar-nav flex-row gap-3 align-items-center  ">
             <li>
                 <div>
-                    <span class="menu-header-text punchin-time">
-                        00:00
-                    </span>
+                    <span class="menu-header-text punchin-time" id="timer">00:00</span>
                 </div>
             </li>
             <li>
-                <button class="btn btn-danger  punch_button" type="button">
-                    Punch in
+                <button class="btn btn-danger punch_button" id="punch-in" type="button">
+                    Punch In
+                </button>
+                <button class="btn btn-success punch_button" id="punch-out" type="button" style="display: none;">
+                    Punch Out
                 </button>
             </li>
             <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-1 ">
@@ -252,3 +253,56 @@
         <i class="ti ti-x ti-sm search-toggler cursor-pointer"></i>
     </div>
 </nav>
+<script src="../../assets/vendor/libs/jquery/jquery.js"></script>
+<script src="../../assets/vendor/js/bootstrap.js"></script>
+</script>
+<script>
+$(document).ready(function() {
+    let timerInterval;
+    let startTime;
+    let isPunchIn = false;
+
+    function updateTimerDisplay(currentTime) {
+        let hours = currentTime.getHours();
+        const minutes = currentTime.getMinutes();
+        const seconds = currentTime.getSeconds();
+
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        $('#timer').text(padZero(hours) + ':' + padZero(minutes) + ':' + padZero(seconds) + ' ' + ampm);
+    }
+
+    function padZero(num) {
+        return num < 10 ? '0' + num : num;
+    }
+
+    $('#punch-in').click(function() {
+        if (!isPunchIn) {
+            isPunchIn = true;
+
+            startTime = new Date();
+            let currentTime = new Date(startTime);
+
+            timerInterval = setInterval(function() {
+                currentTime.setSeconds(currentTime.getSeconds() +
+                    1);
+                updateTimerDisplay(currentTime);
+            }, 1000);
+
+            $('#punch-in').hide();
+            $('#punch-out').show();
+        }
+    });
+
+    $('#punch-out').click(function() {
+        if (isPunchIn) {
+            clearInterval(timerInterval);
+            isPunchIn = false;
+
+            $('#punch-out').hide();
+            $('#punch-in').show();
+        }
+    });
+});
+</script>
