@@ -6,10 +6,10 @@
             </span>
         </a>
 
-        <a href=" javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+        <!-- <a href=" javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
             <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
             <i class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
-        </a>
+        </a> -->
     </div>
 
     <!-- <div class="menu-inner-shadow"></div> -->
@@ -19,15 +19,12 @@
                 <i class="menu-icon tf-icons ti ti-home"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
             </a>
-
-
         </li>
         <li class="menu-item">
             <a href="{{ route('attendance-regularization') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-calendar-event"></i>
                 <div data-i18n="Attendance Regularization">Attendance Regularization</div>
             </a>
-
         </li>
         <li class="menu-item">
             <a href="{{ route('my-leave') }}" class="menu-link">

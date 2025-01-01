@@ -1,58 +1,66 @@
-@extends('layouts.app')
+<!doctype html>
 
-@section('auth-content')
-<!-- Layout wrapper -->
-<div class="layout-wrapper layout-content-navbar">
-    <div class="layout-container">
-        <!-- Menu -->
-        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-            <div class="app-brand demo">
-                <a href="index.html" class="app-brand-link">
-                    <span class="app-brand-logo demo">
-                        <svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M0.00172773 0V6.85398C0.00172773 6.85398 -0.133178 9.01207 1.98092 10.8388L13.6912 21.9964L19.7809 21.9181L18.8042 9.88248L16.4951 7.17289L9.23799 0H0.00172773Z"
-                                fill="#7367F0" />
-                            <path opacity="0.06" fill-rule="evenodd" clip-rule="evenodd"
-                                d="M7.69824 16.4364L12.5199 3.23696L16.5541 7.25596L7.69824 16.4364Z" fill="#161616" />
-                            <path opacity="0.06" fill-rule="evenodd" clip-rule="evenodd"
-                                d="M8.07751 15.9175L13.9419 4.63989L16.5849 7.28475L8.07751 15.9175Z" fill="#161616" />
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M7.77295 16.3566L23.6563 0H32V6.88383C32 6.88383 31.8262 9.17836 30.6591 10.4057L19.7824 22H13.6938L7.77295 16.3566Z"
-                                fill="#7367F0" />
-                        </svg>
-                    </span>
-                    <span class="app-brand-text demo menu-text fw-bold">jsp infotech</span>
-                </a>
+<html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact" dir="ltr"
+    data-theme="theme-default" data-assets-path="../../assets/" data-template="vertical-menu-template-no-customizer">
 
-                <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
-                    <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
-                    <i class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
-                </a>
-            </div>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-            <div class="menu-inner-shadow"></div>
-            <ul class="menu-inner py-1">
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-mail"></i>
-                        <div data-i18n="Dashboards">Dashboards</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ route('attendance-regularization') }}" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-mail"></i>
-                        <div data-i18n="Attendance Regularization">Attendance-regularization</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ route('my-leave') }}" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-mail"></i>
-                        <div data-i18n="My Leave">My Leave</div>
-                    </a>
-                </li>
-            </ul>
-        </aside>
+    <title>Dashboard - eCommerce | Vuexy - Bootstrap Admin Template</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&ampdisplay=swap"
+        rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/tabler-icons.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/core.css" />
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/theme-default.css" />
+    <link rel="stylesheet" href="../../assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/libs/node-waves/node-waves.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/flatpickr/flatpickr.css" />
+
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="../../assets/vendor/js/helpers.js"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="../../assets/js/config.js"></script>
+
+
+</head>
+
+<body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+            <!-- Menu -->
+
+            @include('include.sidebar');
 
 
         <!-- Layout container -->
@@ -485,31 +493,36 @@
                                     <div class="col app-calendar-sidebar border-end" id="app-calendar-sidebar">
                                         <div class="border-bottom p-6 my-sm-0 mb-4">
 
-                                        </div>
-                                        <div class="px-3 pt-2">
-                                            <!-- inline calendar (flatpicker) -->
-                                            <div class="inline-calendar"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col app-calendar-sidebar" id="app-calendar-sidebarr">
-                                        <div class="border-bottom p-4 my-sm-0 mb-3">
-                                            <div class="d-grid">
-                                                <!-- <button class="btn btn-primary btn-toggle-sidebar"
+                                                </div>
+                                                <div class="px-3 pt-2">
+                                                    <!-- inline calendar (flatpicker) -->
+                                                    <div class="inline-calendar"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col app-calendar-sidebar" id="app-calendar-sidebarr">
+                                                <div class="border-bottom p-4 my-sm-0 mb-3">
+                                                    <div class="d-grid">
+                                                        <!-- <button class="btn btn-primary btn-toggle-sidebar"
                                                         data-bs-toggle="offcanvas" data-bs-target="#addEventSidebar"
                                                         aria-controls="addEventSidebar">
                                                         <i class="ti ti-plus me-1"></i>
                                                         <span class="align-middle">Add Event</span>
                                                     </button> -->
+                                                    </div>
+                                                </div>
+                                                <div class="p-3">
+                                                    <!-- inline calendar (flatpicker) -->
+                                                    <div class="inline-calendar"></div>
                                             </div>
                                         </div>
                                         <div class="p-3">
                                             <!-- inline calendar (flatpicker) -->
                                             <div class="inline-calendar"></div>
 
-                                            <hr class="container-m-nx mb-4 mt-3" />
+                                                    <hr class="container-m-nx mb-4 mt-3" />
 
-                                            <!-- Filter -->
-                                            <!-- <div class="mb-3 ms-3">
+                                                    <!-- Filter -->
+                                                    <!-- <div class="mb-3 ms-3">
                                                     <small
                                                         class="text-small text-muted text-uppercase align-middle">Filter</small>
                                                 </div>
@@ -520,6 +533,7 @@
                                                     <label class="form-check-label" for="selectAll">View All</label>
                                                 </div> -->
 
+                                                    <!-- <div class="app-calendar-events-filter ms-3">
                                             <!-- <div class="app-calendar-events-filter ms-3">
                                                     <div class="form-check form-check-danger mb-2">
                                                         <input class="form-check-input input-filter" type="checkbox"
@@ -552,7 +566,10 @@
                                                         <label class="form-check-label" for="select-etc">ETC</label>
                                                     </div>
                                                 </div> -->
-                                        </div>
+                                                </div>
+                                                >>>>>>>
+                                                7698463aefb31452580221275c88aaab8663734d:resources/views/admin/dashboard.blade.php
+                                            </div>
                                     </div>
                                 </div>
                             </div>
@@ -561,7 +578,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
     <!-- Overlay -->
     <div class="layout-overlay layout-menu-toggle"></div>

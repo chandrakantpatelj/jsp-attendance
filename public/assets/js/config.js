@@ -12,9 +12,9 @@ window.config = {
     colors: {
         primary: "#F15E30",
         secondary: "#a8aaae",
-        success: "#28c76f",
+        success: "#00B215",
         info: "#00cfe8",
-        warning: "#ff9f43",
+        warning: "#F15E30",
         danger: "#ea5455",
         dark: "#4b4b4b",
         black: "#000",
