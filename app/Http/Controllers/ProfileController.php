@@ -67,6 +67,6 @@ class ProfileController extends Controller
      
     public function MyLeave()
     {
-        return view('myleave');
+        return view('employee.myleave');
     }
 }
