@@ -188,6 +188,7 @@
 .add-leave-btn {
     max-width: 166px;
     width: 100%;
+    flex-shrink: 0;
     font-size: 16px;
     padding: 10px 12px;
 }
@@ -204,7 +205,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #f5f5f5;
+    background-color: transparent;
     border-radius: 8px;
 }
 .calendar-header h5 {
@@ -238,6 +239,7 @@
     max-width: 220px;
     width: 100%;
     border-radius: 10px;
+    flex-shrink: 0;
     padding: 10px;
     background-color: #fff;
 }
@@ -252,6 +254,27 @@
     padding: 10px 22px;
     font-size: 16px;
     border-radius: 10px;
+}
+.search_leave {
+    padding: 18px 18px;
+}
+.leave_list {
+    padding: 20px 18px !important;
+}
+.custom_tabs {
+    background-color: transparent;
+    margin-bottom: 30px;
+}
+
+.custom-offcanvas .offcanvas-header h2 {
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 0px;
+}
+.custom_lable {
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
 /* * project-custom.css end */
@@ -287,6 +310,7 @@
 /* ! For .layout-navbar-fixed added fix padding top tpo .layout-page */
 .layout-navbar-fixed .layout-wrapper:not(.layout-without-menu) .layout-page {
     padding-top: 64px !important;
+    padding-left: 16.25rem;
 }
 .layout-navbar-fixed
     .layout-wrapper:not(.layout-horizontal):not(.layout-without-menu)

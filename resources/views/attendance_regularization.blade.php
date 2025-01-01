@@ -59,14 +59,14 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            @include('include.sidebar');
+            @include('include.sidebar')
             <!-- / Menu -->
 
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
 
-                @include('include.header');
+                @include('include.header')
                 <!-- / Navbar -->
 
                 <!-- Content wrapper -->
@@ -85,9 +85,7 @@
 
                     </div>
 
-                    <div>
 
-                    </div>
                     <div class="container-xxl flex-grow-1">
                         <div class="col app-calendar-content">
                             <div class="card shadow-none border-0">
