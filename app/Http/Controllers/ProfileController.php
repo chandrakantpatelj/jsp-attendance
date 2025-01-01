@@ -58,7 +58,7 @@ class ProfileController extends Controller
         return Redirect::to('/');
     }
 
-    
+
     public function AttendanceRegularization()
     {
         return view('employee.attendance_regularization');
