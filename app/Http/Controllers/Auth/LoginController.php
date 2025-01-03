@@ -25,7 +25,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/dashboard';
+    //protected $redirectTo = '/admin/dashboard';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -36,5 +37,15 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
+    }
+    protected function authenticated($request, $user)
+    {
+        dd($user);
+        if ($user->role_id == 1) {
+            return redirect()->route('admin.dashboard');
+        } elseif ($user->role_id == 2) {
+            return redirect()->route('employee.dashboard');
+        }
+        return redirect()->route('admin.dashboard');
     }
 }

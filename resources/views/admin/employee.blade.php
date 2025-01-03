@@ -379,59 +379,10 @@
                 </nav>
                 <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
                 <script src="../../assets/vendor/js/bootstrap.js"></script>
-                </script>
-                <script>
-                $(document).ready(function() {
-                    let timerInterval;
-                    let startTime;
-                    let isPunchIn = false;
 
-                    function updateTimerDisplay(currentTime) {
-                        let hours = currentTime.getHours();
-                        const minutes = currentTime.getMinutes();
-                        const seconds = currentTime.getSeconds();
 
-                        const ampm = hours >= 12 ? 'PM' : 'AM';
-                        hours = hours % 12;
-                        hours = hours ? hours : 12;
-                        $('#timer').text(padZero(hours) + ':' + padZero(minutes) + ':' + padZero(seconds) +
-                            ' ' + ampm);
-                    }
-
-                    function padZero(num) {
-                        return num < 10 ? '0' + num : num;
-                    }
-
-                    $('#punch-in').click(function() {
-                        if (!isPunchIn) {
-                            isPunchIn = true;
-
-                            startTime = new Date();
-                            let currentTime = new Date(startTime);
-
-                            timerInterval = setInterval(function() {
-                                currentTime.setSeconds(currentTime.getSeconds() +
-                                    1);
-                                updateTimerDisplay(currentTime);
-                            }, 1000);
-
-                            $('#punch-in').hide();
-                            $('#punch-out').show();
-                        }
-                    });
-
-                    $('#punch-out').click(function() {
-                        if (isPunchIn) {
-                            clearInterval(timerInterval);
-                            isPunchIn = false;
-
-                            $('#punch-out').hide();
-                            $('#punch-in').show();
-                        }
-                    });
-                });
-                </script>
-                <!-- / Navbar -->
+                <!-- / Navbar 
+                -->
 
                 <!-- Content wrapper -->
                 <div class="content-wrapper">

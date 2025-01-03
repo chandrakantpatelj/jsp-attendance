@@ -239,6 +239,13 @@
                         admin.jspinfotech@gmail.com
                     </span>
                 </div>
+                <a class="btn btn-logout  mt-1" href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="ti ti-logout me-2 ti-sm"></i>
+                    <span class="align-middle">{{ __('Log Out') }}</span>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
+
                 <a class="btn btn-logout  mt-1" href="/login">
                     Log Out
                 </a>

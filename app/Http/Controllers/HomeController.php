@@ -22,17 +22,17 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
+
     public function index()
     {
         $user = Auth::user();
-        $users = $user->role_id;
-        if ($user->role_id == 1) {
-            return view('admin.dashboard');
-        } elseif ($user->role_id == 2) {
-            return view('employee.dashboard');
-        }
 
-        return view('dashboard');
+        if ($user->role_id == 1) {
+            return view('admin.dashboard', compact('user'));
+        } elseif ($user->role_id == 2) {
+            return view('employee.dashboard', compact('user'));
+        }
+        return view('admin.dashboard');
     }
 
 
