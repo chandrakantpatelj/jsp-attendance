@@ -152,7 +152,7 @@ $(function () {
                     render: function (data, type, full, meta) {
                         return (
                             '<div class="d-flex justify-content-end text-nowrap">' +
-                            '<button class="btn btn-sm btn-icon"><i class="ti ti-edit"></i></button>' +
+                            '<button class="btn btn-sm btn-icon" data-bs-target="#editemployeedrawer" data-bs-toggle="offcanvas" href="javascript:;"><i class="ti ti-edit"></i></button>' +
                             '<button class="btn btn-sm btn-icon delete-record"><i class="ti ti-trash"></i></button>' +
                             '<button class="btn btn-sm btn-icon"><i class="ti ti-eye"></i></button>' +
                             "</div>"

@@ -444,6 +444,7 @@
                                 <i class="ti ti-plus"></i> Add new leave
                             </button>
 
+                            <!-- Add New Employee Drawer -->
                             <div class="offcanvas offcanvas-end custom-offcanvas" tabindex="-1" id="offcanvasRight"
                                 aria-labelledby="offcanvasRightLabel">
                                 <div class="offcanvas-header">
@@ -454,20 +455,17 @@
                                 <div class="offcanvas-body">
 
                                     <div class="mb-4">
-                                        <label for="flatpickr-date" class="form-label custom_lable ">Employee
+                                        <label for="employeename" class="form-label custom_lable ">Employee
                                             name</label>
                                         <input type="text" class="form-control" placeholder="Enter your employee name"
-                                            id="exampleFormControlInput1" />
+                                            id="employeename" />
                                     </div>
                                     <div class="mb-4">
-                                        <label for="exampleFormControlInput1"
-                                            class="form-label custom_lable">Email</label>
-                                        <input type="email" class="form-control" id="exampleFormControlInput1"
-                                            placeholder="Enter email">
+                                        <label for="email" class="form-label custom_lable">Email</label>
+                                        <input type="email" class="form-control" id="email" placeholder="Enter email">
                                     </div>
                                     <div class="mb-4">
-                                        <label for="exampleFormControlInput1"
-                                            class="form-label custom_lable">Password</label>
+                                        <label for="password" class="form-label custom_lable">Password</label>
                                         <input type="password" class="form-control" id="inputPassword"
                                             placeholder="Enter password">
                                     </div>
@@ -480,21 +478,67 @@
                                             <option value="3">Full day</option>
                                         </select>
                                     </div>
-                                    <label class="form-check-label  custom_lable"
-                                        for="flexSwitchCheckChecked">Status</label>
+                                    <label class="form-check-label  custom_lable" for="status">Status</label>
                                     <div class="form-check form-switch mb-4">
-
-                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked"
-                                            checked />
-
+                                        <input class="form-check-input" type="checkbox" id="status" checked />
                                     </div>
-
                                     <div class="d-flex gap-3 justify-content-end">
-                                        <button type="button" class="btn btn-outline-secondary from_btn">Cancel</button>
+                                        <button type="button" class="btn btn-outline-secondary from_btn"
+                                            data-bs-dismiss="offcanvas">Cancel</button>
                                         <button type="button" class="btn btn-primary">Add</button>
                                     </div>
                                 </div>
                             </div>
+                            <!-- <button class="btn btn-sm btn-icon" data-bs-target="#offcanvasRight"
+                                data-bs-toggle="offcanvas" href="javascript:;">
+                                <i class="ti ti-edit"></i>
+                            </button> -->
+
+                            <!-- Edit Employee Drawer -->
+                            <div class="offcanvas offcanvas-end custom-offcanvas" tabindex="-1" id="editemployeedrawer"
+                                aria-labelledby="offcanvasRightLabel">
+                                <div class="offcanvas-header">
+                                    <h2 id="offcanvasRightLabel">Edit employee</h2>
+                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="offcanvas-body">
+                                    <div class="mb-4">
+                                        <label for="employeename" class="form-label custom_lable">Employee
+                                            name</label>
+                                        <input type="text" class="form-control" placeholder="Enter your employee name"
+                                            id="employeename" />
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="email" class="form-label custom_lable">Email</label>
+                                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="password" class="form-label custom_lable">Password</label>
+                                        <input type="password" class="form-control" id="inputPassword"
+                                            placeholder="Enter password">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="custom_lable">Department</label>
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected>Select leave type</option>
+                                            <option value="1">First half</option>
+                                            <option value="2">Second half</option>
+                                            <option value="3">Full day</option>
+                                        </select>
+                                    </div>
+                                    <label class="form-check-label custom_lable" for="status">Status</label>
+                                    <div class="form-check form-switch mb-4">
+                                        <input class="form-check-input" type="checkbox" id="status" checked />
+                                    </div>
+                                    <div class="d-flex gap-3 justify-content-end">
+                                        <button type="button" class="btn btn-outline-secondary from_btn "
+                                            data-bs-dismiss="offcanvas">Cancel</button>
+                                        <button type="button" class="btn btn-primary">Update</button>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="calendar-csvfile ms-3">
                                 <h5 class="mb-0">CSV files</h5>
                             </div>
