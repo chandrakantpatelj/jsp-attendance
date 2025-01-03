@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Attendance;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class AttendanceController extends Controller
 {
@@ -111,6 +112,7 @@ class AttendanceController extends Controller
     }
     public function savePunchData(Request $request)
     {
+        //dd($request);
         if (!Auth::check()) {
             return response()->json(['Success' => false, 'Message' => 'Unauthorized']);
         }
@@ -167,26 +169,22 @@ class AttendanceController extends Controller
             $hours = floor($timeDiffInSeconds / 3600);
             $minutes = floor(($timeDiffInSeconds % 3600) / 60);
             $seconds = $timeDiffInSeconds % 60;
-            $formattedWorkingHours = '';
-            if ($hours > 0) {
-                $formattedWorkingHours .= "{$hours} hour" . ($hours > 1 ? 's' : '') . ' ';
-            }
-            if ($minutes > 0) {
-                $formattedWorkingHours .= "{$minutes} minute" . ($minutes > 1 ? 's' : '') . ' ';
-            }
-            if ($seconds > 0) {
-                $formattedWorkingHours .= "{$seconds} second" . ($seconds > 1 ? 's' : '');
+            dd($timeDiffInSeconds);
+            if ($hours == 0 && $minutes == 0 && $seconds > 0) {
+                $formattedWorkingHours = "{$seconds} second" . ($seconds > 1 ? 's' : '');
+            } else {
+                $formattedWorkingHours = sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
             }
             $attendance->update([
                 'punch_out_time' => $punchOutTime->timestamp,
-                'working_hours' => 9,
+                'working_hours' => $formattedWorkingHours,
             ]);
 
             return response()->json([
                 'success' => true,
                 'message' => 'Punched out successfully.',
                 'punch_out_time' => $attendance->punch_out_time,
-                'working_hours' => $attendance->working_hours,
+                'working_hours' => $formattedWorkingHours,
             ]);
         }
     }

@@ -239,9 +239,14 @@
                         admin.jspinfotech@gmail.com
                     </span>
                 </div>
-                <a class="btn btn-logout  mt-1" href="/login">
-                    Log Out
+            <li>
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="ti ti-logout me-2 ti-sm"></i>
+                    <span class="align-middle">{{ __('Log Out') }}</span>
                 </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
+            </li>
 
             </li>
         </ul>
@@ -253,6 +258,7 @@
         <i class="ti ti-x ti-sm search-toggler cursor-pointer"></i>
     </div>
 </nav>
+
 <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
 <script src="../../assets/vendor/js/bootstrap.js"></script>
 </script>
@@ -277,6 +283,30 @@ $(document).ready(function() {
         return num < 10 ? '0' + num : num;
     }
 
+    function sendPunchData(action, timestamp) {
+
+        $.ajax({
+            url: '/save-punch-data',
+            method: 'POST',
+            data: {
+                action: action,
+                timestamp: timestamp,
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response) {
+                if (response.success) {
+                    console.log('Success:', response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', {
+                    status: status,
+                    error: error,
+                    response: xhr.responseText
+                });
+            }
+        });
+    }
     $('#punch-in').click(function() {
         if (!isPunchIn) {
             isPunchIn = true;
@@ -292,6 +322,7 @@ $(document).ready(function() {
 
             $('#punch-in').hide();
             $('#punch-out').show();
+            sendPunchData('punch_in', startTime.getTime());
         }
     });
 
@@ -302,6 +333,8 @@ $(document).ready(function() {
 
             $('#punch-out').hide();
             $('#punch-in').show();
+            const punchOutTime = new Date();
+            sendPunchData('punch_out', punchOutTime.getTime());
         }
     });
 });
