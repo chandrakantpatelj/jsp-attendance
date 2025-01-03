@@ -22,7 +22,7 @@
             <!-- <div class="menu-inner-shadow"></div> -->
             <ul class="menu-inner py-1">
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="{{ route('employee.dashboard') }}" class="menu-link">
                         <i class="menu-icon tf-icons ti ti-home"></i>
                         <div data-i18n="Dashboards">Dashboards</div>
                     </a>
@@ -303,9 +303,15 @@
                                     admin.jspinfotech@gmail.com
                                 </span>
                             </div>
-                            <button class="btn btn-logout mt-1" type="button">
-                                Log Out
-                            </button>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="ti ti-logout me-2 ti-sm"></i>
+                                <span class="align-middle">{{ __('Log Out') }}</span>
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf
+                            </form>
+                        </li>
                         </li>
                     </ul>
                 </div>
@@ -565,61 +571,3 @@
 @endsection
 <!-- Core JS -->
 <!-- build:js assets/vendor/js/core.js -->
-
-
-
-<script>
-// jQuery(document).ready(function ($) {
-//     $('#app-calendar-sidebar').fullCalendar({
-//         header: {
-//             left: 'prev,next today',
-//             center: 'title',
-//             right: 'month,agendaWeek,agendaDay'
-//         },
-//         events: [{
-//             title: 'Event 1',
-//             start: '2024-12-31'
-//         },
-//         {
-//             title: 'Event 2',
-//             start: '2024-12-25'
-//         },
-//         {
-//             title: 'Event 3',
-//             start: '2024-12-30'
-//         }
-//         ]
-//     });
-// });
-</script>
-</script>
-<script>
-// jQuery(document).ready(function ($) {
-//     $('#app-calendar-sidebar').fullCalendar({
-//         header: {
-//             left: 'prev,next today',
-//             center: 'title',
-//             right: 'month,agendaWeek,agendaDay'
-//         },
-//         events: [{
-//             title: 'Event 1',
-//             start: '2024-12-31'
-//         },
-//         {
-//             title: 'Event 2',
-//             start: '2024-12-25'
-//         },
-//         {
-//             title: 'Event 3',
-//             start: '2024-12-30'
-//         }
-//         ]
-//     });
-// });
-</script>
-</script>
-
-
-</body>
-
-</html>

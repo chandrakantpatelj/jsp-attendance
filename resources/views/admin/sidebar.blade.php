@@ -21,15 +21,15 @@
             </a>
         </li>
         <li class="menu-item">
-            <a href="{{ route('attendance-regularization') }}" class="menu-link">
+            <a href="{{ route('employee.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-calendar-event"></i>
-                <div data-i18n="Attendance Regularization">Attendance Regularization</div>
+                <div data-i18n="Employee">Employee</div>
             </a>
         </li>
         <li class="menu-item">
-            <a href="{{ route('my-leave') }}" class="menu-link">
+            <a href="{{ route('attendance.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-logout"></i>
-                <div data-i18n="My leave">My leave</div>
+                <div data-i18n="Leave management">Leave management</div>
             </a>
         </li>
     </ul>
