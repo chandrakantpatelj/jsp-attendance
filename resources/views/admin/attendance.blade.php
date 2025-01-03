@@ -562,7 +562,12 @@
                                                     </div>
 
                                                 </div>
-                                                <h5 class="text-danger">pending</h5>
+                                                <div class="demo-inline-spacing">
+                                                    <button type="button" class="btn btn-secondary">Leave
+                                                        balance</button>
+                                                    <button type="button" class="btn btn-success">Approve</button>
+                                                    <button type="button" class="btn btn-danger">Reject</button>
+                                                </div>
                                             </div>
                                         </div>
 
