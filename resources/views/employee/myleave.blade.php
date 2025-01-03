@@ -115,7 +115,8 @@
                                     </div>
 
                                     <div class="d-flex gap-3 justify-content-end">
-                                        <button type="button" class="btn btn-outline-secondary from_btn">Cancel</button>
+                                        <button type="button" class="btn btn-outline-secondary from_btn"
+                                            data-bs-dismiss="offcanvas">Cancel</button>
                                         <button type="submit" class="btn btn-primary">Add</button>
                                     </div>
                                 </div>
@@ -296,7 +297,8 @@
 
                                                         <div class="d-flex gap-3 justify-content-end">
                                                             <button type="button"
-                                                                class="btn btn-outline-secondary from_btn">Cancel</button>
+                                                                class="btn btn-outline-secondary from_btn"
+                                                                data-bs-dismiss="offcanvas">Cancel</button>
                                                             <button type="button"
                                                                 class="btn btn-primary">Update</button>
                                                         </div>

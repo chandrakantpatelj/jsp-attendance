@@ -488,17 +488,6 @@
                                             </ul>
                                             <div class="d-flex flex-column justify-content-between">
                                                 <div class="d-flex">
-
-
-                                                    <!-- <button type="button" class="bg-transparent border-0"><i
-                                                            class="ti ti-trash"></i> </button> -->
-
-                                                    <!-- Button trigger modal -->
-                                                    <button type="button" class="bg-transparent border-0"
-                                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        <i class="ti ti-trash"></i>
-                                                    </button>
-
                                                     <!-- Modal -->
                                                     <div class="modal fade " id="exampleModal" tabindex="-1"
                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -562,17 +551,6 @@
                                             </ul>
                                             <div class="d-flex flex-column justify-content-between">
                                                 <div class="d-flex">
-
-
-                                                    <!-- <button type="button" class="bg-transparent border-0"><i
-                                                            class="ti ti-trash"></i> </button> -->
-
-                                                    <!-- Button trigger modal -->
-                                                    <button type="button" class="bg-transparent border-0"
-                                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        <i class="ti ti-trash"></i>
-                                                    </button>
-
                                                     <!-- Modal -->
                                                     <div class="modal fade " id="exampleModal" tabindex="-1"
                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -636,17 +614,6 @@
                                             </ul>
                                             <div class="d-flex flex-column justify-content-between">
                                                 <div class="d-flex">
-
-
-                                                    <!-- <button type="button" class="bg-transparent border-0"><i
-                                                            class="ti ti-trash"></i> </button> -->
-
-                                                    <!-- Button trigger modal -->
-                                                    <button type="button" class="bg-transparent border-0"
-                                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        <i class="ti ti-trash"></i>
-                                                    </button>
-
                                                     <!-- Modal -->
                                                     <div class="modal fade " id="exampleModal" tabindex="-1"
                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
