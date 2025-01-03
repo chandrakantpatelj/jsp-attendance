@@ -566,7 +566,8 @@
                                                     <button type="button" class="btn btn-secondary">Leave
                                                         balance</button>
                                                     <button type="button" class="btn btn-success">Approve</button>
-                                                    <button type="button" class="btn btn-danger">Reject</button>
+                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal">Reject</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -598,10 +599,50 @@
                                                 <div class="d-flex">
 
 
+                                                    <!-- <button type="button" class="bg-transparent border-0"><i
+                                                            class="ti ti-trash"></i> </button> -->
 
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" class="bg-transparent border-0"
+                                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                        <i class="ti ti-trash"></i>
+                                                    </button>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade " id="exampleModal" tabindex="-1"
+                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+
+                                                                <div class="modal-body ">
+                                                                    <button type="button" class=" deleteicon-btn">
+                                                                        <i class="ti ti-trash"></i>
+                                                                    </button>
+                                                                    <h3 class="text-center">Are you sure!</h3>
+                                                                    <h5 class="text-center mb-0">Are you sure want to
+                                                                        reject this leave?</h5>
+                                                                    <div
+                                                                        class="modal-btns d-flex gap-4 justify-content-center ">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Cancel</button>
+                                                                        <button type="button"
+                                                                            class="btn btn-danger">Reject</button>
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
                                                 </div>
-                                                <h5 class="text-success">Approve</h5>
+                                                <div class="demo-inline-spacing">
+                                                    <button type="button" class="btn btn-secondary">Leave
+                                                        balance</button>
+                                                    <button type="button" class="btn btn-success">Approve</button>
+                                                    <button type="button" class="btn btn-danger " data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal">Reject</button>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -629,11 +670,53 @@
                                                 </li>
                                             </ul>
                                             <div class="d-flex flex-column justify-content-between">
-                                                <div class="">
+                                                <div class="d-flex">
 
+
+                                                    <!-- <button type="button" class="bg-transparent border-0"><i
+                                                            class="ti ti-trash"></i> </button> -->
+
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" class="bg-transparent border-0"
+                                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                        <i class="ti ti-trash"></i>
+                                                    </button>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade " id="exampleModal" tabindex="-1"
+                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+
+                                                                <div class="modal-body ">
+                                                                    <button type="button" class=" deleteicon-btn">
+                                                                        <i class="ti ti-trash"></i>
+                                                                    </button>
+                                                                    <h3 class="text-center">Are you sure!</h3>
+                                                                    <h5 class="text-center mb-0">Are you sure want to
+                                                                        reject this leave?</h5>
+                                                                    <div
+                                                                        class="modal-btns d-flex gap-4 justify-content-center ">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Cancel</button>
+                                                                        <button type="button"
+                                                                            class="btn btn-danger">Reject</button>
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
                                                 </div>
-                                                <h5 class="text-success d-flex">Approve</h5>
+                                                <div class="demo-inline-spacing">
+                                                    <button type="button" class="btn btn-secondary">Leave
+                                                        balance</button>
+                                                    <button type="button" class="btn btn-success">Approve</button>
+                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal">Reject</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
