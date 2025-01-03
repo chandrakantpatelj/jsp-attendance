@@ -284,53 +284,37 @@ document.addEventListener("DOMContentLoaded", function () {
         let calendar = new Calendar(calendarEl, {
             initialView: "dayGridMonth",
             timeZone: "UTC",
-            events: "https://fullcalendar.io/api/demo-feeds/events.json",
             plugins: [
                 dayGridPlugin,
                 interactionPlugin,
                 listPlugin,
                 timegridPlugin,
             ],
-            editable: true,
-            selectable: true,
+            editable: false, // Disable event editing
+            selectable: false, // Disable date selection
             dragScroll: true,
             dayMaxEvents: 2,
             eventResizableFromStart: true,
-            aspectRatio: 2.5, // Reduce height; larger values make it shorter
+            aspectRatio: 2.5, // Adjust height
             customButtons: {
                 sidebarToggle: {
                     text: "Sidebar",
                 },
             },
             headerToolbar: {
-                start: "title,sidebarToggle prev,next",
+                start: "title,sidebarToggle prev,next", // Customize as needed
                 end: "",
             },
             direction: direction,
             initialDate: new Date(),
             navLinks: true,
-            eventClassNames: function ({ event: calendarEvent }) {
-                const colorName =
-                    calendarsColor[calendarEvent._def.extendedProps.calendar];
-                return ["fc-event-" + colorName];
-            },
             dateClick: function (info) {
-                let date = moment(info.date).format("YYYY-MM-DD");
-                resetValues();
-                bsAddEventSidebar.show();
-
-                if (offcanvasTitle) {
-                    offcanvasTitle.innerHTML = "Add Event";
-                }
-                btnSubmit.innerHTML = "Add";
-                btnSubmit.classList.remove("btn-update-event");
-                btnSubmit.classList.add("btn-add-event");
-                btnDeleteEvent.classList.add("d-none");
-                eventStartDate.value = date;
-                eventEndDate.value = date;
+                // Disable date click actions
+                console.log("Date clicked:", info.dateStr);
             },
             eventClick: function (info) {
-                eventClick(info);
+                // Disable event click actions
+                console.log("Event clicked:", info.event.title);
             },
             datesSet: function () {
                 modifyToggler();

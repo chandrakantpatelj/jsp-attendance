@@ -239,7 +239,7 @@
                         admin.jspinfotech@gmail.com
                     </span>
                 </div>
-                <a class="btn btn-logout mt-1" href="/login">
+                <a class="btn btn-logout  mt-1" href="/login">
                     Log Out
                 </a>
 

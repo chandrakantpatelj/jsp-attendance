@@ -74,12 +74,12 @@
                     <!-- Content -->
                     <div class="calendar-header  d-flex justify-content-between align-items-center ">
                         <h5 class="mb-0">Attendance Regularization</h5>
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center justify-content-end">
                             <div class="avatar">
                                 <span><i class="ti ti-truck"></i></span>
                             </div>
                             <div class="calendar-csvfile ms-3">
-                                <h5 class="mb-0">CSV files</h5>
+                                <h5 class="mb-0"> <i class="ti ti-file-analytics"></i>CSV files</h5>
                             </div>
                         </div>
 

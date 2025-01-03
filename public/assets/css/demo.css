@@ -204,7 +204,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 28px 24px;
     background-color: transparent;
     border-radius: 8px;
 }
@@ -295,6 +295,27 @@
 .deleteicon-btn i {
     font-size: 40px;
     color: #ff0000;
+}
+
+.custom-week-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.custom-week-header .week-day {
+    flex: 1;
+    text-align: center;
+}
+
+.add-employee-btn {
+    max-width: 205px;
+    width: 100%;
+    flex-shrink: 0;
+    font-size: 16px;
+    padding: 10px 18px;
+    border-radius: 10px;
 }
 
 /* * project-custom.css end */
