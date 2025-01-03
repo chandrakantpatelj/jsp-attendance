@@ -5,7 +5,42 @@
     <div class="layout-container">
         <!-- Menu -->
 
-        @include('include.sidebar');
+        <aside class="layout-menu menu-vertical menu bg-menu-theme">
+            <div class="app-brand demo">
+                <a href="index.html" class="app-brand-link">
+                    <span class="app-brand-logo ">
+                        <img src="{{ asset('assets/img/header-logo.png') }}" alt="Header Logo">
+                    </span>
+                </a>
+
+                <!-- <a href=" javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+            <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
+            <i class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
+        </a> -->
+            </div>
+
+            <!-- <div class="menu-inner-shadow"></div> -->
+            <ul class="menu-inner py-1">
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <i class="menu-icon tf-icons ti ti-home"></i>
+                        <div data-i18n="Dashboards">Dashboards</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('employee.index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons ti ti-calendar-event"></i>
+                        <div data-i18n="Employee">Employee</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('attendance.index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons ti ti-logout"></i>
+                        <div data-i18n="Leave management">Leave management</div>
+                    </a>
+                </li>
+            </ul>
+        </aside>
 
 
         <!-- Layout container -->
@@ -21,16 +56,13 @@
                 <div class="navbar-nav-right  d-flex gap-4 align-items-center justify-content-end" id="navbar-collapse">
                     <ul class="navbar-nav flex-row gap-3 align-items-center  ">
                         <li>
-                            <div>
-                                <span class="menu-header-text punchin-time">
-                                    00:00
-                                </span>
+                            <div class="flex-grow-1 input-group input-group-merge  custom-search">
+                                <span class="input-group-text custom-search" id="basic-addon-search31"><i
+                                        class="ti ti-search"></i></span>
+                                <input type="text" class="form-control chat-search-input custom-search"
+                                    placeholder="Search here..." aria-label="Search..."
+                                    aria-describedby="basic-addon-search31" />
                             </div>
-                        </li>
-                        <li>
-                            <button class="btn btn-danger  punch_button" type="button">
-                                Punch in
-                            </button>
                         </li>
                         <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-1 ">
                             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"

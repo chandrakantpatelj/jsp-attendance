@@ -21,7 +21,7 @@
                 <div class="page-header  d-flex justify-content-between align-items-center ">
                     <h5 class="mb-0">My Leave</h5>
                     <div class="d-flex align-items-center justify-content-end">
-                        <button class="btn btn-warning add-leave-btn" type="button" data-bs-toggle="offcanvas"
+                        <button class="btn btn-primary add-leave-btn" type="button" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                             <i class="ti ti-plus"></i> Add new leave
                         </button>
@@ -116,13 +116,13 @@
 
                                     <div class="d-flex gap-3 justify-content-end">
                                         <button type="button" class="btn btn-outline-secondary from_btn">Cancel</button>
-                                        <button type="submit" class="btn btn-warning">Add</button>
+                                        <button type="submit" class="btn btn-primary">Add</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="calendar-csvfile ms-3">
-                            <h5 class="mb-0">CSV files</h5>
+                            <h5 class="mb-0"> <i class="ti ti-file-analytics"></i>CSV files</h5>
                         </div>
                     </div>
 
@@ -213,10 +213,6 @@
                                         </ul>
                                         <div class="d-flex flex-column justify-content-between">
                                             <div class="d-flex">
-                                                <!-- <button type="button" class="bg-transparent border-0"><i
-                                                            class="ti ti-trash"></i> </button> -->
-
-                                                <!-- Button trigger modal -->
                                                 <button type="button" class="bg-transparent border-0"
                                                     data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                     <i class="ti ti-trash"></i>
@@ -287,13 +283,13 @@
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label custom_lable">Total
                                                                 day’s</label>
-                                                            <input type="text" class="form-control"
+                                                            <input type="email" class="form-control"
                                                                 id="exampleFormControlInput1" placeholder="Enter day’s">
                                                         </div>
                                                         <div class="mb-4">
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label custom_lable">Reason</label>
-                                                            <input type="text" class="form-control"
+                                                            <input type="email" class="form-control"
                                                                 id="exampleFormControlInput1"
                                                                 placeholder="Enter Your Reason">
                                                         </div>
@@ -302,11 +298,13 @@
                                                             <button type="button"
                                                                 class="btn btn-outline-secondary from_btn">Cancel</button>
                                                             <button type="button"
-                                                                class="btn btn-warning">Update</button>
+                                                                class="btn btn-primary">Update</button>
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </div>
+                                            <h5 class="text-danger">pending</h5>
                                         </div>
 
                                     </div>
@@ -426,7 +424,7 @@
                                                                 <button type="button"
                                                                     class="btn btn-outline-secondary from_btn">Cancel</button>
                                                                 <button type="button"
-                                                                    class="btn btn-warning">Update</button>
+                                                                    class="btn btn-primary">Update</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -553,7 +551,7 @@
                                                                 <button type="button"
                                                                     class="btn btn-outline-secondary from_btn">Cancel</button>
                                                                 <button type="button"
-                                                                    class="btn btn-warning">Update</button>
+                                                                    class="btn btn-primary">Update</button>
                                                             </div>
                                                         </div>
                                                     </div>

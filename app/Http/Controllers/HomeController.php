@@ -25,6 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $users = $user->role_id;
         if ($user->role_id == 1) {
             return view('admin.dashboard');
         } elseif ($user->role_id == 2) {
