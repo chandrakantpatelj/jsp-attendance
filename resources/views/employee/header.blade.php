@@ -297,6 +297,9 @@ $(document).ready(function() {
                 if (response.success) {
                     console.log('Success:', response.message);
                 }
+                if (response.working_hours) {
+                    $('#timer').html(response.working_hours);
+                }
             },
             error: function(xhr, status, error) {
                 console.error('Error:', {
@@ -322,7 +325,7 @@ $(document).ready(function() {
 
             $('#punch-in').hide();
             $('#punch-out').show();
-            sendPunchData('punch_in', startTime.getTime());
+            sendPunchData('punch_in', startTime);
         }
     });
 
@@ -334,7 +337,7 @@ $(document).ready(function() {
             $('#punch-out').hide();
             $('#punch-in').show();
             const punchOutTime = new Date();
-            sendPunchData('punch_out', punchOutTime.getTime());
+            sendPunchData('punch_out', punchOutTime);
         }
     });
 });

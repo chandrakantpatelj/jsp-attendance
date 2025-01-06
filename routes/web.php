@@ -11,13 +11,13 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/', function () {
     if (Auth::check()) {
         $user = Auth::user();
-
+        dd($user);
         if ($user->role == 1) {
             return redirect()->route('admin.dashboard');
         } elseif ($user->role == 2) {

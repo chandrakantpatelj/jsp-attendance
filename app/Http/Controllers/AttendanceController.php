@@ -112,33 +112,41 @@ class AttendanceController extends Controller
     }
     public function savePunchData(Request $request)
     {
-        //dd($request);
+        //dd($request->all());
         if (!Auth::check()) {
             return response()->json(['Success' => false, 'Message' => 'Unauthorized']);
         }
 
         $data = $request->validate([
             'action' => 'required|string|in:punch_in,punch_out',
-            'timestamp' => 'required|numeric',
+            'timestamp' => 'required|string',
         ]);
 
         $userId = Auth::id();
         $today = now()->format('Y-m-d');
-        $defaultTimezone = 'Asia/Kolkata';
+        //$defaultTimezone = 'Asia/Kolkata';
+        $timeString = $request->timestamp;
+        try {
+            $cleanedTimeString = preg_replace('/\s+\([^\)]+\)$/', '', $timeString);
+            $carbonDate = Carbon::parse($cleanedTimeString);
+            $formattedTime = $carbonDate->format('h:i:s A');
+            //dd($formattedTime);
+            //return response()->json(['Success' => true, 'Message' => 'Time formatted', 'formatted_time' => $formattedTime]);
 
-        $timestamp = Carbon::createFromTimestampMs($data['timestamp'], $defaultTimezone);
-
+        } catch (\Exception $e) {
+            //dd($e->getMessage());
+        }
+        //dd($timestamp);
         if ($data['action'] === 'punch_in') {
             $existingRecord = Attendance::where('employee_id', $userId)->where('attendance_date', $today)->first();
             if ($existingRecord) {
                 return response()->json(['Success' => false, 'Message' => 'Already Punched-in']);
             }
-
-            $punchInTimestamp = $timestamp->timestamp;
+            $punchInTimestamp = $carbonDate->timestamp;
             $attendance = Attendance::create([
                 'employee_id' => $userId,
                 'attendance_date' => $today,
-                'punch_in_time' => $punchInTimestamp,
+                'punch_in_time' => $formattedTime,
                 'punch_out_time' => null,
                 'status' => 'present',
                 'working_hours' => 0,
@@ -157,26 +165,21 @@ class AttendanceController extends Controller
             if ($attendance->punch_out_time) {
                 return response()->json(['success' => false, 'message' => 'You have already punched out for today.']);
             }
+            $punchOutTime = $formattedTime;
 
-            $punchOutTime = Carbon::createFromTimestampMs($request->timestamp);
+            $punchInTime = $attendance->punch_in_time;
+            $punch_in = new \DateTime($punchInTime);
+            $punch_out = new \DateTime($punchOutTime);
 
-            $punchInTime = Carbon::createFromTimestamp($attendance->punch_in_time);
-            if ($punchOutTime->lt($punchInTime)) {
-                $punchOutTime->addDay();
-            }
-            $timeDiffInSeconds = $punchOutTime->diffInSeconds($punchInTime);
+            $interval = $punch_in->diff($punch_out);
 
-            $hours = floor($timeDiffInSeconds / 3600);
-            $minutes = floor(($timeDiffInSeconds % 3600) / 60);
-            $seconds = $timeDiffInSeconds % 60;
-            dd($timeDiffInSeconds);
-            if ($hours == 0 && $minutes == 0 && $seconds > 0) {
-                $formattedWorkingHours = "{$seconds} second" . ($seconds > 1 ? 's' : '');
-            } else {
-                $formattedWorkingHours = sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
-            }
+            $hours = $interval->h;
+            $minutes = $interval->i;
+            $seconds = $interval->s;
+
+            $formattedWorkingHours = "{$hours} : {$minutes} : {$seconds}";
             $attendance->update([
-                'punch_out_time' => $punchOutTime->timestamp,
+                'punch_out_time' => $punchOutTime,
                 'working_hours' => $formattedWorkingHours,
             ]);
 
