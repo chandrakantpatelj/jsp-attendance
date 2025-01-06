@@ -22,7 +22,7 @@
             <!-- <div class="menu-inner-shadow"></div> -->
             <ul class="menu-inner py-1">
                 <li class="menu-item">
-                    <a href="{{ route('employee.dashboard') }}" class="menu-link">
+                    <a href="{{ route('admin.dashboard') }}" class="menu-link">
                         <i class="menu-icon tf-icons ti ti-home"></i>
                         <div data-i18n="Dashboards">Dashboards</div>
                     </a>
