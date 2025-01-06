@@ -5,13 +5,13 @@
     <div class="layout-container">
         <!-- Menu -->
 
-        @include('include.sidebar');
+        @include('employee.sidebar')
 
 
         <!-- Layout container -->
         <div class="layout-page">
             <!-- Navbar -->
-            @include('include.header');
+            @include('employee.header')
 
             <!-- / Navbar -->
 
@@ -29,7 +29,7 @@
                             <div class="card dashbord-card">
                                 <div class="d-flex align-items-center ">
                                     <div class="avatar me-2">
-                                        <span><i class="ti ti-truck"></i></span>
+                                        <span><i class="ti ti-users"></i></span>
                                     </div>
                                     <div>
                                         <h2 class=" mb-0 ">75</h2>
@@ -44,7 +44,7 @@
                             <div class="card dashbord-card">
                                 <div class="d-flex align-items-center ">
                                     <div class="avatar me-2">
-                                        <span><i class="ti ti-truck"></i></span>
+                                        <span> <i class="menu-icon tf-icons ti ti-logout"></i></span>
                                     </div>
                                     <div>
                                         <h2 class=" mb-0 ">03</h2>
@@ -59,8 +59,9 @@
                             <div class="card dashbord-card">
                                 <div class="d-flex align-items-center ">
                                     <div class="avatar me-2">
-                                        <span><i class="ti ti-truck"></i></span>
+                                        <img src="{{ asset('assets/img/presentIcon.png') }}" alt="Present Icon">
                                     </div>
+
                                     <div>
                                         <h2 class=" mb-0 ">09</h2>
                                         <h5 class="mb-0 ">Today present days</h5>
@@ -74,7 +75,7 @@
                             <div class="card dashbord-card">
                                 <div class="d-flex align-items-center ">
                                     <div class="avatar me-2">
-                                        <span><i class="ti ti-truck"></i></span>
+                                        <img src="{{ asset('assets/img/absentIcon.png') }}" alt="Absent Icon">
                                     </div>
                                     <div>
                                         <h2 class=" mb-0 ">02</h2>
