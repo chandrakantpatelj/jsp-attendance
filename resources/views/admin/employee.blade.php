@@ -12,281 +12,6 @@
         <div class="layout-page">
             <!-- Navbar -->
 
-            <nav class="layout-navbar  navbar navbar-expand-xl  align-items-center bg-navbar-theme px-4"
-                id="layout-navbar ">
-                <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-                    <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-                        <i class="ti ti-menu-2 ti-sm"></i>
-                    </a>
-                </div>
-                <div class="navbar-nav-right  d-flex gap-4 align-items-center justify-content-end" id="navbar-collapse">
-                    <ul class="navbar-nav flex-row gap-3 align-items-center  ">
-                        <li>
-                            <div class="flex-grow-1 input-group input-group-merge  custom-search">
-                                <span class="input-group-text custom-search" id="basic-addon-search31"><i
-                                        class="ti ti-search"></i></span>
-                                <input type="text" class="form-control chat-search-input custom-search"
-                                    placeholder="Search here..." aria-label="Search..."
-                                    aria-describedby="basic-addon-search31" />
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-1 ">
-                            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
-                                data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                                <div class="icon-box">
-                                    <i class="ti ti-bell"></i>
-                                </div>
-                                <span class="badge bg-danger rounded-pill badge-notifications"
-                                    style="margin-top: 6px;">5</span>
-
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end py-0 notifications-card">
-                                <li class="dropdown-menu-header border-bottom">
-                                    <div class="dropdown-header d-flex align-items-center py-3">
-                                        <h5 class="text-body mb-0 me-auto">Notification</h5>
-                                        <a href="javascript:void(0)" class="dropdown-notifications-all text-body"
-                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Mark all as read"><i
-                                                class="ti ti-mail-opened fs-4"></i></a>
-                                    </div>
-                                </li>
-                                <li class="dropdown-notifications-list scrollable-container  ">
-                                    <ul class="list-group list-group-flush ">
-                                        <li class="list-group-item list-group-item-action dropdown-notifications-item">
-                                            <div class="d-flex">
-                                                <div class="flex-grow-1 ">
-                                                    <h6 class="mb-1">Lorem Ipsum is simply dummy text of the
-                                                        printing & typesetting industry. Lorem Ipsum has been the
-                                                        industry's standard dummy.</h6>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <span></span>
-                                                        <small class="text-muted">1h ago</small>
-                                                    </div>
-                                                </div>
-                                                <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                    <a href="javascript:void(0)"
-                                                        class="dropdown-notifications-read"></a>
-                                                    <a href="javascript:void(0)"
-                                                        class="dropdown-notifications-archive"><span
-                                                            class="ti ti-x"></span></a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item list-group-item-action dropdown-notifications-item">
-                                            <div class="d-flex">
-                                                <div class="flex-grow-1">
-                                                    <h6 class="mb-1">Lorem Ipsum is simply dummy text of the
-                                                        printing & typesetting industry. Lorem Ipsum has been the
-                                                        industry's standard dummy.</h6>
-                                                    <!-- <p class="mb-0">Accepted your connection</p> -->
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <span></span>
-                                                        <small class="text-muted">12hr ago</small>
-                                                    </div>
-
-                                                </div>
-                                                <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                    <a href="javascript:void(0)"
-                                                        class="dropdown-notifications-read"></a>
-                                                    <a href="javascript:void(0)"
-                                                        class="dropdown-notifications-archive"><span
-                                                            class="ti ti-x"></span></a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li
-                                            class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                                            <div class="d-flex">
-                                                <div class="flex-grow-1">
-                                                    <h6 class="mb-1">Lorem Ipsum is simply dummy text of the
-                                                        printing & typesetting industry. Lorem Ipsum has been the
-                                                        industry's standard dummy .</h6>
-                                                    <!-- <p class="mb-0">You have new message from Natalie</p> -->
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <span></span>
-                                                        <small class="text-muted">1h ago</small>
-                                                    </div>
-                                                </div>
-                                                <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                    <a href="javascript:void(0)"
-                                                        class="dropdown-notifications-read"></a>
-                                                    <a href="javascript:void(0)"
-                                                        class="dropdown-notifications-archive"><span
-                                                            class="ti ti-x"></span></a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item list-group-item-action dropdown-notifications-item">
-                                            <div class="d-flex">
-
-                                                <div class="flex-grow-1">
-                                                    <h6 class="mb-1">Lorem Ipsum is simply dummy text of the
-                                                        printing & typesetting industry. Lorem Ipsum has been the
-                                                        industry's standard dummy .</h6>
-                                                    <!-- <p class="mb-0">ACME Inc. made new order $1,154</p> -->
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <span></span>
-                                                        <small class="text-muted">1h ago</small>
-                                                    </div>
-                                                </div>
-                                                <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                    <a href="javascript:void(0)"
-                                                        class="dropdown-notifications-read"></a>
-                                                    <a href="javascript:void(0)"
-                                                        class="dropdown-notifications-archive"><span
-                                                            class="ti ti-x"></span></a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li
-                                            class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                                            <div class="d-flex">
-
-                                                <div class="flex-grow-1">
-                                                    <h6 class="mb-1">Lorem Ipsum is simply dummy text of the
-                                                        printing & typesetting industry. Lorem Ipsum has been the
-                                                        industry's standard dummy .</h6>
-                                                    <!-- <p class="mb-0">Your ABC project application has been approved.
-                                                        </p> -->
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <span></span>
-                                                        <small class="text-muted">2h ago</small>
-                                                    </div>
-                                                </div>
-                                                <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                    <a href="javascript:void(0)"
-                                                        class="dropdown-notifications-read"></a>
-                                                    <a href="javascript:void(0)"
-                                                        class="dropdown-notifications-archive"><span
-                                                            class="ti ti-x"></span></a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li
-                                            class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                                            <div class="d-flex">
-                                                <div class="flex-grow-1">
-                                                    <h6 class="mb-1">Lorem Ipsum is simply dummy text of the
-                                                        printing & typesetting industry. Lorem Ipsum has been the
-                                                        industry's standard dummy .</h6>
-                                                    <!-- <p class="mb-0">July monthly financial report is generated</p> -->
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <span></span>
-                                                        <small class="text-muted">3 day ago</small>
-                                                    </div>
-                                                </div>
-                                                <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                    <a href="javascript:void(0)"
-                                                        class="dropdown-notifications-read"></a>
-                                                    <a href="javascript:void(0)"
-                                                        class="dropdown-notifications-archive"><span
-                                                            class="ti ti-x"></span></a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li
-                                            class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                                            <div class="d-flex">
-
-                                                <div class="flex-grow-1">
-                                                    <h6 class="mb-1">Lorem Ipsum is simply dummy text of the
-                                                        printing & typesetting industry. Lorem Ipsum has been the
-                                                        industry's standard dummy .</h6>
-                                                    <!-- <p class="mb-0">Peter sent you connection request</p> -->
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <span></span>
-                                                        <small class="text-muted">4 days ago</small>
-                                                    </div>
-                                                </div>
-                                                <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                    <a href="javascript:void(0)"
-                                                        class="dropdown-notifications-read"></a>
-                                                    <a href="javascript:void(0)"
-                                                        class="dropdown-notifications-archive"><span
-                                                            class="ti ti-x"></span></a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item list-group-item-action dropdown-notifications-item">
-                                            <div class="d-flex">
-
-                                                <div class="flex-grow-1">
-                                                    <h6 class="mb-1">Lorem Ipsum is simply dummy text of the
-                                                        printing & typesetting industry. Lorem Ipsum has been the
-                                                        industry's standard dummy .</h6>
-                                                    <!-- <p class="mb-0">Your have new message from Jane</p> -->
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <span></span>
-                                                        <small class="text-muted">5 days ago</small>
-                                                    </div>
-                                                </div>
-                                                <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                    <a href="javascript:void(0)"
-                                                        class="dropdown-notifications-read"></a>
-                                                    <a href="javascript:void(0)"
-                                                        class="dropdown-notifications-archive"><span
-                                                            class="ti ti-x"></span></a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li
-                                            class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                                            <div class="d-flex">
-
-                                                <div class="flex-grow-1">
-                                                    <h6 class="mb-1">Lorem Ipsum is simply dummy text of the
-                                                        printing & typesetting industry. Lorem Ipsum has been the
-                                                        industry's standard dummy .</h6>
-                                                    <!-- <p class="mb-0">CPU Utilization Percent is currently at 88.63%,
-                                                        </p> -->
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <span></span>
-                                                        <small class="text-muted">1 days ago</small>
-                                                    </div>
-
-                                                </div>
-                                                <div class="flex-shrink-0 dropdown-notifications-actions">
-                                                    <a href="javascript:void(0)"
-                                                        class="dropdown-notifications-read"></a>
-                                                    <a href="javascript:void(0)"
-                                                        class="dropdown-notifications-archive"><span
-                                                            class="ti ti-x"></span></a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-menu-footer border-top">
-                                    <a href="javascript:void(0);"
-                                        class="dropdown-item d-flex justify-content-center text-primary p-2 h-px-40 mb-1 align-items-center">
-                                        View all notifications
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <div>
-                                <span class="menu-header-text email-text" data-i18n="admin.jspinfotech@gmail.com">
-                                    admin.jspinfotech@gmail.com
-                                </span>
-                            </div>
-                            <a class="btn bs-danger btn-logout mt-1" href="/login">
-                                Log Out
-                            </a>
-
-                        </li>
-                    </ul>
-                </div>
-                <!-- Search Small Screens -->
-                <div class=" search-input-wrapper d-none d-flex justify-content-end">
-                    <input type="text" class="form-control search-input container-xxl border-0" placeholder="Search..."
-                        aria-label="Search..." />
-                    <i class="ti ti-x ti-sm search-toggler cursor-pointer"></i>
-                </div>
-            </nav>
-            <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
-            <script src="../../assets/vendor/js/bootstrap.js"></script>
-
-
             <!-- / Navbar -->
 
             <!-- Content wrapper -->
@@ -297,7 +22,7 @@
                     <div class="d-flex align-items-center justify-content-end">
                         <button class="btn btn-primary add-leave-btn" type="button" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                            <i class="ti ti-plus"></i> Add new leave
+                            <i class="ti ti-plus"></i> Add new Employee
                         </button>
 
                         <!-- Add New Employee Drawer -->
@@ -320,6 +45,7 @@
                                     @method('POST')
                                     <!-- Create method for new employee -->
                                     @endif
+                                    <input type="hidden" name="role_id" value="2">
                                     <div class="mb-4">
                                         <label for="name" class="form-label custom_lable ">Employee
                                             name</label>
@@ -377,18 +103,28 @@
                                         @enderror
                                     </div>
                                     <div class="mb-4">
-                                        <label class="custom_lable">Department</label>
-                                        <select name="role_id" id="role_id" class="form-control" required>
-                                            <option value="">Select Role</option>
+                                        <label class="designation">Department</label>
+                                        <select name="designation" id="designation" class="form-control custom_lable"
+                                            required>
+                                            <option value="">Select Designation</option>
                                             <option value="1"
-                                                {{ (old('role_id', $employee->role_id ?? '') == 1) ? 'selected' : '' }}>
-                                                Admin
+                                                {{ (old('designation', $employee->designation ?? '') == 1) ? 'selected' : '' }}>
+                                                UIUX Design
                                             </option>
                                             <option value="2"
-                                                {{ (old('role_id', $employee->role_id ?? '') == 2) ? 'selected' : '' }}>
-                                                Employee
+                                                {{ (old('designation', $employee->designation ?? '') == 2) ? 'selected' : '' }}>
+                                                Developer
+                                            </option>
+                                            <option value="3"
+                                                {{ (old('designation', $employee->designation ?? '') == 3) ? 'selected' : '' }}>
+                                                Desinger
                                             </option>
                                         </select>
+                                        @error('designation')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                     <div class="mb-4">
                                         <label class="form-check-label custom_lable" for="status">Status</label>
@@ -418,51 +154,6 @@
                                 data-bs-toggle="offcanvas" href="javascript:;">
                                 <i class="ti ti-edit"></i>
                             </button> -->
-
-                        <!-- Edit Employee Drawer -->
-                        <div class="offcanvas offcanvas-end custom-offcanvas" tabindex="-1" id="editemployeedrawer"
-                            aria-labelledby="offcanvasRightLabel">
-                            <div class="offcanvas-header">
-                                <h2 id="offcanvasRightLabel">Edit employee</h2>
-                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="offcanvas-body">
-                                <div class="mb-4">
-                                    <label for="employeename" class="form-label custom_lable">Employee
-                                        name</label>
-                                    <input type="text" class="form-control" placeholder="Enter your employee name"
-                                        id="employeename" />
-                                </div>
-                                <div class="mb-4">
-                                    <label for="email" class="form-label custom_lable">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Enter email">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="password" class="form-label custom_lable">Password</label>
-                                    <input type="password" class="form-control" id="inputPassword"
-                                        placeholder="Enter password">
-                                </div>
-                                <div class="mb-4">
-                                    <label class="custom_lable">Department</label>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Select leave type</option>
-                                        <option value="1">First half</option>
-                                        <option value="2">Second half</option>
-                                        <option value="3">Full day</option>
-                                    </select>
-                                </div>
-                                <label class="form-check-label custom_lable" for="status">Status</label>
-                                <div class="form-check form-switch mb-4">
-                                    <input class="form-check-input" type="checkbox" id="status" checked />
-                                </div>
-                                <div class="d-flex gap-3 justify-content-end">
-                                    <button type="button" class="btn btn-outline-secondary from_btn "
-                                        data-bs-dismiss="offcanvas">Cancel</button>
-                                    <button type="button" class="btn btn-primary">Update</button>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="calendar-csvfile ms-3">
                             <h5 class="mb-0">CSV files</h5>
@@ -500,11 +191,19 @@
                                         <tr>
                                             <td></td>
                                             <td>{{ $employee->name }}</td>
-                                            <td>{{ $employee->designation }}</td>
+                                            <td>
+                                                @if($employee->designation == 1)
+                                                UIUX Design
+                                                @elseif($employee->designation == 2)
+                                                Developer
+                                                @elseif($employee->designation == 3)
+                                                Designer
+                                                @endif
+                                            </td>
                                             <td>{{ $employee->status }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                                    data-bs-target="#employeeModal"
+                                                    data-bs-target="#offcanvasRight"
                                                     onclick="loadEmployeeData({{ $employee->id }})"><i
                                                         class="ti ti-pencil me-1"></i></button>
 
@@ -559,5 +258,37 @@
     <div class="drag-target"></div>
 </div>
 @endsection
+<script src="../../assets/js/main.js"></script>
+<script>
+function loadEmployeeData(employeeId) {
+    $.ajax({
+        url: '/employee/' + employeeId + '/edit',
+        method: 'GET',
+        success: function(data) {
+            // Fill form with employee data
+            $('#name').val(data.name);
+            $('#email').val(data.email);
+            $('#designation').val(data.designation); // Fill the designation field
+            $('#status').prop('checked', data.status == 1); // If status is 1, check the status checkbox
+
+            // Set the form action to 'update'
+            $('#employeeForm').attr('action', '/employee/' + employeeId);
+
+            // Update button text to 'Update'
+            $('#employeeForm button[type="submit"]').text('Update');
+
+            // Show the offcanvas
+            $('#offcanvasRight').offcanvas('show');
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching employee data:', error);
+            alert('Failed to load employee data.');
+        }
+    });
+}
+</script>
+@push('script')
+
+@endpush
 <script src="/assets/js/app-ecommerce-category-list.js"></script>
 <script src="/assets/js/app-ecommerce-product-list.js"></script>
