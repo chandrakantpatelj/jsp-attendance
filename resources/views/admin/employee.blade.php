@@ -77,7 +77,7 @@
                         <div class="d-flex align-items-center justify-content-end">
                             <button class="btn btn-primary add-leave-btn" type="button" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                                <i class="ti ti-plus"></i> Add new leave
+                                <i class="ti ti-plus"></i> Add new Employee
                             </button>
 
                             <!-- Add New Employee Drawer -->
@@ -89,91 +89,127 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="offcanvas-body">
+                                    <form id="employeeForm"
+                                        action="{{ isset($employee->id) ? route('employee.update', $employee->id) : route('employee.store') }}"
+                                        method="POST">
+                                        @csrf
+                                        @if(isset($employee->id))
+                                        @method('PUT')
+                                        <!-- Update method for existing employee -->
+                                        @else
+                                        @method('POST')
+                                        <!-- Create method for new employee -->
+                                        @endif
+                                        <input type="hidden" name="role_id" value="2">
+                                        <div class="mb-4">
+                                            <label for="name" class="form-label custom_lable ">Employee
+                                                name</label>
 
-                                    <div class="mb-4">
-                                        <label for="employeename" class="form-label custom_lable ">Employee
-                                            name</label>
-                                        <input type="text" class="form-control" placeholder="Enter your employee name"
-                                            id="employeename" />
-                                    </div>
-                                    <div class="mb-4">
-                                        <label for="email" class="form-label custom_lable">Email</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Enter email">
-                                    </div>
-                                    <div class="mb-4">
-                                        <label for="password" class="form-label custom_lable">Password</label>
-                                        <input type="password" class="form-control" id="inputPassword"
-                                            placeholder="Enter password">
-                                    </div>
-                                    <div class="mb-4">
-                                        <label class="custom_lable">Department</label>
-                                        <select class="form-select" aria-label="Default select example">
-                                            <option selected>Select leave type</option>
-                                            <option value="1">First half</option>
-                                            <option value="2">Second half</option>
-                                            <option value="3">Full day</option>
-                                        </select>
-                                    </div>
-                                    <label class="form-check-label  custom_lable" for="status">Status</label>
-                                    <div class="form-check form-switch mb-4">
-                                        <input class="form-check-input" type="checkbox" id="status" checked />
-                                    </div>
-                                    <div class="d-flex gap-3 justify-content-end">
-                                        <button type="button" class="btn btn-outline-secondary from_btn"
-                                            data-bs-dismiss="offcanvas">Cancel</button>
-                                        <button type="button" class="btn btn-primary">Add</button>
-                                    </div>
+                                            <input id="name" type="text"
+                                                class="form-control @error('name') is-invalid @enderror"
+                                                placeholder="Enter your employee name" name="name"
+                                                value="{{ old('name', $employee->name ?? '') }}" required
+                                                autocomplete="name" autofocus>
+
+                                            @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="email" class="form-label custom_lable">Email</label>
+                                            <input id="email" type="email"
+                                                class="form-control @error('email') is-invalid @enderror" name="email"
+                                                value="{{ old('email', $employee->email ?? '') }}"
+                                                placeholder="Enter email" required autocomplete="email">
+
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="password" class="form-label custom_lable">Password</label>
+                                            <input id="password" type="password"
+                                                class="form-control @error('password') is-invalid @enderror"
+                                                placeholder="Enter password" name="password"
+                                                autocomplete="new-password">
+
+                                            @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label for="password-confirm" class="form-label custom_lable">Confirm
+                                                Password</label>
+                                            <input id="password-confirm" type="password"
+                                                class="form-control @error('password_confirmation') is-invalid @enderror"
+                                                placeholder="Confirm password" name="password_confirmation"
+                                                autocomplete="new-password">
+
+                                            @error('password_confirmation')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="designation">Department</label>
+                                            <select name="designation" id="designation"
+                                                class="form-control custom_lable" required>
+                                                <option value="">Select Designation</option>
+                                                <option value="1"
+                                                    {{ (old('designation', $employee->designation ?? '') == 1) ? 'selected' : '' }}>
+                                                    UIUX Design
+                                                </option>
+                                                <option value="2"
+                                                    {{ (old('designation', $employee->designation ?? '') == 2) ? 'selected' : '' }}>
+                                                    Developer
+                                                </option>
+                                                <option value="3"
+                                                    {{ (old('designation', $employee->designation ?? '') == 3) ? 'selected' : '' }}>
+                                                    Desinger
+                                                </option>
+                                            </select>
+                                            @error('designation')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="form-check-label custom_lable" for="status">Status</label>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input @error('status') is-invalid @enderror"
+                                                    type="checkbox" id="status" name="status" value="1"
+                                                    {{ old('status', $employee->status ?? 0) == 1 ? 'checked' : '' }} />
+                                            </div>
+
+                                            @error('status')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <div class="d-flex gap-3 justify-content-end">
+                                            <button type="button" class="btn btn-outline-secondary from_btn"
+                                                data-bs-dismiss="offcanvas">Cancel</button>
+                                            <button type="submit" class="btn btn-primary">
+                                                {{ isset($employee->id) ? __('Update') : __('Register') }}
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                             <!-- <button class="btn btn-sm btn-icon" data-bs-target="#offcanvasRight"
                                 data-bs-toggle="offcanvas" href="javascript:;">
                                 <i class="ti ti-edit"></i>
                             </button> -->
-
-                            <!-- Edit Employee Drawer -->
-                            <div class="offcanvas offcanvas-end custom-offcanvas" tabindex="-1" id="editemployeedrawer"
-                                aria-labelledby="offcanvasRightLabel">
-                                <div class="offcanvas-header">
-                                    <h2 id="offcanvasRightLabel">Edit employee</h2>
-                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="offcanvas-body">
-                                    <div class="mb-4">
-                                        <label for="employeename" class="form-label custom_lable">Employee
-                                            name</label>
-                                        <input type="text" class="form-control" placeholder="Enter your employee name"
-                                            id="employeename" />
-                                    </div>
-                                    <div class="mb-4">
-                                        <label for="email" class="form-label custom_lable">Email</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Enter email">
-                                    </div>
-                                    <div class="mb-4">
-                                        <label for="password" class="form-label custom_lable">Password</label>
-                                        <input type="password" class="form-control" id="inputPassword"
-                                            placeholder="Enter password">
-                                    </div>
-                                    <div class="mb-4">
-                                        <label class="custom_lable">Department</label>
-                                        <select class="form-select" aria-label="Default select example">
-                                            <option selected>Select leave type</option>
-                                            <option value="1">First half</option>
-                                            <option value="2">Second half</option>
-                                            <option value="3">Full day</option>
-                                        </select>
-                                    </div>
-                                    <label class="form-check-label custom_lable" for="status">Status</label>
-                                    <div class="form-check form-switch mb-4">
-                                        <input class="form-check-input" type="checkbox" id="status" checked />
-                                    </div>
-                                    <div class="d-flex gap-3 justify-content-end">
-                                        <button type="button" class="btn btn-outline-secondary from_btn "
-                                            data-bs-dismiss="offcanvas">Cancel</button>
-                                        <button type="button" class="btn btn-primary">Update</button>
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="calendar-csvfile ms-3">
                                 <h5 class="mb-0">CSV files</h5>
@@ -200,13 +236,45 @@
                                         <thead>
                                             <tr>
                                                 <th></th>
-                                                <th></th>
                                                 <th>Name</th>
                                                 <th>Department</th>
                                                 <th>Status</th>
                                                 <th style="text-align: end;">Actions</th>
                                             </tr>
                                         </thead>
+                                        <tbody>
+                                            @foreach($employees as $employee)
+                                            <tr>
+                                                <td></td>
+                                                <td>{{ $employee->name }}</td>
+                                                <td>
+                                                    @if($employee->designation == 1)
+                                                    UIUX Design
+                                                    @elseif($employee->designation == 2)
+                                                    Developer
+                                                    @elseif($employee->designation == 3)
+                                                    Designer
+                                                    @endif
+                                                </td>
+                                                <td>{{ $employee->status }}</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                        data-bs-target="#offcanvasRight"
+                                                        onclick="loadEmployeeData({{ $employee->id }})"><i
+                                                            class="ti ti-pencil me-1"></i></button>
+
+
+                                                    <form action="{{ route('employee.destroy', $employee->id) }}"
+                                                        method="POST" style="display:inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger"><i
+                                                                class="ti ti-trash me-1"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
 
 
                                     </table>
@@ -245,3 +313,38 @@
         <!-- Drag Target Area To SlideIn Menu On Small Screens -->
         <div class="drag-target"></div>
     </div>
+    @endsection
+    <script src="../../assets/js/main.js"></script>
+    <script>
+    function loadEmployeeData(employeeId) {
+        $.ajax({
+            url: '/employee/' + employeeId + '/edit',
+            method: 'GET',
+            success: function(data) {
+                // Fill form with employee data
+                $('#name').val(data.name);
+                $('#email').val(data.email);
+                $('#designation').val(data.designation); // Fill the designation field
+                $('#status').prop('checked', data.status == 1); // If status is 1, check the status checkbox
+
+                // Set the form action to 'update'
+                $('#employeeForm').attr('action', '/employee/' + employeeId);
+
+                // Update button text to 'Update'
+                $('#employeeForm button[type="submit"]').text('Update');
+
+                // Show the offcanvas
+                $('#offcanvasRight').offcanvas('show');
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching employee data:', error);
+                alert('Failed to load employee data.');
+            }
+        });
+    }
+    </script>
+    @push('script')
+
+    @endpush
+    <script src="/assets/js/app-ecommerce-category-list.js"></script>
+    <script src="/assets/js/app-ecommerce-product-list.js"></script>

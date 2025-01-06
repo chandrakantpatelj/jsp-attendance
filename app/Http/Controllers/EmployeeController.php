@@ -26,6 +26,7 @@ class EmployeeController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'role_id' => 'required',
+            'designation' => 'required',
         ]);
 
         $employee = User::create([
@@ -33,6 +34,7 @@ class EmployeeController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'role_id' => $request->role_id,
+            'designation' => $request->designation,
         ]);
         return redirect()->route('employee.index')->with('success', 'Employee deleted successfully.');
     }
@@ -50,6 +52,7 @@ class EmployeeController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $id,
             'role_id' => 'required',
+            'designation' => 'required',
         ]);
 
         $user = User::findOrFail($id);
@@ -58,6 +61,7 @@ class EmployeeController extends Controller
             'email' => $request->email,
             'password' => $request->password ? bcrypt($request->password) : $user->password,
             'role_id' => $request->role_id,
+            'designation' => $request->designation,
         ]);
         return redirect()->route('employee.index')->with('success', 'User updated successfully.');
     }
