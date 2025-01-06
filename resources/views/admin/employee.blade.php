@@ -285,58 +285,8 @@
             </nav>
             <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
             <script src="../../assets/vendor/js/bootstrap.js"></script>
-            </script>
-            <script>
-            $(document).ready(function() {
-                let timerInterval;
-                let startTime;
-                let isPunchIn = false;
 
-                function updateTimerDisplay(currentTime) {
-                    let hours = currentTime.getHours();
-                    const minutes = currentTime.getMinutes();
-                    const seconds = currentTime.getSeconds();
 
-                    const ampm = hours >= 12 ? 'PM' : 'AM';
-                    hours = hours % 12;
-                    hours = hours ? hours : 12;
-                    $('#timer').text(padZero(hours) + ':' + padZero(minutes) + ':' + padZero(seconds) +
-                        ' ' + ampm);
-                }
-
-                function padZero(num) {
-                    return num < 10 ? '0' + num : num;
-                }
-
-                $('#punch-in').click(function() {
-                    if (!isPunchIn) {
-                        isPunchIn = true;
-
-                        startTime = new Date();
-                        let currentTime = new Date(startTime);
-
-                        timerInterval = setInterval(function() {
-                            currentTime.setSeconds(currentTime.getSeconds() +
-                                1);
-                            updateTimerDisplay(currentTime);
-                        }, 1000);
-
-                        $('#punch-in').hide();
-                        $('#punch-out').show();
-                    }
-                });
-
-                $('#punch-out').click(function() {
-                    if (isPunchIn) {
-                        clearInterval(timerInterval);
-                        isPunchIn = false;
-
-                        $('#punch-out').hide();
-                        $('#punch-in').show();
-                    }
-                });
-            });
-            </script>
             <!-- / Navbar -->
 
             <!-- Content wrapper -->
@@ -359,40 +309,109 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="offcanvas-body">
+                                <form id="employeeForm"
+                                    action="{{ isset($employee->id) ? route('employee.update', $employee->id) : route('employee.store') }}"
+                                    method="POST">
+                                    @csrf
+                                    @if(isset($employee->id))
+                                    @method('PUT')
+                                    <!-- Update method for existing employee -->
+                                    @else
+                                    @method('POST')
+                                    <!-- Create method for new employee -->
+                                    @endif
+                                    <div class="mb-4">
+                                        <label for="name" class="form-label custom_lable ">Employee
+                                            name</label>
 
-                                <div class="mb-4">
-                                    <label for="employeename" class="form-label custom_lable ">Employee
-                                        name</label>
-                                    <input type="text" class="form-control" placeholder="Enter your employee name"
-                                        id="employeename" />
-                                </div>
-                                <div class="mb-4">
-                                    <label for="email" class="form-label custom_lable">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Enter email">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="password" class="form-label custom_lable">Password</label>
-                                    <input type="password" class="form-control" id="inputPassword"
-                                        placeholder="Enter password">
-                                </div>
-                                <div class="mb-4">
-                                    <label class="custom_lable">Department</label>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Select leave type</option>
-                                        <option value="1">First half</option>
-                                        <option value="2">Second half</option>
-                                        <option value="3">Full day</option>
-                                    </select>
-                                </div>
-                                <label class="form-check-label  custom_lable" for="status">Status</label>
-                                <div class="form-check form-switch mb-4">
-                                    <input class="form-check-input" type="checkbox" id="status" checked />
-                                </div>
-                                <div class="d-flex gap-3 justify-content-end">
-                                    <button type="button" class="btn btn-outline-secondary from_btn"
-                                        data-bs-dismiss="offcanvas">Cancel</button>
-                                    <button type="button" class="btn btn-primary">Add</button>
-                                </div>
+                                        <input id="name" type="text"
+                                            class="form-control @error('name') is-invalid @enderror"
+                                            placeholder="Enter your employee name" name="name"
+                                            value="{{ old('name', $employee->name ?? '') }}" required
+                                            autocomplete="name" autofocus>
+
+                                        @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="email" class="form-label custom_lable">Email</label>
+                                        <input id="email" type="email"
+                                            class="form-control @error('email') is-invalid @enderror" name="email"
+                                            value="{{ old('email', $employee->email ?? '') }}" placeholder="Enter email"
+                                            required autocomplete="email">
+
+                                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="password" class="form-label custom_lable">Password</label>
+                                        <input id="password" type="password"
+                                            class="form-control @error('password') is-invalid @enderror"
+                                            placeholder="Enter password" name="password" autocomplete="new-password">
+
+                                        @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label for="password-confirm" class="form-label custom_lable">Confirm
+                                            Password</label>
+                                        <input id="password-confirm" type="password"
+                                            class="form-control @error('password_confirmation') is-invalid @enderror"
+                                            placeholder="Confirm password" name="password_confirmation"
+                                            autocomplete="new-password">
+
+                                        @error('password_confirmation')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="custom_lable">Department</label>
+                                        <select name="role_id" id="role_id" class="form-control" required>
+                                            <option value="">Select Role</option>
+                                            <option value="1"
+                                                {{ (old('role_id', $employee->role_id ?? '') == 1) ? 'selected' : '' }}>
+                                                Admin
+                                            </option>
+                                            <option value="2"
+                                                {{ (old('role_id', $employee->role_id ?? '') == 2) ? 'selected' : '' }}>
+                                                Employee
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-check-label custom_lable" for="status">Status</label>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input @error('status') is-invalid @enderror"
+                                                type="checkbox" id="status" name="status" value="1"
+                                                {{ old('status', $employee->status ?? 0) == 1 ? 'checked' : '' }} />
+                                        </div>
+
+                                        @error('status')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="d-flex gap-3 justify-content-end">
+                                        <button type="button" class="btn btn-outline-secondary from_btn"
+                                            data-bs-dismiss="offcanvas">Cancel</button>
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ isset($employee->id) ? __('Update') : __('Register') }}
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                         <!-- <button class="btn btn-sm btn-icon" data-bs-target="#offcanvasRight"
@@ -470,13 +489,37 @@
                                     <thead>
                                         <tr>
                                             <th></th>
-                                            <th></th>
                                             <th>Name</th>
                                             <th>Department</th>
                                             <th>Status</th>
                                             <th style="text-align: end;">Actions</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                        @foreach($employees as $employee)
+                                        <tr>
+                                            <td></td>
+                                            <td>{{ $employee->name }}</td>
+                                            <td>{{ $employee->designation }}</td>
+                                            <td>{{ $employee->status }}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                    data-bs-target="#employeeModal"
+                                                    onclick="loadEmployeeData({{ $employee->id }})"><i
+                                                        class="ti ti-pencil me-1"></i></button>
+
+
+                                                <form action="{{ route('employee.destroy', $employee->id) }}"
+                                                    method="POST" style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger"><i
+                                                            class="ti ti-trash me-1"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
 
 
                                 </table>
@@ -516,3 +559,5 @@
     <div class="drag-target"></div>
 </div>
 @endsection
+<script src="/assets/js/app-ecommerce-category-list.js"></script>
+<script src="/assets/js/app-ecommerce-product-list.js"></script>
