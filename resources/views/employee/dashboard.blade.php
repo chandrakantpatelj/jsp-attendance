@@ -163,9 +163,8 @@
                             <div class="card dashbord_card">
                                 <div class="card-header d-flex justify-content-between">
                                     <h5 class="mb-0">December 2024</h5>
-                                    <<<<<<< HEAD:resources/views/dashboard.blade.php <div class="p-3">
+                                    <div class="p-3">
                                         <div class="inline-calendar"></div>
-                                        =======
                                         <div class="col app-calendar-sidebar border-end" id="app-calendar-sidebar">
                                             <div class="border-bottom p-6 my-sm-0 mb-4">
 
@@ -237,9 +236,8 @@
                                                     </div>
                                                 </div> -->
                                             </div>
-                                            >>>>>>>
-                                            7698463aefb31452580221275c88aaab8663734d:resources/views/admin/dashboard.blade.php
                                         </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -247,14 +245,13 @@
                 </div>
             </div>
         </div>
+
+        <!-- Overlay -->
+        <div class="layout-overlay layout-menu-toggle"></div>
+
+        <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+        <div class="drag-target"></div>
     </div>
+    <!-- / Layout wrapper -->
 
-    <!-- Overlay -->
-    <div class="layout-overlay layout-menu-toggle"></div>
-
-    <!-- Drag Target Area To SlideIn Menu On Small Screens -->
-    <div class="drag-target"></div>
-</div>
-<!-- / Layout wrapper -->
-
-@endsection
+    @endsection
