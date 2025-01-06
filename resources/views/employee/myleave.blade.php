@@ -5,13 +5,13 @@
     <div class="layout-container">
         <!-- Menu -->
 
-        @include('include.sidebar')
+        @include('employee.sidebar')
         <!-- / Menu -->
 
         <!-- Layout container -->
         <div class="layout-page">
             <!-- Navbar -->
-            @include('include.header')
+            @include('employee.header')
 
             <!-- / Navbar -->
 
