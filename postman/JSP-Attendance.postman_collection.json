@@ -1,0 +1,261 @@
+{
+  "info": {
+    "_postman_id": "b2f1f7b2-4c8b-4d2a-9e3b-10c9e9e5a9d3",
+    "name": "JSP Attendance",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Auth - Fetch CSRF Token (GET /login)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["login"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Login page loaded', function () {",
+                  "  pm.expect(pm.response.code).to.be.oneOf([200, 302]);",
+                  "});",
+                  "",
+                  "// Extract Laravel CSRF token from the login HTML (hidden _token input)",
+                  "if (pm.response.code === 200) {",
+                  "  const body = pm.response.text();",
+                  "  const m = body.match(/name=\\\"_token\\\"\\s+value=\\\"([^\\\"]+)\\\"/);",
+                  "  if (m && m[1]) {",
+                  "    pm.collectionVariables.set('csrfToken', m[1]);",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Auth - Login (POST /login)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "_token", "value": "{{csrfToken}}", "type": "text" },
+                { "key": "email", "value": "{{email}}", "type": "text" },
+                { "key": "password", "value": "{{password}}", "type": "text" }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["login"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Login request sent', function () {",
+                  "  pm.expect(pm.response.code).to.be.oneOf([200, 302, 204]);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Auth - Logout (POST /logout)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "_token", "value": "{{csrfToken}}", "type": "text" }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/logout",
+              "host": ["{{baseUrl}}"],
+              "path": ["logout"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin - Attendance Regularization",
+      "item": [
+        {
+          "name": "Get Punch Data (GET /admin/employee-attendance/punch)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/admin/employee-attendance/punch?employee_id={{employeeId}}&date={{date}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["admin", "employee-attendance", "punch"],
+              "query": [
+                { "key": "employee_id", "value": "{{employeeId}}" },
+                { "key": "date", "value": "{{date}}" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Regularize Day Status (POST /admin/employee-attendance/regularize)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "_token", "value": "{{csrfToken}}", "type": "text" },
+                { "key": "employee_id", "value": "{{employeeId}}", "type": "text" },
+                { "key": "date", "value": "{{date}}", "type": "text" },
+                { "key": "status", "value": "present", "type": "text" },
+                { "key": "punch_in_time", "value": "09:10", "type": "text" },
+                { "key": "punch_out_time", "value": "18:30", "type": "text" }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/admin/employee-attendance/regularize",
+              "host": ["{{baseUrl}}"],
+              "path": ["admin", "employee-attendance", "regularize"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin - Leaves",
+      "item": [
+        {
+          "name": "Leave Balance (GET /admin/leave-balance/{employee})",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/admin/leave-balance/{{employeeId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["admin", "leave-balance", "{{employeeId}}"]
+            }
+          }
+        },
+        {
+          "name": "Approve Leave (POST /admin/leave/approve/{id})",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "_token", "value": "{{csrfToken}}", "type": "text" }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/admin/leave/approve/{{leaveId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["admin", "leave", "approve", "{{leaveId}}"]
+            }
+          }
+        },
+        {
+          "name": "Reject Leave (POST /admin/leave/reject/{id})",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "_token", "value": "{{csrfToken}}", "type": "text" }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/admin/leave/reject/{{leaveId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["admin", "leave", "reject", "{{leaveId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Employee - Punch",
+      "item": [
+        {
+          "name": "Save Punch Data (POST /employee/save-punch-data)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "_token", "value": "{{csrfToken}}", "type": "text" },
+                { "key": "action", "value": "punch_in", "type": "text" },
+                { "key": "timestamp", "value": "{{timestamp}}", "type": "text" }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/employee/save-punch-data",
+              "host": ["{{baseUrl}}"],
+              "path": ["employee", "save-punch-data"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://127.0.0.1:8000" },
+    { "key": "email", "value": "admin@example.com" },
+    { "key": "password", "value": "password" },
+    { "key": "csrfToken", "value": "" },
+    { "key": "employeeId", "value": "1" },
+    { "key": "leaveId", "value": "1" },
+    { "key": "date", "value": "2026-02-19" },
+    { "key": "timestamp", "value": "2026-02-19 09:00:00" }
+  ]
+}

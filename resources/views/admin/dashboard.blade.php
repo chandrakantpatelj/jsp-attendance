@@ -18,7 +18,7 @@
             <div class="content-wrapper">
                 <!-- Content -->
                 <div class="calendar-header">
-                    <h5 class="mb-0">Dashboard</h5>
+                    <h5 class="mb-0">Dashboard Admin</h5>
                 </div>
 
                 <div class="container-xxl flex-grow-1 ">
@@ -62,7 +62,6 @@
                                     <div>
                                         <h2 class=" mb-0 ">12</h2>
                                         <h5 class="mb-0 ">Today present days</h5>
-
                                     </div>
 
                                 </div>

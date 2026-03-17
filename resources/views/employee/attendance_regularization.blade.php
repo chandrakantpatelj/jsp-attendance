@@ -38,6 +38,43 @@
                         <div class="col app-calendar-content">
                             <div class="card shadow-none border-0">
                                 <div class="card-body pb-0">
+                                    <h1>All Attendance Records</h1>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Punch In</th>
+                                                <th>Punch Out</th>
+                                                <th>Working Hours</th>
+                                                 <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @forelse ($attendance as $date => $records)
+                                                <tr>
+                                                    <td rowspan="{{ $records->count() }}">{{ \Carbon\Carbon::parse($date)->format('d-M-Y') }}</td>
+                                                    @foreach ($records as $key => $record)
+                                                        @if ($key > 0)
+                                                            <tr>
+                                                        @endif
+                                                        <td>{{ $record->punch_in_time }}</td>
+                                                        <td>{{ $record->punch_out_time ?? 'N/A' }}</td>
+                                                        <td>{{ $record->working_hours ?? 'N/A' }}</td>
+                                                        <td>
+                                                            <a href="{{ route('attendance-regularization') }}" class="btn btn-primary">Request Regularization</a>
+                                                        </td>
+                                                        @if ($key > 0)
+                                                            </tr>
+                                                        @endif
+                                                    @endforeach
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="4" class="text-center">No attendance records found.</td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
                                     <!-- FullCalendar -->
                                     <div id='calendar'></div>
                                 </div>
@@ -59,44 +96,4 @@
         <div class="drag-target"></div>
     </div>
     <!-- / Layout wrapper -->
-
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-
-    <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="../../assets/vendor/libs/popper/popper.js"></script>
-    <script src="../../assets/vendor/js/bootstrap.js"></script>
-    <script src="../../assets/vendor/libs/node-waves/node-waves.js"></script>
-    <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="../../assets/vendor/libs/hammer/hammer.js"></script>
-    <script src="../../assets/vendor/libs/i18n/i18n.js"></script>
-    <script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
-    <script src="../../assets/vendor/js/menu.js"></script>
-
-    <!-- endbuild -->
-
-    <!-- Vendors JS -->
-    <script src="../../assets/vendor/libs/apex-charts/apexcharts.js"></script>
-    <script src="../../assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
-    <script src="../../assets/vendor/libs/fullcalendar/fullcalendar.js"></script>
-    <script src="../../assets/vendor/libs/@form-validation/popular.js"></script>
-    <script src="../../assets/vendor/libs/@form-validation/bootstrap5.js"></script>
-    <script src="../../assets/vendor/libs/@form-validation/auto-focus.js"></script>
-    <script src="../../assets/vendor/libs/select2/select2.js"></script>
-    <script src="../../assets/vendor/libs/moment/moment.js"></script>
-    <script src="../../assets/vendor/libs/flatpickr/flatpickr.js"></script>
-
-    <!-- Main JS -->
-    <script src="../../assets/js/main.js"></script>
-
-    <!-- Page JS -->
-    <script src="/assets/js/app-ecommerce-dashboard.js"></script>
-    <script src="/assets/js/dashboards-crm.js"></script>
-    <script src="/assets/js/charts-apex.js"></script>
-    <script src="/assets/js/app-calendar.js"></script>
-    <script src="/assets/js/app-calendar-events.js"></script>
-
-
-</body>
-
-</html>
+ @endsection

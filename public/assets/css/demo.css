@@ -177,7 +177,8 @@
 
 .notifications-card {
     border-radius: 20px;
-    min-width: 598px !important;
+    min-width: 320px !important;
+    max-width: calc(100vw - 2rem);
 }
 .notifications-card .dropdown-notifications-item > div {
     border-radius: 10px;
@@ -360,7 +361,11 @@
 }
 /* Navbar page z-index issue solution */
 .content-wrapper .navbar {
-    z-index: auto;
+    z-index: 1080;
+}
+
+.dropdown-menu {
+    z-index: 1090;
 }
 
 /*

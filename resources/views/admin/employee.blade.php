@@ -1,59 +1,7 @@
-<!doctype html>
 
-<html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact" dir="ltr"
-    data-theme="theme-default" data-assets-path="../../assets/" data-template="vertical-menu-template-no-customizer">
+@extends('layouts.app')
+@section('auth-content')
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-
-    <title>Dashboard - eCommerce | Vuexy - Bootstrap Admin Template</title>
-
-    <meta name="description" content="" />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" />
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&ampdisplay=swap"
-        rel="stylesheet" />
-
-    <!-- Icons -->
-    <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome.css" />
-    <link rel="stylesheet" href="../../assets/vendor/fonts/tabler-icons.css" />
-    <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icons.css" />
-
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="../../assets/vendor/css/rtl/core.css" />
-    <link rel="stylesheet" href="../../assets/vendor/css/rtl/theme-default.css" />
-    <link rel="stylesheet" href="../../assets/css/demo.css" />
-
-    <!-- Vendors CSS -->
-    <link rel="stylesheet" href="../../assets/vendor/libs/fullcalendar/fullcalendar.css" />
-    <link rel="stylesheet" href="../../assets/vendor/libs/node-waves/node-waves.css" />
-    <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-    <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css" />
-    <link rel="stylesheet" href="../../assets/vendor/libs/apex-charts/apex-charts.css" />
-    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
-    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
-    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
-
-    <!-- Page CSS -->
-    <link rel="stylesheet" href="../../assets/vendor/css/pages/app-calendar.css" />
-    <!-- Helpers -->
-    <script src="../../assets/vendor/js/helpers.js"></script>
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="../../assets/js/config.js"></script>
-
-
-</head>
-
-<body>
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -76,12 +24,12 @@
                         <h5 class="mb-0">Employee</h5>
                         <div class="d-flex align-items-center justify-content-end">
                             <button class="btn btn-primary add-leave-btn" type="button" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="createEmployeeBtn" onclick="createEmployee();">
                                 <i class="ti ti-plus"></i> Add new Employee
                             </button>
 
                             <!-- Add New Employee Drawer -->
-                            <div class="offcanvas offcanvas-end custom-offcanvas" tabindex="-1" id="offcanvasRight"
+                            <div class="offcanvas offcanvas-end custom-offcanvas"  data-bs-backdrop="static" tabindex="-1" id="offcanvasRight"
                                 aria-labelledby="offcanvasRightLabel">
                                 <div class="offcanvas-header">
                                     <h2 id="offcanvasRightLabel"> Add new employee</h2>
@@ -89,6 +37,7 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="offcanvas-body">
+                                   
                                     <form id="employeeForm"
                                         action="{{ isset($employee->id) ? route('employee.update', $employee->id) : route('employee.store') }}"
                                         method="POST">
@@ -118,13 +67,26 @@
                                             @enderror
                                         </div>
                                         <div class="mb-4">
-                                            <label for="email" class="form-label custom_lable">Email</label>
+                                            <label for="email" class="form-label custom_lable">Personal Email</label>
                                             <input id="email" type="email"
                                                 class="form-control @error('email') is-invalid @enderror" name="email"
                                                 value="{{ old('email', $employee->email ?? '') }}"
                                                 placeholder="Enter email" required autocomplete="email">
 
                                             @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="business_email" class="form-label custom_lable">Working Email</label>
+                                            <input id="business_email" type="email"
+                                                class="form-control @error('business_email') is-invalid @enderror" name="business_email"
+                                                value="{{ old('business_email', $employee->business_email ?? '') }}"
+                                                placeholder="Enter Working email" required autocomplete="business_email">
+
+                                            @error('business_email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -160,42 +122,34 @@
                                         </div>
                                         <div class="mb-4">
                                             <label class="designation">Department</label>
-                                            <select name="designation" id="designation"
-                                                class="form-control custom_lable" required>
+                                            <select name="designation" id="designation" class="form-control custom_lable @error('designation') is-invalid @enderror" >
                                                 <option value="">Select Designation</option>
-                                                <option value="1"
-                                                    {{ (old('designation', $employee->designation ?? '') == 1) ? 'selected' : '' }}>
-                                                    UIUX Design
-                                                </option>
-                                                <option value="2"
-                                                    {{ (old('designation', $employee->designation ?? '') == 2) ? 'selected' : '' }}>
-                                                    Developer
-                                                </option>
-                                                <option value="3"
-                                                    {{ (old('designation', $employee->designation ?? '') == 3) ? 'selected' : '' }}>
-                                                    Desinger
-                                                </option>
+                                                <option value="UIUX Design" {{ (old('designation', $employee->designation ?? '') == 'UIUX Design') ? 'selected' : '' }}>UIUX Design</option>
+                                                <option value="Developer" {{ (old('designation', $employee->designation ?? '') == 'Developer') ? 'selected' : '' }}>Developer</option>
+                                                <option value="Designer" {{ (old('designation', $employee->designation ?? '') == 'Designer') ? 'selected' : '' }}>Designer</option>
                                             </select>
+
                                             @error('designation')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
                                         </div>
-                                        <div class="mb-4">
+                                       <div class="mb-4">
                                             <label class="form-check-label custom_lable" for="status">Status</label>
                                             <div class="form-check form-switch">
                                                 <input class="form-check-input @error('status') is-invalid @enderror"
-                                                    type="checkbox" id="status" name="status" value="1"
-                                                    {{ old('status', $employee->status ?? 0) == 1 ? 'checked' : '' }} />
+                                                       type="checkbox" id="status" name="status" value="active"
+                                                       {{ old('status', $employee->status ?? 'active') == 'active' ? 'checked' : '' }} />
                                             </div>
-
+                                        
                                             @error('status')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
                                         </div>
+
                                         <div class="d-flex gap-3 justify-content-end">
                                             <button type="button" class="btn btn-outline-secondary from_btn"
                                                 data-bs-dismiss="offcanvas">Cancel</button>
@@ -238,27 +192,29 @@
                                                 <th></th>
                                                 <th>Name</th>
                                                 <th>Department</th>
+                                                <th>Business Mail</th>
                                                 <th>Status</th>
                                                 <th style="text-align: end;">Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach($employees as $employee)
+                                            
                                             <tr>
                                                 <td></td>
                                                 <td>{{ $employee->name }}</td>
+                                                <td>{{ $employee->designation }}</td>
+                                                <td>{{ $employee->business_email }}</td>
                                                 <td>
-                                                    @if($employee->designation == 1)
-                                                    UIUX Design
-                                                    @elseif($employee->designation == 2)
-                                                    Developer
-                                                    @elseif($employee->designation == 3)
-                                                    Designer
-                                                    @endif
+                                                    <div class="form-check form-switch">
+                                                        <input type="checkbox" class="form-check-input" id="statusSwitch{{ $employee->id }}" {{ $employee->status === 'active' ? 'checked' : '' }} >
+                                                        <label class="form-check-label" for="statusSwitch{{ $employee->id }}">
+                                                            {{-- $employee->status === 'active' ? 'Active' : 'Inactive' --}}
+                                                        </label>
+                                                    </div>
                                                 </td>
-                                                <td>{{ $employee->status }}</td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                    <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas"
                                                         data-bs-target="#offcanvasRight"
                                                         onclick="loadEmployeeData({{ $employee->id }})"><i
                                                             class="ti ti-pencil me-1"></i></button>
@@ -280,6 +236,9 @@
                                     </table>
                                 </div>
                             </div>
+                        </div>
+                        <div class="d-flex justify-content-end mt-3">
+                            {{ $employees->links() }}
                         </div>
                         <!-- <div class="d-flex justify-content-between mt-4">
                             <h5> Showing 03 entries</h5>
@@ -314,27 +273,28 @@
         <div class="drag-target"></div>
     </div>
     @endsection
-    <script src="../../assets/js/main.js"></script>
+    <script src="{{ env('APP_URL') . '/public/assets/js/main.js' }}"></script>
     <script>
     function loadEmployeeData(employeeId) {
         $.ajax({
-            url: '/employee/' + employeeId + '/edit',
+            url: '/admin/employee/' + employeeId + '/edit',
             method: 'GET',
             success: function(data) {
-                // Fill form with employee data
+                console.log('data.designation',data.designation);
                 $('#name').val(data.name);
                 $('#email').val(data.email);
-                $('#designation').val(data.designation); // Fill the designation field
-                $('#status').prop('checked', data.status == 1); // If status is 1, check the status checkbox
+                $('#designation').val(data.designation);
+                $('#business_email').val(data.business_email);
+                $('#status').prop('checked', data.status === 'active');
 
-                // Set the form action to 'update'
-                $('#employeeForm').attr('action', '/employee/' + employeeId);
+                $('#employeeForm').attr('action', '/admin/employee/' + employeeId + '/update');
+                $('#employeeForm').find('input[name="_method"]').remove();
+                $('#employeeForm').append('<input type="hidden" name="_method" value="PUT">');
 
-                // Update button text to 'Update'
                 $('#employeeForm button[type="submit"]').text('Update');
 
-                // Show the offcanvas
                 $('#offcanvasRight').offcanvas('show');
+                
             },
             error: function(xhr, status, error) {
                 console.error('Error fetching employee data:', error);
@@ -342,9 +302,30 @@
             }
         });
     }
+    function createEmployee(){
+        $('#employeeForm')[0].reset();
+        $('#employeeForm').attr('action', '{{ route('employee.store') }}');
+        $('#employeeForm').find('input[name="_method"]').remove();
+        $('#employeeForm button[type="submit"]').text('Register');
+    }
+
+    @if ($errors->any())
+        document.addEventListener('DOMContentLoaded', function () {
+            try {
+                var offcanvasEl = document.getElementById('offcanvasRight');
+                if (offcanvasEl) {
+                    var instance = bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl);
+                    instance.show();
+                }
+            } catch (e) {
+            }
+        });
+    @endif
     </script>
     @push('script')
-
+    <script>
+    
+    </script>
     @endpush
-    <script src="/assets/js/app-ecommerce-category-list.js"></script>
-    <script src="/assets/js/app-ecommerce-product-list.js"></script>
+    <script src="{{ env('APP_URL') . '/public/assets/js/app-ecommerce-category-list.js' }}"></script>
+    <script src="{{ env('APP_URL') . '/public/assets/js/app-ecommerce-product-list.js' }}"></script>    

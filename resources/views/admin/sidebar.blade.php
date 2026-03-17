@@ -1,8 +1,8 @@
 <aside class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="index.html" class="app-brand-link">
+        <a href="{{ route('admin.dashboard') }}" class="app-brand-link">
             <span class="app-brand-logo ">
-                <img src="{{ asset('assets/img/header-logo.png') }}" alt="Header Logo">
+                <img src="{{ asset('assets/img/Header-logo.png') }}" alt="Header Logo" style="max-width: 188px; width: 100%; height: auto; display: block;">
             </span>
         </a>
 
@@ -15,7 +15,7 @@
     <!-- <div class="menu-inner-shadow"></div> -->
     <ul class="menu-inner py-1">
         <li class="menu-item">
-            <a href="{{ route('employee.dashboard') }}" class="menu-link">
+            <a href="{{ route('admin.dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-home"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
             </a>
@@ -30,6 +30,12 @@
             <a href="{{ route('attendance.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-logout"></i>
                 <div data-i18n="Leave management">Leave management</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ route('employee-attendance') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-logout"></i>
+                <div data-i18n="Employee Attendance">Employee Attendance</div>
             </a>
         </li>
     </ul>

@@ -39,14 +39,20 @@ class LoginController extends Controller
     }
     protected function authenticated($request, $user)
     {
-        // Check the user's role and redirect accordingly
-        if ($user->role_id == 1) {
-            return redirect()->route('admin.dashboard'); // Redirect to admin dashboard
-        } elseif ($user->role_id == 2) {
-            return redirect()->route('employee.dashboard'); // Redirect to employee dashboard
+         $redirectTo = redirect()->intended();
+    
+        // If the user has no intended URL, apply role-based redirection
+        if ($redirectTo->getTargetUrl() == url('/login')) {
+            // No intended URL was set (user probably went to login directly)
+            if ($user->role_id == 1) {
+                return redirect()->route('admin.dashboard'); // Admin dashboard
+            } elseif ($user->role_id == 2) {
+                return redirect()->route('employee.dashboard'); // Employee dashboard
+            }
+            
+            return redirect()->route('home'); // Default redirect
         }
-
-        // Default redirect if no role match
-        return redirect()->route('home');
+    
+        return $redirectTo; 
     }
 }

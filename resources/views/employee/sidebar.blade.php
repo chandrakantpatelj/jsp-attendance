@@ -1,8 +1,8 @@
 <aside class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="index.html" class="app-brand-link">
+        <a href="{{ route('employee.dashboard') }}" class="app-brand-link">
             <span class="app-brand-logo ">
-                <img src="{{ asset('assets/img/header-logo.png') }}" alt="Header Logo">
+                <img src="{{ asset('assets/img/Header-logo.png') }}" alt="Header Logo" style="max-width: 188px; width: 100%; height: auto; display: block;">
             </span>
         </a>
 

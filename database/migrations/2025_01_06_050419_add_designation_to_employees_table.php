@@ -10,9 +10,11 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('designation')->after('role_id');
-        });
+        if (! Schema::hasColumn('users', 'designation')) {
+            Schema::table('users', function (Blueprint $table) {
+                $table->string('designation')->after('role_id');
+            });
+        }
     }
 
     /**
@@ -20,8 +22,10 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('designation');
-        });
+        if (Schema::hasColumn('users', 'designation')) {
+            Schema::table('users', function (Blueprint $table) {
+                $table->dropColumn('designation');
+            });
+        }
     }
 };

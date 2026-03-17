@@ -47,7 +47,7 @@
                                         <span> <i class="menu-icon tf-icons ti ti-logout"></i></span>
                                     </div>
                                     <div>
-                                        <h2 class=" mb-0 ">03</h2>
+                                        <h2 class=" mb-0 ">02</h2>
                                         <h5 class="mb-0 ">Total leave request</h5>
 
                                     </div>
@@ -89,7 +89,58 @@
                     </div>
                     <div class="row">
                         <div class="col-12 col-xl-5 mb-4">
-                            <div class="card dashbord_card">
+                            <div class="card dashbord_card mb-4">
+                                <div class="card-header">
+                                    <div class="col-12 mb-4 text-center">
+                                        <h2 id="current_time"></h2>
+                                    </div>
+                                    <div class="col-12 mb-4 d-flex">
+                                        <div class="col d-flex justify-content-center punch_in_div">
+                                            <div class="text-center"><button class="btn btn-danger punch_button" id="punch-in" type="button">Punch In</button>
+                                            <div>
+                                                <!--<span class="menu-header-text punchin-time" id="timer">00:00</span>-->
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="col d-none justify-content-center punch_out_div">
+                                            <div class="text-center"><button class="btn btn-success punch_button" id="punch-out" type="button" style="display: none;">Punch Out</button>
+                                            <div>
+                                                <!--<span class="menu-header-text punchin-time" id="punch_out">00:00</span>-->
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-4 text-center d-flex justify-content-center flex-column" id="total_time">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Details</th>
+                                                    <th>Time</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Punch in time</td>
+                                                    <td><span class="menu-header-text punchin-time" id="timer">00:00</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Punch out time</td>
+                                                    <td><span class="menu-header-text punchin-time" id="punch_out">00:00</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Total hour For Today</td>
+                                                    <td><span class="total_time">00:00</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--<span>Total hour For Today</span>-->
+                                        <!--<div class="d-inline-block d-flex justify-content-center">-->
+                                        <!--<h1 class="menu-header-text border border-info rounded-2 total_time p-3">00:00</h1>-->
+                                        <!--</div>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card dashbord_card mb-4">
                                 <div class="card-header d-flex justify-content-between">
 
                                     <h5 class="mb-0">Leave</h5>
@@ -163,7 +214,7 @@
                         <div class="col-12 col-xl-3 mb-4">
                             <div class="card dashbord_card">
                                 <div class="card-header d-flex justify-content-between">
-                                    <h5 class="mb-0">December 2024</h5>
+                                    <h5 class="mb-0">February 2026</h5>
                                     <div class="p-3">
                                         <div class="inline-calendar"></div>
                                         <div class="col app-calendar-sidebar border-end" id="app-calendar-sidebar">
@@ -256,3 +307,192 @@
     <!-- / Layout wrapper -->
 
     @endsection
+
+@push('script')
+    <script>
+//$(document).ready(function() {
+   
+    
+    
+$(document).ready(function() {   
+     let timerInterval;
+    let punchData = @json($punchData);
+    let startTime;
+    let isPunchIn = false;
+    let punchInDate;
+
+
+    let isPunchedIn = punchData.isPunchedIn;
+    let punchInTime = punchData.punchInTime; 
+    let punchOutTime = punchData.punchOutTime;
+    let workingHours = punchData.workingHours;
+    let punchDate = punchData.attendanceDate;
+    console.log('punchData',punchData);
+
+    if (punchInTime) {
+        $('#timer').text(punchInTime);
+    }
+    if (punchOutTime) {
+        $('#punch_out').text(punchOutTime);
+    }
+    if (workingHours) {
+        $('#total_time .total_time').html(workingHours);
+    }
+   if (punchInTime && punchDate) {
+        function convertTo24HourFormat(time) {
+            const [hours, minutes, seconds] = time.split(' ')[0].split(':');
+            const period = time.split(' ')[1];
+            let hour = parseInt(hours);
+            $('#timer').text(punchInTime);
+            if (period === 'PM' && hour !== 12) {
+                hour += 12;
+            } else if (period === 'AM' && hour === 12) {
+                hour = 0;
+            }
+
+            return `${hour}:${minutes}:${seconds}`;
+        }
+
+        let punchInTime24 = convertTo24HourFormat(punchInTime);
+
+        console.log('Converted Punch-In Time (24-hour format):', punchInTime24);
+        let fullDateTime = `${punchDate}T${punchInTime24}`;
+        console.log('Full DateTime String:', fullDateTime);
+
+        punchInDate = new Date(fullDateTime);
+
+        if (isNaN(punchInDate)) {
+            console.error('Invalid Date:', fullDateTime);
+        } else {
+            console.log('Punch-In Date:', punchInDate);
+        }
+    }
+    
+    
+    console.log('final', punchInDate);
+    
+    
+    if (isPunchedIn) {
+        $('.punch_out_div').removeClass('d-none').addClass('d-flex');
+        $('.punch_in_div').removeClass('d-flex').addClass('d-none');
+        if (punchInDate && !isNaN(punchInDate)) {
+            updateTimerDisplay(new Date(punchInDate), '#timer');
+        }
+    } else {
+        $('.punch_out_div').removeClass('d-flex').addClass('d-none');
+        $('.punch_in_div').removeClass('d-none').addClass('d-flex');
+    }
+    
+    
+    
+    const c_currentTime = new Date();
+    updateTimerDisplay(c_currentTime, '#current_time');
+    setInterval(function() {
+        const now = new Date();
+        updateTimerDisplay(now, '#current_time');
+    }, 1000);
+    
+
+
+    function padZero(num) {
+        return num < 10 ? '0' + num : num;
+    }
+    
+     function updateTimerDisplay(currentTime, selector = '#timer') {
+        
+        let hours = currentTime.getHours();
+        const minutes = currentTime.getMinutes();
+        const seconds = currentTime.getSeconds();
+        
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        //console.log('currentTime', padZero(hours) + ':' + padZero(minutes) + ':' + padZero(seconds) + ' ' + ampm);
+        $(selector).text(padZero(hours) + ':' + padZero(minutes) + ':' + padZero(seconds) + ' ' + ampm);
+    }
+    
+    
+    function saveToLocalStorage(action, timestamp) {
+        const punchData = {
+            isPunchIn: action === 'punch_in',
+            startTime: timestamp
+        };
+        localStorage.setItem('punchData', JSON.stringify(punchData));
+    }
+
+    function sendPunchData(action, timestamp) {
+
+        $.ajax({
+            url: '/employee/save-punch-data',
+            method: 'POST',
+            data: {
+                action: action,
+                timestamp: timestamp,
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response) {
+                if (response.success) {
+                    console.log('Success:', response.message);
+                }
+                if (response.working_hours) {
+                    
+                    $('#total_time .total_time').html(response.working_hours);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', {
+                    status: status,
+                    error: error,
+                    response: xhr.responseText
+                });
+            }
+        });
+    }
+    $('#punch-in').click(function() { 
+        if (!isPunchIn) {
+            isPunchIn = true;
+
+            startTime = new Date();
+            let currentTime = new Date(startTime);
+
+            // timerInterval = setInterval(function() {
+            //     currentTime.setSeconds(currentTime.getSeconds() +
+            //         1);
+                updateTimerDisplay(currentTime, '#timer');
+            // }, 1000);
+
+            $('.punch_out_div').removeClass('d-none').addClass('d-flex');
+            $('.punch_in_div').removeClass('d-flex').addClass('d-none');
+            //$('#total_time').removeClass('d-none').addClass('d-flex');
+            sendPunchData('punch_in', startTime);
+        }
+    });
+
+    $('#punch-out').click(function() { 
+        //if (isPunchIn) {
+            clearInterval(timerInterval);
+            isPunchIn = false;
+
+            $('.punch_out_div').removeClass('d-flex').addClass('d-none');
+            $('.punch_in_div').removeClass('d-none').addClass('d-flex');
+            const punchOutTime = new Date();
+            let punchOutCurrentTime = new Date(punchOutTime);
+            const totalWorkingTime = new Date(punchOutTime - startTime);
+            localStorage.removeItem('punchData');
+            updateTimerDisplay(punchOutCurrentTime, '#punch_out');
+            sendPunchData('punch_out', punchOutTime);
+            
+        // } else {
+        //     Swal.fire({
+        //         title: 'Action Required',
+        //         text: 'You need to punch in before punching out!',
+        //         icon: 'info',
+        //         confirmButtonText: 'Got it',
+        //         customClass: {
+        //             confirmButton: 'btn btn-primary' // Use Vuexy's button styles
+        //         },
+        //     });
+    });
+});
+    </script>
+@endpush
