@@ -242,7 +242,7 @@
     <div class=" search-input-wrapper d-none d-flex justify-content-end">
         <input type="text" class="form-control search-input container-xxl border-0" placeholder="Search..."
             aria-label="Search..." />
-        <i class="ti ti-x ti-sm search-toggler cursor-pointer"></i>
+        <i class="ti ti-x ti-sm search-toggler cursor-pointer"></i> 
     </div>
 </nav>
 <script>
