@@ -6,19 +6,6 @@
     </div>
     <div class="navbar-nav-right  d-flex gap-4 align-items-center justify-content-end" id="navbar-collapse">
         <ul class="navbar-nav flex-row gap-3 align-items-center  ">
-            <li>
-                <div>
-                    <span class="menu-header-text punchin-time" id="timer">00:00</span>
-                </div>
-            </li>
-            <li>
-                <button class="btn btn-danger punch_button" id="punch-in" type="button">
-                    Punch In
-                </button>
-                <button class="btn btn-success punch_button" id="punch-out" type="button" style="display: none;">
-                    Punch Out
-                </button>
-            </li>
             <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-1 ">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown"
                     data-bs-auto-close="outside" aria-expanded="false">
@@ -233,20 +220,20 @@
                     </li>
                 </ul>
             </li>
-            <li>
+            <li> 
                 <div>
-                    <span class="menu-header-text email-text" data-i18n="admin.jspinfotech@gmail.com">
-                        admin.jspinfotech@gmail.com
-                    </span>
+                     @if(Auth::check())
+                            <div class="flex-grow-1">
+                                <span class="fw-medium d-block">{{ Auth::user()->name }}</span>
+                            </div>
+                            @endif
                 </div>
-            <li>
-                <a class="dropdown-item" href="{{ route('logout') }}"
+            <a class="btn bs-danger btn-logout mt-1" href="{{ route('logout') }}"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    <i class="ti ti-logout me-2 ti-sm"></i>
+                    <!--<i class="ti ti-logout me-2 ti-sm"></i>-->
                     <span class="align-middle">{{ __('Log Out') }}</span>
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
-            </li>
 
             </li>
         </ul>
@@ -258,87 +245,83 @@
         <i class="ti ti-x ti-sm search-toggler cursor-pointer"></i>
     </div>
 </nav>
-
-<script src="../../assets/vendor/libs/jquery/jquery.js"></script>
-<script src="../../assets/vendor/js/bootstrap.js"></script>
-</script>
 <script>
-$(document).ready(function() {
-    let timerInterval;
-    let startTime;
-    let isPunchIn = false;
+// $(document).ready(function() {
+//     let timerInterval;
+//     let startTime;
+//     let isPunchIn = false;
 
-    function updateTimerDisplay(currentTime) {
-        let hours = currentTime.getHours();
-        const minutes = currentTime.getMinutes();
-        const seconds = currentTime.getSeconds();
+//     function updateTimerDisplay(currentTime) {
+//         let hours = currentTime.getHours();
+//         const minutes = currentTime.getMinutes();
+//         const seconds = currentTime.getSeconds();
 
-        const ampm = hours >= 12 ? 'PM' : 'AM';
-        hours = hours % 12;
-        hours = hours ? hours : 12;
-        $('#timer').text(padZero(hours) + ':' + padZero(minutes) + ':' + padZero(seconds) + ' ' + ampm);
-    }
+//         const ampm = hours >= 12 ? 'PM' : 'AM';
+//         hours = hours % 12;
+//         hours = hours ? hours : 12;
+//         $('#timer').text(padZero(hours) + ':' + padZero(minutes) + ':' + padZero(seconds) + ' ' + ampm);
+//     }
 
-    function padZero(num) {
-        return num < 10 ? '0' + num : num;
-    }
+//     function padZero(num) {
+//         return num < 10 ? '0' + num : num;
+//     }
 
-    function sendPunchData(action, timestamp) {
+//     function sendPunchData(action, timestamp) {
 
-        $.ajax({
-            url: '/save-punch-data',
-            method: 'POST',
-            data: {
-                action: action,
-                timestamp: timestamp,
-                _token: $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(response) {
-                if (response.success) {
-                    console.log('Success:', response.message);
-                }
-                if (response.working_hours) {
-                    $('#timer').html(response.working_hours);
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('Error:', {
-                    status: status,
-                    error: error,
-                    response: xhr.responseText
-                });
-            }
-        });
-    }
-    $('#punch-in').click(function() {
-        if (!isPunchIn) {
-            isPunchIn = true;
+//         $.ajax({
+//             url: '/save-punch-data',
+//             method: 'POST',
+//             data: {
+//                 action: action,
+//                 timestamp: timestamp,
+//                 _token: $('meta[name="csrf-token"]').attr('content')
+//             },
+//             success: function(response) {
+//                 if (response.success) {
+//                     console.log('Success:', response.message);
+//                 }
+//                 if (response.working_hours) {
+//                     $('#timer').html(response.working_hours);
+//                 }
+//             },
+//             error: function(xhr, status, error) {
+//                 console.error('Error:', {
+//                     status: status,
+//                     error: error,
+//                     response: xhr.responseText
+//                 });
+//             }
+//         });
+//     }
+//     $('#punch-in').click(function() {
+//         if (!isPunchIn) {
+//             isPunchIn = true;
 
-            startTime = new Date();
-            let currentTime = new Date(startTime);
+//             startTime = new Date();
+//             let currentTime = new Date(startTime);
 
-            timerInterval = setInterval(function() {
-                currentTime.setSeconds(currentTime.getSeconds() +
-                    1);
-                updateTimerDisplay(currentTime);
-            }, 1000);
+//             timerInterval = setInterval(function() {
+//                 currentTime.setSeconds(currentTime.getSeconds() +
+//                     1);
+//                 updateTimerDisplay(currentTime);
+//             }, 1000);
 
-            $('#punch-in').hide();
-            $('#punch-out').show();
-            sendPunchData('punch_in', startTime);
-        }
-    });
+//             $('#punch-in').hide();
+//             $('#punch-out').show();
+//             sendPunchData('punch_in', startTime);
+//         }
+//     });
 
-    $('#punch-out').click(function() {
-        if (isPunchIn) {
-            clearInterval(timerInterval);
-            isPunchIn = false;
+//     $('#punch-out').click(function() {
+//         if (isPunchIn) {
+//             clearInterval(timerInterval);
+//             isPunchIn = false;
 
-            $('#punch-out').hide();
-            $('#punch-in').show();
-            const punchOutTime = new Date();
-            sendPunchData('punch_out', punchOutTime);
-        }
-    });
-});
+//             $('#punch-out').hide();
+//             $('#punch-in').show();
+//             const punchOutTime = new Date();
+//             sendPunchData('punch_out', punchOutTime);
+//         }
+//     });
+// });
 </script>

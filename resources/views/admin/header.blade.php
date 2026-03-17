@@ -6,14 +6,14 @@
     </div>
     <div class="navbar-nav-right  d-flex gap-4 align-items-center justify-content-end" id="navbar-collapse">
         <ul class="navbar-nav flex-row gap-3 align-items-center  ">
-            <li>
-                <div class="flex-grow-1 input-group input-group-merge  custom-search">
-                    <span class="input-group-text custom-search" id="basic-addon-search31"><i
-                            class="ti ti-search"></i></span>
-                    <input type="text" class="form-control chat-search-input custom-search" placeholder="Search here..."
-                        aria-label="Search..." aria-describedby="basic-addon-search31" />
-                </div>
-            </li>
+            <!--<li>-->
+            <!--    <div class="flex-grow-1 input-group input-group-merge  custom-search">-->
+            <!--        <span class="input-group-text custom-search" id="basic-addon-search31"><i-->
+            <!--                class="ti ti-search"></i></span>-->
+            <!--        <input type="text" class="form-control chat-search-input custom-search" placeholder="Search here..."-->
+            <!--            aria-label="Search..." aria-describedby="basic-addon-search31" />-->
+            <!--    </div>-->
+            <!--</li>-->
             <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-1 ">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown"
                     data-bs-auto-close="outside" aria-expanded="false">
@@ -230,13 +230,30 @@
             </li>
             <li>
                 <div>
-                    <span class="menu-header-text email-text" data-i18n="admin.jspinfotech@gmail.com">
-                        admin.jspinfotech@gmail.com
-                    </span>
+                    <a class="menu-header-text email-text" href="#">
+                        <div class="d-flex">
+                            <!--<div class="flex-shrink-0 me-3">-->
+                            <!--    <div class="avatar avatar-online">-->
+                                    <!--<img src="<//?= (!empty(Auth::user()->image)) ? url('storage/app/'. Auth::user()->image) : asset_url('img/avatars/1.png'); ?>" alt class="h-auto rounded-circle" />-->
+                            <!--    </div>-->
+                            <!--</div>-->
+                            @if(Auth::check())
+                            <div class="flex-grow-1">
+                                <span class="fw-medium d-block">{{ Auth::user()->name }}</span>
+                            </div>
+                            @endif
+                        </div>
+                    </a>
+                    <!--<span class="menu-header-text email-text" data-i18n="admin.jspinfotech@gmail.com">-->
+                    <!--    admin.jspinfotech@gmail.com-->
+                    <!--</span>-->
                 </div>
-                <a class="btn bs-danger btn-logout mt-1" href="/login">
-                    Log Out
+                <a class="btn bs-danger btn-logout mt-1" href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <!--<i class="ti ti-logout me-2 ti-sm"></i>-->
+                    <span class="align-middle">{{ __('Log Out') }}</span>
                 </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
 
             </li>
         </ul>
@@ -248,9 +265,6 @@
         <i class="ti ti-x ti-sm search-toggler cursor-pointer"></i>
     </div>
 </nav>
-<script src="../../assets/vendor/libs/jquery/jquery.js"></script>
-<script src="../../assets/vendor/js/bootstrap.js"></script>
-</script>
 <script>
 $(document).ready(function() {
     let timerInterval;
