@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,26 +25,20 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-    //     dd(
-    //     $request->only('email', 'password'),
-    //     \Illuminate\Support\Facades\Auth::attempt(
-    //         $request->only('email', 'password')
-    //     )
-    // );
         $request->authenticate();
 
         $request->session()->regenerate();
-        $user = $request->user();
 
-        if ($user->role_id === 1) {
-            return redirect()->intended(route('admin.dashboard'));
-        } elseif ($user->role_id === 2) {
-            return redirect()->intended(route('employee.dashboard'));
+        // Redirect based on user role
+        $user = Auth::user();
+        
+        if ($user->role_id == 1) {
+            // Admin redirect
+            return redirect()->route('admin.dashboard');
+        } else {
+            // Employee redirect
+            return redirect()->route('employee.dashboard');
         }
-
-        return redirect()->intended(route('home'));
-
-        //return redirect()->intended(route('dashboard', absolute: false));
     }
 
     /**

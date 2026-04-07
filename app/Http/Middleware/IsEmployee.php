@@ -1,24 +1,25 @@
 <?php
-  
+
 namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
 class IsEmployee
 {
-    public function handle(Request $request, Closure $next): Response
+    /**
+     * Handle an incoming request.
+     */
+    public function handle(Request $request, Closure $next)
     {
-        if (Auth::check()) {
-            $user = Auth::user();
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
 
-            if ($user->role_id != 2) {
-                return redirect()->route('admin.dashboard');  // Redirect to admin dashboard if not an employee
-            }
-        } else {
-            return redirect()->route('login');  // Redirect to login page if not authenticated
+        if (Auth::user()->role_id != 2) {
+            // Redirect non-employee users to admin dashboard
+            return redirect()->route('admin.dashboard');
         }
 
         return $next($request);
