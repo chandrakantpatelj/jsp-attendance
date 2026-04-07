@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport"
@@ -5,15 +8,21 @@
     <meta name="description" content="" />
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" />
+    
+    <!-- Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&ampdisplay=swap"
         rel="stylesheet" />
+    
+    <!-- Icons - Make sure Tabler Icons is included -->
+    <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/tabler-icons.css') }}" />
+    
     <!-- Core CSS -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/core.css') }}" class="template-customizer-core-css" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/theme-default.css') }}" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" />
+    
     <!-- Page CSS -->
-    <!-- Page -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/page-auth.css') }}" />
 
     <script src="{{ asset('assets/js/config.js') }}"></script>
@@ -57,11 +66,11 @@
                             <img src="{{ asset('assets/img/illustrations/lock.png') }}" alt="logo" width="24" height="24" />
                             <label class="form-label front-design " for="password">Password</label>
 
-                            <div class="input-group password-Filed  ">
+                            <div class="input-group password-Filed">
                                 <input type="password" id="password" class="form-control" name="password"
                                     placeholder="Enter Your password" aria-describedby="password" />
-                                <span class="input-group-text cursor-pointer">
-                                    <i class="ti ti-eye-off"></i>
+                                <span class="input-group-text cursor-pointer" id="togglePassword" style="font-size: 1.2rem;">
+                                    <i class="ti ti-eye-off" style="display: inline-block;"></i>
                                 </span>
                             </div>
                         </div>
@@ -80,10 +89,66 @@
             <!-- /Login -->
         </div>
     </div>
+    
+    <!-- jQuery (required for main.js) -->
+    <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
+    
     <!-- Main JS -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <!-- Page JS -->
     <script src="{{ asset('assets/js/pages-auth.js') }}"></script>
+    
+    <!-- Password Toggle Script - Fixed -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Login page loaded');
+            
+            const togglePassword = document.querySelector('#togglePassword');
+            const password = document.querySelector('#password');
+            
+            if (togglePassword && password) {
+                console.log('Toggle button found');
+                
+                togglePassword.addEventListener('click', function() {
+                    console.log('Toggle clicked');
+                    
+                    // Toggle the type attribute
+                    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                    password.setAttribute('type', type);
+                    
+                    // Toggle the eye icon
+                    const icon = this.querySelector('i');
+                    if (icon.classList.contains('ti-eye-off')) {
+                        icon.classList.remove('ti-eye-off');
+                        icon.classList.add('ti-eye');
+                        console.log('Switched to eye');
+                    } else {
+                        icon.classList.remove('ti-eye');
+                        icon.classList.add('ti-eye-off');
+                        console.log('Switched to eye-off');
+                    }
+                });
+            } else {
+                console.log('Toggle button or password field not found');
+            }
+            
+            // Check if Tabler Icons are loaded
+            const testIcon = document.createElement('i');
+            testIcon.className = 'ti ti-eye-off';
+            document.body.appendChild(testIcon);
+            
+            setTimeout(function() {
+                const iconAfter = document.querySelector('.ti-eye-off');
+                if (iconAfter) {
+                    console.log('Icon exists in DOM');
+                    const styles = window.getComputedStyle(iconAfter);
+                    console.log('Icon display:', styles.display);
+                    console.log('Icon font family:', styles.fontFamily);
+                }
+                testIcon.remove();
+            }, 100);
+        });
+    </script>
 </body>
 
 </html>

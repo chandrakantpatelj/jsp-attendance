@@ -1,498 +1,635 @@
 @extends('layouts.app')
+
 @section('auth-content')
 <!-- Layout wrapper -->
 <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
-        <!-- Menu -->
-
         @include('employee.sidebar')
 
-
-        <!-- Layout container -->
         <div class="layout-page">
-            <!-- Navbar -->
             @include('employee.header')
 
-            <!-- / Navbar -->
-
-
-            <!-- Content wrapper -->
             <div class="content-wrapper">
-                <!-- Content -->
-                <div class="calendar-header">
-                    <h5 class="mb-0">Dashboard</h5>
-                </div>
+                <div class="container-xxl flex-grow-1 container-p-y">
+                    <!-- Page header -->
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 class="fw-bold py-3 mb-0">Dashboard</h4>
+                    </div>
 
-                <div class="container-xxl flex-grow-1 ">
-                    <div class="row">
-                        <div class="col-sm-6 col-lg-3 mb-4">
-                            <div class="card dashbord-card">
-                                <div class="d-flex align-items-center ">
-                                    <div class="avatar me-2">
-                                        <span><i class="ti ti-users"></i></span>
+                    <!-- Stats Cards with Real Data -->
+                    <div class="row mb-4">
+                        <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <p class="card-text text-muted mb-1">Total Days (This Month)</p>
+                                            <h3 class="fw-bold mb-0">{{ $daysInMonth ?? 0 }}</h3>
+                                        </div>
+                                        <div class="avatar avatar-lg rounded-circle bg-label-primary p-3">
+                                            <i class="ti ti-calendar-stats fs-2"></i>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h2 class=" mb-0 ">75</h2>
-                                        <h5 class="mb-0 ">Total days</h5>
-
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-lg-3 mb-4">
-                            <div class="card dashbord-card">
-                                <div class="d-flex align-items-center ">
-                                    <div class="avatar me-2">
-                                        <span> <i class="menu-icon tf-icons ti ti-logout"></i></span>
+                        <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <p class="card-text text-muted mb-1">Present Days (This Month)</p>
+                                            <h3 class="fw-bold mb-0 text-success">{{ $totalPresent ?? 0 }}</h3>
+                                        </div>
+                                        <div class="avatar avatar-lg rounded-circle bg-label-success p-3">
+                                            <i class="ti ti-user-check fs-2"></i>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h2 class=" mb-0 ">02</h2>
-                                        <h5 class="mb-0 ">Total leave request</h5>
-
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-lg-3 mb-4">
-                            <div class="card dashbord-card">
-                                <div class="d-flex align-items-center ">
-                                    <div class="avatar me-2">
-                                        <img src="{{ asset('assets/img/presentIcon.png') }}" alt="Present Icon">
+                        <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <p class="card-text text-muted mb-1">Absent Days (This Month)</p>
+                                            <h3 class="fw-bold mb-0 text-danger">{{ $totalAbsent ?? 0 }}</h3>
+                                        </div>
+                                        <div class="avatar avatar-lg rounded-circle bg-label-danger p-3">
+                                            <i class="ti ti-user-x fs-2"></i>
+                                        </div>
                                     </div>
-
-                                    <div>
-                                        <h2 class=" mb-0 ">09</h2>
-                                        <h5 class="mb-0 ">Today present days</h5>
-
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-lg-3 mb-4">
-                            <div class="card dashbord-card">
-                                <div class="d-flex align-items-center ">
-                                    <div class="avatar me-2">
-                                        <img src="{{ asset('assets/img/absentIcon.png') }}" alt="Absent Icon">
+                        <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <p class="card-text text-muted mb-1">Leave Requests</p>
+                                            <h3 class="fw-bold mb-0">{{ $totalLeaveRequests ?? 0 }}</h3>
+                                        </div>
+                                        <div class="avatar avatar-lg rounded-circle bg-label-warning p-3">
+                                            <i class="ti ti-logout fs-2"></i>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h2 class=" mb-0 ">02</h2>
-                                        <h5 class="mb-0 ">Today absent days</h5>
-
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Row 2: Time Tracker, Attendance Summary, Calendar -->
                     <div class="row">
-                        <div class="col-12 col-xl-5 mb-4">
-                            <div class="card dashbord_card mb-4">
-                                <div class="card-header">
-                                    <div class="col-12 mb-4 text-center">
-                                        <h2 id="current_time"></h2>
+                        <!-- Time Tracker Card -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header d-flex align-items-center justify-content-between">
+                                    <h5 class="card-title mb-0">Time Tracker</h5>
+                                    <small class="text-muted">Today</small>
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <div class="text-center mb-3">
+                                        <h2 id="currentTime" class="display-6 fw-bold text-primary"></h2>
                                     </div>
-                                    <div class="col-12 mb-4 d-flex">
-                                        <div class="col d-flex justify-content-center punch_in_div">
-                                            <div class="text-center"><button class="btn btn-danger punch_button" id="punch-in" type="button">Punch In</button>
-                                            <div>
-                                                <!--<span class="menu-header-text punchin-time" id="timer">00:00</span>-->
-                                            </div>
+
+                                    <!-- Punch In/Out Display -->
+                                    <div class="row text-center mb-3">
+                                        <div class="col-6">
+                                            <div class="p-2 bg-light rounded">
+                                                <span class="d-block text-muted small mb-1">Punch In</span>
+                                                <h5 class="fw-bold mb-0" id="punchInTime">{{ $punchInTime ?? '--:--' }}</h5>
                                             </div>
                                         </div>
-                                        <div class="col d-none justify-content-center punch_out_div">
-                                            <div class="text-center"><button class="btn btn-success punch_button" id="punch-out" type="button" style="display: none;">Punch Out</button>
-                                            <div>
-                                                <!--<span class="menu-header-text punchin-time" id="punch_out">00:00</span>-->
-                                            </div>
+                                        <div class="col-6">
+                                            <div class="p-2 bg-light rounded">
+                                                <span class="d-block text-muted small mb-1">Punch Out</span>
+                                                <h5 class="fw-bold mb-0" id="punchOutTime">{{ $punchOutTime ?? '--:--' }}</h5>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 mb-4 text-center d-flex justify-content-center flex-column" id="total_time">
-                                        <table class="table table-bordered">
-                                            <thead>
+
+                                    <!-- Progress bar for worked hours -->
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span class="text-muted small">Today's Worked</span>
+                                            <span class="fw-bold" id="workedHours">{{ $workedHours ?? '0h 0m' }}</span>
+                                        </div>
+                                        <div class="progress" style="height: 8px;">
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ $workPercentage ?? 0 }}%;"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Punch Buttons -->
+                                    <div class="mt-auto">
+                                        <div class="d-grid gap-2">
+                                            @if(!($isPunchedIn ?? false))
+                                            <button class="btn btn-primary" id="punchInBtn">
+                                                <i class="ti ti-login me-2"></i>Punch In
+                                            </button>
+                                            @else
+                                            <button class="btn btn-danger" id="punchOutBtn">
+                                                <i class="ti ti-logout me-2"></i>Punch Out
+                                            </button>
+                                            @endif
+                                        </div>
+
+                                        <!-- Details table -->
+                                        <div class="table-responsive mt-3">
+                                            <table class="table table-sm table-borderless mb-0">
                                                 <tr>
-                                                    <th>Details</th>
-                                                    <th>Time</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Punch in time</td>
-                                                    <td><span class="menu-header-text punchin-time" id="timer">00:00</span></td>
+                                                    <td class="ps-0 small">Punch in time</td>
+                                                    <td class="text-end fw-bold small" id="punchInDetail">{{ $punchInTime ?? '--:--' }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Punch out time</td>
-                                                    <td><span class="menu-header-text punchin-time" id="punch_out">00:00</span></td>
+                                                    <td class="ps-0 small">Punch out time</td>
+                                                    <td class="text-end fw-bold small" id="punchOutDetail">{{ $punchOutTime ?? '--:--' }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Total hour For Today</td>
-                                                    <td><span class="total_time">00:00</span></td>
+                                                    <td class="ps-0 small">Total hours</td>
+                                                    <td class="text-end fw-bold small" id="totalHoursDetail">{{ $workedHours ?? '0h 0m' }}</td>
                                                 </tr>
-                                            </tbody>
-                                        </table>
-                                        <!--<span>Total hour For Today</span>-->
-                                        <!--<div class="d-inline-block d-flex justify-content-center">-->
-                                        <!--<h1 class="menu-header-text border border-info rounded-2 total_time p-3">00:00</h1>-->
-                                        <!--</div>-->
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card dashbord_card mb-4">
-                                <div class="card-header d-flex justify-content-between">
+                        </div>
 
-                                    <h5 class="mb-0">Leave</h5>
+                        <!-- Attendance Summary Card -->
+                        <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Attendance Summary</h5>
+                                </div>
+                                <div class="card-body">
+                                    <!-- Present Days -->
+                                    <div class="d-flex align-items-center mb-4">
+                                        <div class="avatar me-3 bg-success bg-opacity-10 p-3 rounded">
+                                            <i class="ti ti-circle-check fs-3 text-success"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="mb-0">Present Days</h6>
+                                                    <small class="text-muted">This month</small>
+                                                </div>
+                                                <h3 class="mb-0 text-success fw-bold">{{ $totalPresent ?? 0 }}</h3>
+                                            </div>
+                                            <div class="progress mt-2" style="height: 6px;">
+                                                @php
+                                                $presentPercent = $daysInMonth > 0 ? round(($totalPresent / $daysInMonth) * 100) : 0;
+                                                @endphp
+                                                <div class="progress-bar bg-success" style="width: {{ $presentPercent }}%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
 
+                                    <!-- Absent Days -->
+                                    <div class="d-flex align-items-center mb-4">
+                                        <div class="avatar me-3 bg-danger bg-opacity-10 p-3 rounded">
+                                            <i class="ti ti-circle-x fs-3 text-danger"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="mb-0">Absent Days</h6>
+                                                    <small class="text-muted">This month</small>
+                                                </div>
+                                                <h3 class="mb-0 text-danger fw-bold">{{ $totalAbsent ?? 0 }}</h3>
+                                            </div>
+                                            <div class="progress mt-2" style="height: 6px;">
+                                                @php
+                                                $absentPercent = $daysInMonth > 0 ? round(($totalAbsent / $daysInMonth) * 100) : 0;
+                                                @endphp
+                                                <div class="progress-bar bg-danger" style="width: {{ $absentPercent }}%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Pending Leaves -->
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar me-3 bg-warning bg-opacity-10 p-3 rounded">
+                                            <i class="ti ti-clock fs-3 text-warning"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="mb-0">Pending Leaves</h6>
+                                                    <small class="text-muted">Awaiting approval</small>
+                                                </div>
+                                                <h3 class="mb-0 text-warning fw-bold">{{ $pendingLeaves ?? 0 }}</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Calendar Card -->
+                        <div class="col-xl-4 col-md-12 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Calendar</h5>
+                                    <span class="badge bg-label-primary" id="calendarTime">{{ now()->format('h:i A') }}</span>
+                                </div>
+                                <div class="card-body">
+                                    @php
+                                    $today = new DateTime();
+                                    $month = $today->format('F Y');
+                                    $daysInMonth = $today->format('t');
+                                    $firstDay = new DateTime($today->format('Y-m-01'));
+                                    $startDay = $firstDay->format('w'); // 0 = Sunday
+                                    @endphp
+
+                                    <div class="text-center mb-3">
+                                        <h6 class="fw-bold">{{ $month }}</h6>
+                                    </div>
+
+                                    <div class="calendar-container">
+                                        <table class="calendar-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Su</th>
+                                                    <th>Mo</th>
+                                                    <th>Tu</th>
+                                                    <th>We</th>
+                                                    <th>Th</th>
+                                                    <th>Fr</th>
+                                                    <th>Sa</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @php
+                                                $day = 1;
+                                                $totalCells = $startDay + $daysInMonth;
+                                                $rows = ceil($totalCells / 7);
+                                                @endphp
+
+                                                @for($row = 0; $row < $rows; $row++)
+                                                    <tr>
+                                                    @for($col = 0; $col < 7; $col++)
+                                                        @php
+                                                        $cellIndex = $row * 7 + $col;
+                                                        @endphp
+
+                                                        @if($cellIndex < $startDay || $cellIndex >= $startDay + $daysInMonth)
+                                                        <td class="empty-cell"></td>
+                                                        @else
+                                                        @if($day == $today->format('j'))
+                                                        <td class="today-cell">{{ $day++ }}</td>
+                                                        @else
+                                                        <td>{{ $day++ }}</td>
+                                                        @endif
+                                                        @endif
+                                                        @endfor
+                                                        </tr>
+                                                        @endfor
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 3: Monthly Present vs Absent Bar Chart -->
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Monthly Attendance</h5>
                                     <div class="dropdown">
-                                        <button type="button" class="btn btn-label-primary dropdown-toggle"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            Monthly
+                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                            {{ $selectedYear ?? date('Y') }}
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="javascript:void(0);">January</a></li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);">February</a>
-                                            </li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);">March</a></li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);">April</a></li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);">May</a></li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);">June</a></li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);">July</a></li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);">August</a></li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);">September</a>
-                                            </li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);">October</a></li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);">November</a>
-                                            </li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);">December</a>
-                                            </li>
+                                            @foreach($years ?? [] as $yr)
+                                            <li><a class="dropdown-item" href="?year={{ $yr }}">{{ $yr }}</a></li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div class="tab-content p-0 ms-0 ms-sm-2">
-                                        <div class="tab-pane fade show active" id="navs-orders-id" role="tabpanel">
-                                            <div id="earningReportsTabsOrders"></div>
-                                        </div>
-                                        <div class="tab-pane fade" id="navs-sales-id" role="tabpanel">
-                                            <div id="earningReportsTabsSales"></div>
-                                        </div>
-                                        <div class="tab-pane fade" id="navs-profit-id" role="tabpanel">
-                                            <div id="earningReportsTabsProfit"></div>
-                                        </div>
-                                        <div class="tab-pane fade" id="navs-income-id" role="tabpanel">
-                                            <div id="earningReportsTabsIncome"></div>
-                                        </div>
+                                    <div style="height: 300px;">
+                                        <canvas id="monthlyAttendanceChart"></canvas>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-xl-4 mb-4">
-                            <div class="card dashbord_card">
-                                <div class="card-header ">
-                                    <h5 class="mb-0">Attendance</h5>
-                                </div>
-                                <div class="px-3">
-                                    <div class="chart-container">
-                                        <div class="chartlable">
-                                            <h5 class="mb-0">Late</h5>
-                                            <h5 class="mb-0">30%</h5>
-                                        </div>
-                                        <div id="chart"></div>
-                                    </div>
-                                    <div class="chart-container">
-                                        <div class="chartlable">
-                                            <h5 class="mb-0">Present</h5>
-                                            <h5 class="mb-0">90%</h5>
-                                        </div>
-                                        <div id="radialchart"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-xl-3 mb-4">
-                            <div class="card dashbord_card">
-                                <div class="card-header d-flex justify-content-between">
-                                    <h5 class="mb-0">February 2026</h5>
-                                    <div class="p-3">
-                                        <div class="inline-calendar"></div>
-                                        <div class="col app-calendar-sidebar border-end" id="app-calendar-sidebar">
-                                            <div class="border-bottom p-6 my-sm-0 mb-4">
-
-                                            </div>
-                                            <div class="px-3 pt-2">
-                                                <!-- inline calendar (flatpicker) -->
-                                                <div class="inline-calendar"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col app-calendar-sidebar" id="app-calendar-sidebarr">
-                                            <div class="border-bottom p-4 my-sm-0 mb-3">
-                                                <div class="d-grid">
-                                                    <!-- <button class="btn btn-primary btn-toggle-sidebar"
-                                                        data-bs-toggle="offcanvas" data-bs-target="#addEventSidebar"
-                                                        aria-controls="addEventSidebar">
-                                                        <i class="ti ti-plus me-1"></i>
-                                                        <span class="align-middle">Add Event</span>
-                                                    </button> -->
-                                                </div>
-                                            </div>
-                                            <div class="p-3">
-                                                <!-- inline calendar (flatpicker) -->
-                                                <div class="inline-calendar"></div>
-
-                                                <hr class="container-m-nx mb-4 mt-3" />
-
-                                                <!-- Filter -->
-                                                <!-- <div class="mb-3 ms-3">
-                                                    <small
-                                                        class="text-small text-muted text-uppercase align-middle">Filter</small>
-                                                </div>
-
-                                                <div class="form-check mb-2 ms-3">
-                                                    <input class="form-check-input select-all" type="checkbox"
-                                                        id="selectAll" data-value="all" checked />
-                                                    <label class="form-check-label" for="selectAll">View All</label>
-                                                </div> -->
-
-                                                <!-- <div class="app-calendar-events-filter ms-3">
-                                                    <div class="form-check form-check-danger mb-2">
-                                                        <input class="form-check-input input-filter" type="checkbox"
-                                                            id="select-personal" data-value="personal" checked />
-                                                        <label class="form-check-label"
-                                                            for="select-personal">Personal</label>
-                                                    </div>
-                                                    <div class="form-check mb-2">
-                                                        <input class="form-check-input input-filter" type="checkbox"
-                                                            id="select-business" data-value="business" checked />
-                                                        <label class="form-check-label"
-                                                            for="select-business">Business</label>
-                                                    </div>
-                                                    <div class="form-check form-check-warning mb-2">
-                                                        <input class="form-check-input input-filter" type="checkbox"
-                                                            id="select-family" data-value="family" checked />
-                                                        <label class="form-check-label"
-                                                            for="select-family">Family</label>
-                                                    </div>
-                                                    <div class="form-check form-check-success mb-2">
-                                                        <input class="form-check-input input-filter" type="checkbox"
-                                                            id="select-holiday" data-value="holiday" checked />
-                                                        <label class="form-check-label"
-                                                            for="select-holiday">Holiday</label>
-                                                        div
-                                                    </div>
-                                                    <div class="form-check form-check-info">
-                                                        <input class="form-check-input input-filter" type="checkbox"
-                                                            id="select-etc" data-value="etc" checked />
-                                                        <label class="form-check-label" for="select-etc">ETC</label>
-                                                    </div>
-                                                </div> -->
-                                            </div>
-                                        </div>
+                                    <div class="d-flex justify-content-center mt-3 gap-4">
+                                        <div><span class="badge bg-success me-2">&nbsp;&nbsp;&nbsp;</span> Present</div>
+                                        <div><span class="badge bg-danger me-2">&nbsp;&nbsp;&nbsp;</span> Absent</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Row 4: Recent Activity -->
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between">
+                                    <h5 class="card-title mb-0">Recent Activity</h5>
+                                    <a href="{{ url('employee/my-leave') }}" class="text-primary">View all</a>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        @forelse($recentActivities ?? [] as $activity)
+                                        <li class="list-group-item px-0">
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar flex-shrink-0 me-3">
+                                                    <span class="avatar-initial rounded-circle bg-label-{{ $activity['color'] }}">
+                                                        <i class="ti ti-{{ $activity['icon'] }}"></i>
+                                                    </span>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="mb-0 fw-semibold">{{ $activity['title'] }}</p>
+                                                    <small class="text-muted">{{ $activity['time'] }}</small>
+                                                </div>
+                                                <span class="badge bg-label-{{ $activity['badgeColor'] }}">{{ $activity['status'] }}</span>
+                                            </div>
+                                        </li>
+                                        @empty
+                                        <li class="list-group-item text-center text-muted">No recent activities</li>
+                                        @endforelse
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
-
-        <!-- Overlay -->
-        <div class="layout-overlay layout-menu-toggle"></div>
-
-        <!-- Drag Target Area To SlideIn Menu On Small Screens -->
-        <div class="drag-target"></div>
     </div>
-    <!-- / Layout wrapper -->
+    <div class="layout-overlay layout-menu-toggle"></div>
+    <div class="drag-target"></div>
+</div>
 
-    @endsection
+<style>
+    /* Calendar Styles */
+    .calendar-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .calendar-table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+        border: 1px solid #dee2e6;
+        background-color: white;
+    }
+
+    .calendar-table th {
+        text-align: center;
+        padding: 8px 0;
+        background-color: #f8f9fa;
+        font-weight: 600;
+        font-size: 0.85rem;
+        border: 1px solid #dee2e6;
+        width: 14.28%;
+    }
+
+    .calendar-table td {
+        text-align: center;
+        padding: 8px 0;
+        border: 1px solid #dee2e6;
+        font-size: 0.85rem;
+        width: 14.28%;
+    }
+
+    .calendar-table td.today-cell {
+        background-color: rgb(241, 94, 48) !important;
+        color: white !important;
+        font-weight: bold;
+    }
+
+    .calendar-table td.empty-cell {
+        background-color: #f8f9fa;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    #calendarTime {
+        font-family: monospace;
+        letter-spacing: 0.5px;
+    }
+
+    /* Progress Bars */
+    .progress {
+        background-color: #e9ecef !important;
+        border-radius: 10px;
+    }
+
+    .progress-bar {
+        color: white !important;
+        font-weight: bold !important;
+        border-radius: 10px;
+    }
+
+    /* Make all cards same height */
+    .h-100 {
+        height: 100% !important;
+    }
+
+    @media (max-width: 768px) {
+
+        .calendar-table th,
+        .calendar-table td {
+            padding: 6px 0;
+            font-size: 0.75rem;
+        }
+    }
+</style>
+@endsection
 
 @push('script')
-    <script>
-//$(document).ready(function() {
-   
-    
-    
-$(document).ready(function() {   
-     let timerInterval;
-    let punchData = @json($punchData);
-    let startTime;
-    let isPunchIn = false;
-    let punchInDate;
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<script>
+    $(document).ready(function() {
+        console.log('Dashboard script loaded');
 
-    let isPunchedIn = punchData.isPunchedIn;
-    let punchInTime = punchData.punchInTime; 
-    let punchOutTime = punchData.punchOutTime;
-    let workingHours = punchData.workingHours;
-    let punchDate = punchData.attendanceDate;
-    console.log('punchData',punchData);
+        // ===== LIVE CLOCK for Time Tracker and Calendar ONLY =====
+        function updateDateTime() {
+            const now = new Date();
 
-    if (punchInTime) {
-        $('#timer').text(punchInTime);
-    }
-    if (punchOutTime) {
-        $('#punch_out').text(punchOutTime);
-    }
-    if (workingHours) {
-        $('#total_time .total_time').html(workingHours);
-    }
-   if (punchInTime && punchDate) {
-        function convertTo24HourFormat(time) {
-            const [hours, minutes, seconds] = time.split(' ')[0].split(':');
-            const period = time.split(' ')[1];
-            let hour = parseInt(hours);
-            $('#timer').text(punchInTime);
-            if (period === 'PM' && hour !== 12) {
-                hour += 12;
-            } else if (period === 'AM' && hour === 12) {
-                hour = 0;
+            // For Time Tracker (HH:MM format)
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const timeString = `${hours}:${minutes}`;
+
+            // For Calendar (HH:MM AM/PM format)
+            const ampmHours = now.getHours() % 12 || 12;
+            const ampm = now.getHours() >= 12 ? 'PM' : 'AM';
+            const ampmTimeString = `${ampmHours.toString().padStart(2, '0')}:${minutes} ${ampm}`;
+
+            // Update ONLY the time displays we want to keep
+            $('#currentTime').text(timeString);
+            $('#calendarTime').text(ampmTimeString);
+        }
+        updateDateTime();
+        setInterval(updateDateTime, 60000);
+
+        // ===== PUNCH DATA FROM CONTROLLER =====
+        @if(isset($punchData))
+        let punchData = @json($punchData);
+        console.log('Punch Data:', punchData);
+
+        let isPunchedIn = punchData.isPunchedIn;
+        let punchInTime = punchData.punchInTime;
+        let punchOutTime = punchData.punchOutTime;
+        let workingHours = punchData.workingHours;
+
+        // Update display with existing data
+        if (punchInTime) {
+            $('#punchInTime, #punchInDetail').text(punchInTime);
+        }
+        if (punchOutTime) {
+            $('#punchOutTime, #punchOutDetail').text(punchOutTime);
+        }
+        if (workingHours) {
+            $('#workedHours, #totalHoursDetail').text(workingHours);
+        }
+        @endif
+
+        // ===== PUNCH IN FUNCTIONALITY =====
+$('#punchInBtn').click(function(e) {
+    e.preventDefault();
+    console.log('Punch In clicked');
+
+    $.ajax({
+        url: '{{ route("employee.punch-in") }}',
+        type: 'POST',
+        data: {
+            _token: '{{ csrf_token() }}',
+            timestamp: new Date().toISOString()
+        },
+        dataType: 'json',
+        beforeSend: function() {
+            $('#punchInBtn').prop('disabled', true).html('<i class="ti ti-loader me-2"></i>Processing...');
+        },
+        success: function(response) {
+            console.log('Punch In response:', response);
+            if (response.success) {
+                location.reload();
+            } else {
+                alert(response.message || 'Punch in failed');
+                $('#punchInBtn').prop('disabled', false).html('<i class="ti ti-login me-2"></i>Punch In');
             }
-
-            return `${hour}:${minutes}:${seconds}`;
+        },
+        error: function(xhr, status, error) {
+            console.error('Punch In error:', error);
+            console.error('Response:', xhr.responseText);
+            alert('Punch In failed. Please try again.');
+            $('#punchInBtn').prop('disabled', false).html('<i class="ti ti-login me-2"></i>Punch In');
         }
-
-        let punchInTime24 = convertTo24HourFormat(punchInTime);
-
-        console.log('Converted Punch-In Time (24-hour format):', punchInTime24);
-        let fullDateTime = `${punchDate}T${punchInTime24}`;
-        console.log('Full DateTime String:', fullDateTime);
-
-        punchInDate = new Date(fullDateTime);
-
-        if (isNaN(punchInDate)) {
-            console.error('Invalid Date:', fullDateTime);
-        } else {
-            console.log('Punch-In Date:', punchInDate);
-        }
-    }
-    
-    
-    console.log('final', punchInDate);
-    
-    
-    if (isPunchedIn) {
-        $('.punch_out_div').removeClass('d-none').addClass('d-flex');
-        $('.punch_in_div').removeClass('d-flex').addClass('d-none');
-        if (punchInDate && !isNaN(punchInDate)) {
-            updateTimerDisplay(new Date(punchInDate), '#timer');
-        }
-    } else {
-        $('.punch_out_div').removeClass('d-flex').addClass('d-none');
-        $('.punch_in_div').removeClass('d-none').addClass('d-flex');
-    }
-    
-    
-    
-    const c_currentTime = new Date();
-    updateTimerDisplay(c_currentTime, '#current_time');
-    setInterval(function() {
-        const now = new Date();
-        updateTimerDisplay(now, '#current_time');
-    }, 1000);
-    
-
-
-    function padZero(num) {
-        return num < 10 ? '0' + num : num;
-    }
-    
-     function updateTimerDisplay(currentTime, selector = '#timer') {
-        
-        let hours = currentTime.getHours();
-        const minutes = currentTime.getMinutes();
-        const seconds = currentTime.getSeconds();
-        
-        const ampm = hours >= 12 ? 'PM' : 'AM';
-        hours = hours % 12;
-        hours = hours ? hours : 12;
-        //console.log('currentTime', padZero(hours) + ':' + padZero(minutes) + ':' + padZero(seconds) + ' ' + ampm);
-        $(selector).text(padZero(hours) + ':' + padZero(minutes) + ':' + padZero(seconds) + ' ' + ampm);
-    }
-    
-    
-    function saveToLocalStorage(action, timestamp) {
-        const punchData = {
-            isPunchIn: action === 'punch_in',
-            startTime: timestamp
-        };
-        localStorage.setItem('punchData', JSON.stringify(punchData));
-    }
-
-    function sendPunchData(action, timestamp) {
-
-        $.ajax({
-            url: '/employee/save-punch-data',
-            method: 'POST',
-            data: {
-                action: action,
-                timestamp: timestamp,
-                _token: $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(response) {
-                if (response.success) {
-                    console.log('Success:', response.message);
-                }
-                if (response.working_hours) {
-                    
-                    $('#total_time .total_time').html(response.working_hours);
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('Error:', {
-                    status: status,
-                    error: error,
-                    response: xhr.responseText
-                });
-            }
-        });
-    }
-    $('#punch-in').click(function() { 
-        if (!isPunchIn) {
-            isPunchIn = true;
-
-            startTime = new Date();
-            let currentTime = new Date(startTime);
-
-            // timerInterval = setInterval(function() {
-            //     currentTime.setSeconds(currentTime.getSeconds() +
-            //         1);
-                updateTimerDisplay(currentTime, '#timer');
-            // }, 1000);
-
-            $('.punch_out_div').removeClass('d-none').addClass('d-flex');
-            $('.punch_in_div').removeClass('d-flex').addClass('d-none');
-            //$('#total_time').removeClass('d-none').addClass('d-flex');
-            sendPunchData('punch_in', startTime);
-        }
-    });
-
-    $('#punch-out').click(function() { 
-        //if (isPunchIn) {
-            clearInterval(timerInterval);
-            isPunchIn = false;
-
-            $('.punch_out_div').removeClass('d-flex').addClass('d-none');
-            $('.punch_in_div').removeClass('d-none').addClass('d-flex');
-            const punchOutTime = new Date();
-            let punchOutCurrentTime = new Date(punchOutTime);
-            const totalWorkingTime = new Date(punchOutTime - startTime);
-            localStorage.removeItem('punchData');
-            updateTimerDisplay(punchOutCurrentTime, '#punch_out');
-            sendPunchData('punch_out', punchOutTime);
-            
-        // } else {
-        //     Swal.fire({
-        //         title: 'Action Required',
-        //         text: 'You need to punch in before punching out!',
-        //         icon: 'info',
-        //         confirmButtonText: 'Got it',
-        //         customClass: {
-        //             confirmButton: 'btn btn-primary' // Use Vuexy's button styles
-        //         },
-        //     });
     });
 });
-    </script>
+
+// ===== PUNCH OUT FUNCTIONALITY =====
+$('#punchOutBtn').click(function(e) {
+    e.preventDefault();
+    console.log('Punch Out clicked');
+
+    $.ajax({
+        url: '{{ route("employee.punch-out") }}',
+        type: 'POST',
+        data: {
+            _token: '{{ csrf_token() }}',
+            timestamp: new Date().toISOString()
+        },
+        dataType: 'json',
+        beforeSend: function() {
+            $('#punchOutBtn').prop('disabled', true).html('<i class="ti ti-loader me-2"></i>Processing...');
+        },
+        success: function(response) {
+            console.log('Punch Out response:', response);
+            if (response.success) {
+                // Update the display immediately without reload
+                if (response.working_hours) {
+                    $('#workedHours, #totalHoursDetail').text(response.working_hours);
+                }
+                if (response.punch_out_time) {
+                    $('#punchOutTime, #punchOutDetail').text(response.punch_out_time);
+                }
+                // Change button back to Punch In
+                $('.punchOutBtn').replaceWith(`
+                    <button class="btn btn-primary" id="punchInBtn">
+                        <i class="ti ti-login me-2"></i>Punch In
+                    </button>
+                `);
+                alert('Punched out successfully!');
+            } else {
+                alert(response.message || 'Punch out failed');
+                $('#punchOutBtn').prop('disabled', false).html('<i class="ti ti-logout me-2"></i>Punch Out');
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Punch Out error:', error);
+            alert('Punch Out failed. Please try again.');
+            $('#punchOutBtn').prop('disabled', false).html('<i class="ti ti-logout me-2"></i>Punch Out');
+        }
+    });
+});
+
+        // ===== MONTHLY ATTENDANCE CHART =====
+        const ctx = document.getElementById('monthlyAttendanceChart');
+        if (ctx) {
+            @if(isset($monthlyPresentData) && isset($monthlyAbsentData))
+            const presentData = @json($monthlyPresentData);
+            const absentData = @json($monthlyAbsentData);
+
+            const presentArray = Array.isArray(presentData) ? presentData : [0,0,0,0,0,0,0,0,0,0,0,0];
+            const absentArray = Array.isArray(absentData) ? absentData : [0,0,0,0,0,0,0,0,0,0,0,0];
+
+            new Chart(ctx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [{
+                            label: 'Present',
+                            data: presentArray,
+                            backgroundColor: '#28a745',
+                            borderRadius: 6,
+                            barPercentage: 0.7,
+                            categoryPercentage: 0.8
+                        },
+                        {
+                            label: 'Absent',
+                            data: absentArray,
+                            backgroundColor: '#dc3545',
+                            borderRadius: 6,
+                            barPercentage: 0.7,
+                            categoryPercentage: 0.8
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Number of Days'
+                            }
+                        }
+                    }
+                }
+            });
+            @endif
+        }
+    });
+</script>
 @endpush

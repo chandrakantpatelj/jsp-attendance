@@ -329,6 +329,22 @@
     height: 64px;
 }
 
+.layout-menu.menu-vertical .app-brand.demo {
+    height: auto;
+    padding: 0.75rem 1rem;
+}
+
+.layout-menu.menu-vertical .app-brand.demo .app-brand-logo img {
+    max-height: 44px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.layout-menu.menu-vertical .menu-inner {
+    padding-top: 0.5rem;
+}
+
 .app-brand-logo.demo {
     -ms-flex-align: center;
     align-items: center;
@@ -351,13 +367,16 @@
 
 /* ! For .layout-navbar-fixed added fix padding top tpo .layout-page */
 .layout-navbar-fixed .layout-wrapper:not(.layout-without-menu) .layout-page {
-    padding-top: 64px !important;
+    padding-top: 0 !important;
     padding-left: 16.25rem;
+}
+.layout-navbar-fixed .layout-wrapper:not(.layout-without-menu) .layout-page {
+    padding-left: 0 !important;
 }
 .layout-navbar-fixed
     .layout-wrapper:not(.layout-horizontal):not(.layout-without-menu)
     .layout-page {
-    padding-top: 78px !important;
+    padding-top: 0 !important;
 }
 /* Navbar page z-index issue solution */
 .content-wrapper .navbar {

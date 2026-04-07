@@ -5,29 +5,23 @@
                 <img src="{{ asset('assets/img/Header-logo.png') }}" alt="Header Logo" style="max-width: 188px; width: 100%; height: auto; display: block;">
             </span>
         </a>
-
-        <!-- <a href=" javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
-            <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
-            <i class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
-        </a> -->
     </div>
 
-    <!-- <div class="menu-inner-shadow"></div> -->
     <ul class="menu-inner py-1">
-        <li class="menu-item">
+        <li class="menu-item {{ request()->routeIs('employee.dashboard') ? 'active' : '' }}">
             <a href="{{ route('employee.dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-home"></i>
-                <div data-i18n="Dashboards">Dashboards</div>
+                <div data-i18n="Dashboards">Dashboard</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="{{ route('attendance-regularization') }}" class="menu-link">
+        <li class="menu-item {{ request()->is('employee/attendance-regularization*') ? 'active' : '' }}">
+            <a href="{{ url('employee/attendance-regularization') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-calendar-event"></i>
                 <div data-i18n="Attendance Regularization">Attendance Regularization</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="{{ route('my-leave') }}" class="menu-link">
+        <li class="menu-item {{ request()->is('employee/my-leave*') ? 'active' : '' }}">
+            <a href="{{ url('employee/my-leave') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-logout"></i>
                 <div data-i18n="My leave">My leave</div>
             </a>
